@@ -3093,18 +3093,29 @@
                 const el = document.createElement('div');
                 el.className = `col-card r${c.rarity} ${gradeClass}`;
                 el.dataset.id = c.id;
+                el.style.position = 'relative';
 
-                const isItem = c.type === 'item';
-                const isSelected = isItem ? bossItemIds.includes(c.id) : bossDeckIds.includes(c.id);
+                let itemEffectOverlay = '';
+                if (isItem) {
+                    const category = getItemCategory(c);
+                    const effectValue = getItemEffectValue(c);
+                    let effectDescShort = '';
+                    if (category === 'weapon') effectDescShort = `${effectValue} ダメージ`;
+                    else if (category === 'heal') effectDescShort = `${effectValue} 回復`;
+                    else if (category === 'time') effectDescShort = `${effectValue}秒 停止`;
+
+                    itemEffectOverlay = `<div style="position:absolute; bottom:5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.7); color:#fff; font-size:0.6rem; font-weight:bold; padding:2px 6px; border-radius:5px; border:1px solid #ffeb3b; white-space:nowrap; z-index:11;">${effectDescShort}</div>`;
+                }
 
                 el.innerHTML = `
                     <div class="col-card-num">No.${c.id.substring(1)}</div>
                     ${maxGrade === 0 ? '' : `<div style="position:absolute; top:2px; right:2px; z-index:10; font-size:0.7rem; font-weight:bold; color:#795548; background:rgba(255,255,255,0.8); padding:0 3px; border-radius:4px;">G: ${maxGrade > 0 ? '+' + maxGrade : maxGrade}</div>`}
-                    <div style="width:100%; flex:1; display:flex; justify-content:center; align-items:center; background:#fff; margin:2px 0; border-radius:2px; overflow:hidden;">
+                    <div style="width:100%; flex:1; display:flex; justify-content:center; align-items:center; background:#fff; margin:2px 0; border-radius:2px; overflow:hidden; position:relative;">
                         <img src="${displayImg}" style="width:100%;height:100%;object-fit:cover;">
+                        ${itemEffectOverlay}
                     </div>
                     <div class="col-card-name">${c.name}</div>
-                    <div class="deck-check ${isSelected ? '' : 'hidden'}" style="position:absolute; inset:0; background:rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; font-size:2rem; color:#0f0;">✔</div>
+                    <div class="deck-check ${isSelected ? '' : 'hidden'}" style="position:absolute; inset:0; background:rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; font-size:2rem; color:#0f0; z-index:12;">✔</div>
                 `;
 
                 if (isSelected) {
