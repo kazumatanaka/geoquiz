@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background: #333; padding: 20px; display: flex; gap: 20px; flex-wrap: wrap; }
+        .col-card { width: 100px; height: 140px; background: white; border-radius: 5px; position: relative; }
+        .col-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
+
+        /* Copied styles */
+        .grade-awaken, .col-card.grade-awaken { box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.5) !important; border: 3px solid gold !important; position: relative; z-index: 2; }
+        .grade-awaken::after, .col-card.grade-awaken::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, transparent 50%, rgba(255, 215, 0, 0.2) 100%); pointer-events: none; }
+        
+        .grade-awaken-max, .col-card.grade-awaken-max { box-shadow: 0 0 35px 15px rgba(255, 215, 0, 0.9), inset 0 0 25px rgba(255, 255, 255, 1) !important; border: 5px solid #fffacd !important; animation: pulse-max 1.5s infinite alternate !important; position: relative; transform: scale(1.02); z-index: 10; }
+        .grade-awaken-max::after, .col-card.grade-awaken-max::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, transparent 30%, transparent 70%, rgba(255, 215, 0, 0.8) 100%); mix-blend-mode: overlay; pointer-events: none; animation: holo-sweep 1.5s infinite; }
+        @keyframes pulse-max { 0% { filter: brightness(1) contrast(1.1); transform: scale(1.02); } 100% { filter: brightness(1.2) contrast(1.3); transform: scale(1.05); } }
+
+        .grade-deteriorate, .col-card.grade-deteriorate { filter: grayscale(80%) sepia(50%) contrast(120%) !important; }
+        
+        .grade-broken::before, .col-card.grade-broken::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); pointer-events: none; z-index: 2; }
+        .grade-broken-max, .col-card.grade-broken-max { filter: grayscale(100%) brightness(30%) contrast(200%) blur(1px) !important; border: 4px dashed #1a0000 !important; position: relative; transform: scale(0.95); }
+        .grade-broken-max::before, .col-card.grade-broken-max::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.9) 100%); pointer-events: none; z-index: 2; animation: flicker-despair 2s infinite; }
+        @keyframes flicker-despair { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        /* SSR Glow Test */
+        .grade-awaken-max[data-rarity="4"], .col-card.r4.grade-awaken-max { box-shadow: 0 0 40px 20px rgba(0, 255, 255, 0.9), inset 0 0 30px rgba(255, 255, 255, 1) !important; border: 5px solid #e0ffff !important; }
+    </style>
+</head>
+<body>
+    <div class="col-card"><img src="./assets/images/card_gyoki_1771334846901.png"><div style="color:white;position:absolute;bottom:-20px;">Base (0)</div></div>
+    <div class="col-card grade-awaken"><img src="./assets/images/card_gyoki_1771334846901.png"><div style="color:white;position:absolute;bottom:-20px;">+1</div></div>
+    <div class="col-card grade-awaken-max"><img src="./assets/images/card_gyoki_1771334846901.png"><div style="color:white;position:absolute;bottom:-20px;">+2 (Max)</div></div>
+    <div class="col-card r4 grade-awaken-max" data-rarity="4"><img src="./assets/images/card_gyoki_1771334846901.png"><div style="color:white;position:absolute;bottom:-20px;">+2 (SSR)</div></div>
+    
+    <div class="col-card grade-deteriorate"><img src="./assets/images/card_gyoki_1771334846901.png"><div style="color:white;position:absolute;bottom:-20px;">-1</div></div>
+    <div class="col-card grade-broken-max"><img src="./assets/images/card_gyoki_1771334846901.png"><div style="color:white;position:absolute;bottom:-20px;">-2 (Broken)</div></div>
+</body>
+</html>
