@@ -673,11 +673,11 @@ function addCard(cardId) {
 function navigateTo(screenId) {
   document.querySelectorAll('.screen-view').forEach(el => el.classList.remove('active', 'hidden'));
   document.querySelectorAll('.screen-view').forEach(el => {
-    if (el.id === `screen - ${screenId} `) {
+    if (el.id === `screen-${screenId}`) {
       el.classList.add('active', 'flex');
     } else {
       el.classList.add('hidden');
-      el.classList.remove('flex');
+      el.classList.remove('flex', 'active');
     }
   });
 
