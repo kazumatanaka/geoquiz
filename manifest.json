@@ -1,22 +1,22 @@
 {
   "name": "GeoQuiz - 日本地理征服史 -",
   "short_name": "GeoQuiz",
-  "description": "Japan Geography Conquest Quiz - Cyberpunk Style",
+  "description": "中学受験（SAPIX等）に特化した日本地理クイズゲーム",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0a0a1a",
   "theme_color": "#00f3ff",
+  "orientation": "any",
   "icons": [
     {
-      "src": "./assets/images/icon-192.png?v=3",
+      "src": "assets/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./assets/images/icon-512.png?v=3",
+      "src": "assets/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

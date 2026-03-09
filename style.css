@@ -138,3 +138,115 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 243, 255, 0.6);
 }
+
+/* Landscape Mobile Optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+    #global-header {
+        height: 60px !important;
+        padding-top: 0.25rem !important;
+        padding-bottom: 0.25rem !important;
+    }
+
+    #global-header .w-\[240px\] {
+        width: auto !important;
+    }
+
+    #global-header .px-12 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        min-width: 0 !important;
+    }
+
+    #global-header .text-lg {
+        font-size: 0.875rem !important;
+    }
+
+    #global-header .mt-2 {
+        margin-top: 0 !important;
+        font-size: 0.75rem !important;
+    }
+
+    #global-header .w-64 {
+        width: 8rem !important;
+    }
+
+    #global-header .px-6 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    #screen-home h2 {
+        font-size: 2.5rem !important;
+    }
+
+    #screen-home p {
+        font-size: 1rem !important;
+    }
+
+    #screen-home .mt-16 {
+        margin-top: 1rem !important;
+    }
+
+    #screen-home .max-w-md {
+        max-width: 600px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.5rem !important;
+    }
+
+    #screen-home button {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        font-size: 0.875rem !important;
+        height: auto !important;
+    }
+
+    #screen-home .text-2xl {
+        font-size: 1.125rem !important;
+    }
+
+    #screen-quest {
+        padding-top: 0 !important;
+    }
+
+    #screen-quest .shrink-0 {
+        padding-top: 0.25rem !important;
+        padding-bottom: 0.25rem !important;
+    }
+
+    #screen-quest .text-base {
+        font-size: 0.875rem !important;
+    }
+
+    #screen-quest .px-12 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    #kanji-panel {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 0.25rem !important;
+    }
+
+    #kanji-panel button {
+        height: 3.5rem !important;
+        font-size: 1.5rem !important;
+    }
+
+    #screen-collection {
+        padding-top: 0.5rem !important;
+    }
+
+    #collection-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+
+    #collection-stats {
+        margin-bottom: 0.5rem !important;
+    }
+
+    #screen-boss-btn-row {
+        grid-template-columns: repeat(6, 1fr) !important;
+    }
+}
