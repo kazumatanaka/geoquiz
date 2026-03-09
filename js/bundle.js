@@ -1333,13 +1333,11 @@ function initApp() {
 
   // Safely initialize sounds
   try {
-    sounds = {
-      tap: new Howl({ src: ['https://actions.google.com/sounds/v1/water/wood_block_drop.ogg'], volume: 0.5 }),
-      correct: new Howl({ src: ['https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg'], volume: 0.5 }),
-      error: new Howl({ src: ['https://actions.google.com/sounds/v1/alarms/beep_short.ogg'], volume: 0.4 }),
-      unlock: new Howl({ src: ['https://actions.google.com/sounds/v1/science_fiction/robot_startup.ogg'], volume: 0.8 }),
-      gacha: new Howl({ src: ['https://actions.google.com/sounds/v1/magic/magical_sweep.ogg'], volume: 1.0 })
-    };
+    sounds.tap = new Howl({ src: ['https://actions.google.com/sounds/v1/water/wood_block_drop.ogg'], volume: 0.5 });
+    sounds.correct = new Howl({ src: ['https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg'], volume: 0.5 });
+    sounds.error = new Howl({ src: ['https://actions.google.com/sounds/v1/alarms/beep_short.ogg'], volume: 0.4 });
+    sounds.unlock = new Howl({ src: ['https://actions.google.com/sounds/v1/science_fiction/robot_startup.ogg'], volume: 0.8 });
+    sounds.gacha = new Howl({ src: ['https://actions.google.com/sounds/v1/magic/magical_sweep.ogg'], volume: 1.0 });
   } catch (e) { console.log('Audio init failed', e); }
 
   window.app = {
