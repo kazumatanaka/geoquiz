@@ -142,9 +142,9 @@ body {
 /* Landscape Mobile Optimizations */
 @media (max-height: 500px) and (orientation: landscape) {
     #global-header {
-        height: 60px !important;
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
+        height: 50px !important;
+        padding-top: 0.1rem !important;
+        padding-bottom: 0.1rem !important;
     }
 
     #global-header .w-\[240px\] {
@@ -158,92 +158,122 @@ body {
     }
 
     #global-header .text-lg {
-        font-size: 0.875rem !important;
+        font-size: 0.75rem !important;
     }
 
     #global-header .mt-2 {
         margin-top: 0 !important;
-        font-size: 0.75rem !important;
+        font-size: 0.65rem !important;
     }
 
     #global-header .w-64 {
-        width: 8rem !important;
+        width: 6rem !important;
     }
 
     #global-header .px-6 {
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
     }
 
     #screen-home h2 {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important;
     }
 
     #screen-home p {
-        font-size: 1rem !important;
+        font-size: 0.875rem !important;
     }
 
     #screen-home .mt-16 {
-        margin-top: 1rem !important;
+        margin-top: 0.5rem !important;
     }
 
     #screen-home .max-w-md {
-        max-width: 600px !important;
+        max-width: 650px !important;
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 0.5rem !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 0.4rem !important;
     }
 
     #screen-home button {
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.5rem !important;
-        font-size: 0.875rem !important;
+        padding-top: 0.4rem !important;
+        padding-bottom: 0.4rem !important;
+        font-size: 0.75rem !important;
         height: auto !important;
     }
 
     #screen-home .text-2xl {
-        font-size: 1.125rem !important;
+        font-size: 1rem !important;
     }
 
     #screen-quest {
-        padding-top: 0 !important;
-    }
-
-    #screen-quest .shrink-0 {
         padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
     }
 
-    #screen-quest .text-base {
-        font-size: 0.875rem !important;
-    }
-
-    #screen-quest .px-12 {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-
-    #kanji-panel {
-        grid-template-columns: repeat(6, 1fr) !important;
-        gap: 0.25rem !important;
-    }
-
-    #kanji-panel button {
-        height: 3.5rem !important;
-        font-size: 1.5rem !important;
-    }
-
-    #screen-collection {
-        padding-top: 0.5rem !important;
-    }
-
-    #collection-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
+    #screen-quest>div.flex-col {
+        flex-direction: row !important;
+        align-items: stretch !important;
         gap: 0.5rem !important;
     }
 
+    #screen-quest div.flex-1.relative.rounded-2xl {
+        /* Map Wrap */
+        width: 58% !important;
+        flex: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #screen-quest div.w-full.lg\:w-\[400px\] {
+        /* Answer Panel wrapper */
+        width: 42% !important;
+        flex: none !important;
+        margin-top: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #screen-quest .shrink-0.pt-6.pb-2 {
+        padding-top: 0 !important;
+    }
+
+    #screen-quest .text-base {
+        font-size: 0.8125rem !important;
+    }
+
+    #screen-quest .px-12 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    #kanji-panel {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.2rem !important;
+        flex: 1 !important;
+    }
+
+    #kanji-panel button {
+        height: 2.8rem !important;
+        font-size: 1.25rem !important;
+    }
+
+    #quest-answer-box {
+        height: 2rem !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    #screen-collection {
+        padding-top: 0.25rem !important;
+    }
+
+    #collection-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 0.4rem !important;
+    }
+
     #collection-stats {
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.25rem !important;
+        padding: 0.5rem !important;
     }
 
     #screen-boss-btn-row {
