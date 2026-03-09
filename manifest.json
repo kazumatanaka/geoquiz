@@ -1,11 +1,11 @@
 {
-  "name": "歴史無双 -HISTORY SAMURAI-",
-  "short_name": "歴史無双",
-  "description": "Japanese History Samurai Quiz Card Game",
+  "name": "GeoQuiz - 日本地理征服史 -",
+  "short_name": "GeoQuiz",
+  "description": "Japan Geography Conquest Quiz - Cyberpunk Style",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff3e0",
-  "theme_color": "#FF4081",
+  "background_color": "#0a0a1a",
+  "theme_color": "#00f3ff",
   "icons": [
     {
       "src": "./assets/images/icon-192.png?v=3",
