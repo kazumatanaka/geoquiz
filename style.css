@@ -217,7 +217,7 @@ body {
 
     #screen-quest div.flex-1.relative.rounded-2xl {
         /* Map Wrap */
-        width: 58% !important;
+        width: 72% !important;
         flex: none !important;
         display: flex !important;
         flex-direction: column !important;
@@ -225,7 +225,7 @@ body {
 
     #screen-quest div.w-full.lg\:w-\[400px\] {
         /* Answer Panel wrapper */
-        width: 42% !important;
+        width: 28% !important;
         flex: none !important;
         margin-top: 0 !important;
         display: flex !important;

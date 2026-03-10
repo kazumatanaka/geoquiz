@@ -791,7 +791,22 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
   const geoToPrefecture = {
     "hokkaido_region": ["Hokkaido"],
     "west_japan": ["Osaka Fu", "Hyogo Ken", "Kyoto Fu", "Nara Ken", "Wakayama Ken"],
-    "kyushu": ["Fukuoka Ken", "Saga Ken", "Nagasaki Ken", "Kumamoto Ken", "Oita Ken", "Miyazaki Ken", "Kagoshima Ken"]
+    "kyushu": ["Fukuoka Ken", "Saga Ken", "Nagasaki Ken", "Kumamoto Ken", "Oita Ken", "Miyazaki Ken", "Kagoshima Ken"],
+    "lake_biwa": ["Shiga Ken"],
+    "lake_suwa": ["Nagano Ken"],
+    "lake_kasumigaura": ["Ibaraki Ken"],
+    "plain_kanto": ["Tokyo To", "Kanagawa Ken", "Saitama Ken", "Chiba Ken", "Ibaraki Ken", "Tochigi Ken", "Gunma Ken"],
+    "plain_ishikari": ["Hokkaido"],
+    "river_mogami": ["Yamagata Ken"],
+    "basin_kofu": ["Yamanashi Ken"],
+    "basin_kyoto": ["Kyoto Fu"],
+    "basin_nara": ["Nara Ken"],
+    "peninsula_shima": ["Mie Ken"],
+    "peninsula_kii": ["Wakayama Ken", "Mie Ken", "Nara Ken"],
+    "peninsula_shimabara": ["Nagasaki Ken"],
+    "bay_wakasa": ["Fukui Ken", "Kyoto Fu"],
+    "plain_miyazaki": ["Miyazaki Ken"],
+    "plateau_shirasu": ["Kagoshima Ken", "Miyazaki Ken"]
   };
 
   // 川や山脈などのカスタム地形データ (GeoJSON LineString)
@@ -800,32 +815,82 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     features: [
       {
         type: "Feature",
-        properties: { id: "river_shinano", type: "river", nam_ja: "信濃川" },
-        geometry: {
-          type: "LineString",
-          coordinates: [[138.4, 35.9], [138.5, 36.4], [138.8, 37.3], [139.1, 37.9]]
-        }
+        properties: { id: "river_shinano", type: "river" },
+        geometry: { type: "LineString", coordinates: [[138.4, 35.9], [138.8, 37.3], [139.1, 37.9]] }
       },
       {
         type: "Feature",
-        properties: { id: "mount_hida", type: "mountain", nam_ja: "飛騨山脈" },
-        geometry: {
-          type: "LineString",
-          coordinates: [[137.6, 36.2], [137.7, 36.5], [137.6, 36.8]]
-        }
+        properties: { id: "river_tone", type: "river" },
+        geometry: { type: "LineString", coordinates: [[138.8, 36.8], [139.3, 36.2], [140.0, 35.8], [140.8, 35.7]] }
       },
       {
         type: "Feature",
-        properties: { id: "coast_sanriku", type: "coast", nam_ja: "三陸海岸" },
-        geometry: {
-          type: "LineString",
-          coordinates: [[141.6, 38.8], [141.9, 39.2], [142.0, 39.6], [141.9, 40.1]]
-        }
+        properties: { id: "mount_hida", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[137.6, 36.2], [137.7, 36.5], [137.6, 36.8]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_ou", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[140.8, 37.5], [141.0, 38.5], [140.9, 39.5], [140.8, 40.8]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_kiso", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[137.7, 35.6], [137.8, 36.0]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_akaishi", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[138.1, 35.2], [138.2, 35.7]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_echigo", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[139.0, 36.8], [139.2, 37.2]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_chugoku", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[132.5, 34.5], [133.5, 35.0], [134.5, 35.2]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_shikoku", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[133.0, 33.7], [134.0, 33.8]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "highland_kitakami", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[141.4, 39.0], [141.6, 40.0]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_dewa", type: "mountain" },
+        geometry: { type: "LineString", coordinates: [[140.0, 38.2], [140.2, 39.0]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "coast_sanriku", type: "coast" },
+        geometry: { type: "LineString", coordinates: [[141.6, 38.8], [142.0, 39.6], [141.9, 40.1]] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "mount_fuji", type: "point" },
+        geometry: { type: "Point", coordinates: [138.73, 35.36] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "strait_kanmon", type: "point" },
+        geometry: { type: "Point", coordinates: [130.95, 33.95] }
       }
     ]
   };
 
-  const isLandmark = (geoId) => ["river_shinano", "mount_hida", "coast_sanriku"].includes(geoId);
+  const isLandmark = (geoId) => [
+    "river_shinano", "river_tone", "mount_hida", "mount_ou", "mount_kiso", "mount_akaishi",
+    "mount_echigo", "mount_chugoku", "mount_shikoku", "highland_kitakami", "mount_dewa",
+    "coast_sanriku", "mount_fuji", "strait_kanmon"
+  ].includes(geoId);
 
   const getStyleForPrefecture = (feature) => {
     const prefName = feature.properties.nam;
