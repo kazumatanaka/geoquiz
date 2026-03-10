@@ -234,36 +234,37 @@ body {
 
     #screen-quest .shrink-0.pt-6.pb-2 {
         padding-top: 0 !important;
+        padding-bottom: 0 !important;
     }
 
     #screen-quest .text-base {
-        font-size: 0.8125rem !important;
+        font-size: 0.75rem !important;
     }
 
     #screen-quest .px-12 {
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
     }
 
     #kanji-panel {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.2rem !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 0.15rem !important;
         flex: 1 !important;
     }
 
     #kanji-panel button {
-        height: 2.8rem !important;
-        font-size: 1.25rem !important;
+        height: 2.2rem !important;
+        font-size: 1.125rem !important;
     }
 
     #quest-answer-box {
-        height: 2rem !important;
-        font-size: 1.25rem !important;
-        margin-bottom: 0.25rem !important;
+        height: 1.8rem !important;
+        font-size: 1.125rem !important;
+        margin-bottom: 0.15rem !important;
     }
 
     #screen-collection {
-        padding-top: 0.25rem !important;
+        padding-top: 0.2rem !important;
     }
 
     #collection-grid {
