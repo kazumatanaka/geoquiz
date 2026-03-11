@@ -90,9 +90,9 @@ body {
     }
 
     #kanji-panel button {
-        min-height: 1.8rem !important;
-        height: 1.8rem !important;
-        font-size: 0.95rem !important;
+        min-height: 2.35rem !important;
+        height: 2.35rem !important;
+        font-size: 1.1rem !important;
     }
 
     .kanji-action-row {
@@ -103,9 +103,9 @@ body {
 
     #kanji-delete-btn,
     #kanji-submit-btn {
-        min-height: 2.2rem !important;
-        height: 2.2rem !important;
-        font-size: 0.75rem !important;
+        min-height: 2.85rem !important;
+        height: 2.85rem !important;
+        font-size: 0.8rem !important;
     }
 
     #quest-answer-box {
