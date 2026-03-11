@@ -1545,12 +1545,38 @@ function handleDeleteChar() {
   document.getElementById('quest-answer-box').innerText = answeredStr;
 }
 
+function flashMap(color, durationMs = 400) {
+  const overlay = document.getElementById('map-flash-overlay');
+  if (!overlay) return;
+  overlay.style.backgroundColor = color;
+  overlay.style.opacity = '0.55';
+  setTimeout(() => {
+    overlay.style.transition = 'opacity 0.35s ease-out';
+    overlay.style.opacity = '0';
+    setTimeout(() => { overlay.style.transition = ''; }, 400);
+  }, durationMs * 0.4);
+}
+
+function showAnswerReveal(correctName, durationMs = 1500) {
+  const overlay = document.getElementById('answer-reveal-overlay');
+  const textEl = document.getElementById('answer-reveal-text');
+  if (!overlay || !textEl) return;
+  textEl.innerText = correctName;
+  overlay.style.display = 'flex';
+  overlay.classList.remove('hidden');
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    overlay.classList.add('hidden');
+  }, durationMs);
+}
+
 function handleSubmitAnswer() {
   if (!currentQuestion) return;
 
   if (answeredStr === currentQuestion.name) {
     // 正解
     triggerHaptic(30);
+    flashMap('rgba(0, 243, 255, 1)', 500); // 青く光る
     combo++;
     const comboEl = document.getElementById('quest-combo');
     if (comboEl) comboEl.innerText = combo;
@@ -1584,6 +1610,8 @@ function handleSubmitAnswer() {
   } else {
     // 不正解
     triggerHaptic([50, 100, 50]);
+    flashMap('rgba(255, 40, 40, 1)', 600); // 赤く光る
+    showAnswerReveal(currentQuestion.name, 1400); // 正解を大きく表示
     combo = 0;
     answeredStr = '';
     document.getElementById('quest-answer-box').innerText = '';

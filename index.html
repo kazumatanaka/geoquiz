@@ -277,7 +277,22 @@
                     </div>
                     <!-- SVG Map Container -->
                     <div id="quest-map-container" class="w-full flex-1 relative min-h-0"></div>
-                </div>
+
+                    <!-- Flash overlay: blue=correct, red=incorrect -->
+                    <div id="map-flash-overlay"
+                        class="absolute inset-0 pointer-events-none opacity-0 rounded-2xl transition-opacity duration-100 z-30">
+                    </div>
+
+                    <!-- Correct answer reveal (shown on incorrect) -->
+                    <div id="answer-reveal-overlay"
+                        class="absolute inset-0 hidden flex-col items-center justify-center z-40 bg-black/70 rounded-2xl pointer-events-none">
+                        <div class="text-red-400 font-orbitron text-sm tracking-widest mb-2">正解</div>
+                        <div id="answer-reveal-text"
+                            class="text-white font-bold font-noto text-5xl md:text-7xl drop-shadow-[0_0_20px_rgba(255,80,80,0.9)] text-center px-4">
+                        </div>
+                    </div> <!-- /answer-reveal-overlay -->
+
+                </div> <!-- /Map Area -->
 
                 <!-- Kanji Panel -->
                 <div class="w-full lg:w-[400px] flex-shrink-0 flex flex-col">
@@ -364,7 +379,8 @@
                     <h2
                         class="text-3xl lg:text-4xl font-orbitron font-bold text-cyber-neonPurple drop-shadow-neon-purple tracking-widest">
                         COLLECTION</h2>
-                    <p class="text-slate-400 font-noto tracking-wider mt-1 text-sm md:text-base">収集済みトレーディングカード一覧</p>
+                    <p class="text-slate-400 font-noto tracking-wider mt-1 text-sm md:text-base">収集済みトレーディングカード一覧
+                    </p>
                 </div>
                 <button onclick="app.navigate('home')"
                     class="px-6 py-2 border border-cyber-neonBlue bg-cyber-panel/80 rounded-full font-bold text-cyber-neonBlue hover:shadow-neon-blue transition-all backdrop-blur tracking-widest text-sm">
@@ -439,7 +455,8 @@
                 <div
                     class="bg-[#0a0f1d] border-2 border-red-500 rounded-2xl p-8 max-w-sm w-full text-center shadow-[0_0_40px_rgba(255,50,50,0.4)]">
                     <h3 class="text-3xl font-orbitron font-bold text-red-400 mb-2">バトル終了</h3>
-                    <div class="text-cyber-neonGold font-orbitron text-5xl font-bold my-4" id="boss-final-score">0</div>
+                    <div class="text-cyber-neonGold font-orbitron text-5xl font-bold my-4" id="boss-final-score">0
+                    </div>
                     <p class="text-slate-400 text-sm mb-2">スコアを登録する名前:</p>
                     <input id="boss-nickname" type="text" maxlength="12" placeholder="Anonymous"
                         class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2 text-white font-orbitron text-center text-lg mb-4 focus:border-cyber-neonBlue outline-none">
