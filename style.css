@@ -2,6 +2,8 @@
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+    /* Disable double-tap/pinch zoom */
 }
 
 /* Neon Drop Shadows */
@@ -26,10 +28,6 @@ body {
 }
 
 /* Hide / Show Utilities for Screens */
-#screen-quest {
-    display: flex;
-    flex-direction: column;
-}
 
 /* Portrait (Mobile Vertical) Optimizations */
 @media (max-width: 1023px) and (orientation: portrait) {
@@ -99,6 +97,57 @@ body {
         font-size: 1.5rem !important;
         height: 2.2rem !important;
         margin-bottom: 1rem !important;
+    }
+
+    /* Home Screen Compacting */
+    #screen-home {
+        justify-content: flex-start !important;
+        padding-top: 2rem !important;
+        /* Give some space for status bar */
+        overflow-y: auto !important;
+        /* Allow scroll if still too tall */
+    }
+
+    #screen-home h2 {
+        font-size: 2.25rem !important;
+        margin-top: 0 !important;
+    }
+
+    #screen-home p {
+        font-size: 0.875rem !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    #screen-home .mt-16 {
+        margin-top: 1rem !important;
+    }
+
+    #screen-home .flex-col.gap-6 {
+        gap: 0.5rem !important;
+    }
+
+    #screen-home button {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.875rem !important;
+        border-radius: 0.5rem !important;
+    }
+
+    #screen-home button.text-2xl {
+        font-size: 1rem !important;
+        padding: 0.8rem 1rem !important;
+    }
+
+    /* Quest Screen Extra Shink */
+    #screen-quest .shrink-0.pt-6.pb-2 {
+        padding-top: 0.25rem !important;
+    }
+
+    #screen-quest span.text-cyan-400 {
+        font-size: 8px !important;
+    }
+
+    #screen-quest .px-8.py-2 {
+        padding: 0.25rem 1rem !important;
     }
 }
 
