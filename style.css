@@ -114,7 +114,13 @@ body {
         margin-top: 0 !important;
     }
 
-    /* Kanji panel outer wrapper — reduce padding */
+    /* Kanji panel outer wrapper — limit to ~1/3 of screen, map gets the rest */
+    #screen-quest div.w-full.lg\:w-\[400px\] {
+        max-height: 36vh !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
+    }
+
     #screen-quest div.w-full.lg\:w-\[400px\] .p-4 {
         padding: 0.2rem !important;
     }
