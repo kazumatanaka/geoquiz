@@ -71,10 +71,10 @@ body {
         gap: 0 !important;
     }
 
-    /* Map Area - give it more space (60% of remaining height) */
+    /* Map Area — gets 2/3 of available height */
     #screen-quest div.flex-1.relative.rounded-2xl {
-        min-height: 45vh !important;
-        flex: 2 !important;
+        flex: 2 1 0% !important;
+        min-height: 0 !important;
     }
 
     #screen-quest #quest-flavor {
@@ -89,9 +89,9 @@ body {
     }
 
     #kanji-panel button {
-        min-height: 2.0rem !important;
-        height: 2.0rem !important;
-        font-size: 1.0rem !important;
+        min-height: 1.8rem !important;
+        height: 1.8rem !important;
+        font-size: 0.95rem !important;
     }
 
     .kanji-action-row {
@@ -108,20 +108,21 @@ body {
     }
 
     #quest-answer-box {
-        font-size: 1.1rem !important;
-        height: 1.5rem !important;
-        margin-bottom: 0.15rem !important;
+        font-size: 1.0rem !important;
+        height: 1.4rem !important;
+        margin-bottom: 0.1rem !important;
         margin-top: 0 !important;
     }
 
-    /* Kanji panel outer wrapper — constrain height, let content scroll if needed */
+    /* Panel — gets 1/3 of available height (flex:1 vs map flex:2) */
     #screen-quest div.w-full.lg\:w-\[400px\] {
-        max-height: 38vh !important;
-        overflow: visible !important;
-        flex-shrink: 0 !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: hidden !important;
     }
 
-    /* Inner panel grid: remove all gaps so everything fits */
+    /* Inner panel grid: no gaps so everything fits */
     #kanji-panel {
         gap: 0 !important;
     }
