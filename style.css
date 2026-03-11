@@ -89,9 +89,9 @@ body {
     }
 
     #kanji-panel button {
-        min-height: 1.7rem !important;
-        height: 1.7rem !important;
-        font-size: 0.85rem !important;
+        min-height: 2.1rem !important;
+        height: 2.1rem !important;
+        font-size: 1.05rem !important;
     }
 
     .kanji-action-row {
@@ -102,14 +102,14 @@ body {
 
     #kanji-delete-btn,
     #kanji-submit-btn {
-        min-height: 1.9rem !important;
-        height: 1.9rem !important;
-        font-size: 0.7rem !important;
+        min-height: 2.2rem !important;
+        height: 2.2rem !important;
+        font-size: 0.75rem !important;
     }
 
     #quest-answer-box {
-        font-size: 1rem !important;
-        height: 1.3rem !important;
+        font-size: 1.1rem !important;
+        height: 1.5rem !important;
         margin-bottom: 0.15rem !important;
         margin-top: 0 !important;
     }
