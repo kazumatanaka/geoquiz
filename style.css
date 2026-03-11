@@ -33,18 +33,38 @@ body {
 @media (max-width: 1023px) and (orientation: portrait) {
     #global-header {
         height: auto !important;
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.5rem !important;
+        padding: 0.25rem 0.5rem !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.25rem !important;
     }
 
-    #global-header .flex-col {
-        flex-direction: row !important;
-        gap: 1rem !important;
-        align-items: center !important;
+    #global-header .w-\[240px\],
+    #global-header .flex-1,
+    #global-header .flex.gap-4 {
+        width: auto !important;
+        flex: none !important;
+        margin: 0 !important;
     }
 
-    #global-header .mt-2 {
-        margin-top: 0 !important;
+    #global-header .min-w-\[300px\] {
+        min-width: 0 !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    #global-header .text-lg,
+    #global-header .text-xl {
+        font-size: 0.85rem !important;
+    }
+
+    #global-header .w-64 {
+        width: 6rem !important;
+    }
+
+    #global-header .hidden.md\:block {
+        display: none !important;
+        /* Hide Level on mobile to save space */
     }
 
     #screen-quest {
@@ -52,51 +72,57 @@ body {
         gap: 0 !important;
     }
 
-    #screen-quest>div.flex-col {
-        gap: 0.5rem !important;
-    }
-
     /* Map Area - Expand */
     #screen-quest div.flex-1.relative.rounded-2xl {
-        min-height: 40vh !important;
-        flex: 1.5 !important;
-    }
-
-    #screen-quest .shrink-0.pt-6.pb-2 {
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.25rem !important;
+        min-height: 38vh !important;
+        flex: 1.2 !important;
     }
 
     #screen-quest #quest-flavor {
-        font-size: 1rem !important;
-        padding: 0.5rem 1.5rem !important;
+        font-size: 0.75rem !important;
+        padding: 0.15rem 0.5rem !important;
     }
 
-    /* Kanji Panel - Shrink */
-    #screen-quest div.w-full.lg\:w-\[400px\] {
-        flex: 1 !important;
-        min-height: 0 !important;
-    }
-
-    #screen-quest .border.rounded-2xl.p-4 {
-        padding: 0.75rem !important;
-    }
-
+    /* Kanji Panel - Densify */
     #kanji-panel {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.4rem !important;
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 0.15rem !important;
     }
 
     #kanji-panel button {
-        min-height: 3.2rem !important;
-        height: 3.2rem !important;
-        font-size: 1.5rem !important;
+        min-height: 2rem !important;
+        height: 2rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    .kanji-action-row {
+        grid-column: span 6 !important;
+        margin-top: 0.1rem !important;
+        gap: 0.25rem !important;
+    }
+
+    #kanji-delete-btn,
+    #kanji-submit-btn {
+        min-height: 2.22rem !important;
+        height: 2.22rem !important;
+        font-size: 0.75rem !important;
     }
 
     #quest-answer-box {
-        font-size: 1.5rem !important;
-        height: 2.2rem !important;
-        margin-bottom: 1rem !important;
+        font-size: 1.1rem !important;
+        height: 1.4rem !important;
+        margin-bottom: 0.25rem !important;
+        margin-top: 0.1rem !important;
+    }
+
+    /* Screen General Vertical Compression */
+    #screen-quest div.w-full.lg\:w-\[400px\] .p-4 {
+        padding: 0.35rem !important;
+    }
+
+    .flex.justify-between.items-center.mb-4.px-2.mt-2 {
+        margin-top: 0 !important;
+        margin-bottom: 0.25rem !important;
     }
 
     /* Home Screen Compacting */

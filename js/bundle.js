@@ -1088,9 +1088,9 @@ function renderKanjiPanel(options, onSelect) {
   options.forEach((char, i) => {
     const btn = document.createElement('button');
     btn.className = `
-      w-full h-full min-h-[3rem]
-      bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[8px]
-      text-2xl md:text-4xl lg:text-5xl font-bold font-noto outline-none text-slate-300 leading-none
+      w-full h-full
+      bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[6px]
+      text-xl md:text-3xl lg:text-5xl font-bold font-noto outline-none text-slate-300 leading-none
       flex items-center justify-center shadow-inner relative overflow-hidden group
       hover:border-cyber-neonBlue hover:text-white hover:shadow-neon-blue focus:border-cyan-400 focus:text-white focus:shadow-neon-blue
       transition-all duration-200 transform hover:scale-105 active:scale-95
@@ -1113,12 +1113,12 @@ function renderKanjiPanel(options, onSelect) {
 
   // アクションボタン行 (DELETE + SUBMIT)
   const actionRow = document.createElement('div');
-  actionRow.className = 'col-span-3 flex gap-3 mt-2';
+  actionRow.className = 'kanji-action-row flex gap-2 mt-1';
 
   const delBtn = document.createElement('button');
   delBtn.id = 'kanji-delete-btn';
   delBtn.className = `
-    flex-1 min-h-[3.5rem] bg-red-900/40 border-2 border-red-700/60 rounded-[8px]
+    flex-1 bg-red-900/40 border-2 border-red-700/60 rounded-[8px]
     text-base font-bold font-orbitron outline-none text-red-400 leading-none
     flex items-center justify-center gap-2
     hover:border-red-400 hover:text-red-200 hover:bg-red-900/70
@@ -1131,7 +1131,7 @@ function renderKanjiPanel(options, onSelect) {
   const submitBtn = document.createElement('button');
   submitBtn.id = 'kanji-submit-btn';
   submitBtn.className = `
-    flex-[2] min-h-[3.5rem] bg-cyan-900/40 border-2 border-cyan-500/60 rounded-[8px]
+    flex-[2] bg-cyan-900/40 border-2 border-cyan-500/60 rounded-[8px]
     text-base font-bold font-orbitron outline-none text-cyan-300 leading-none
     flex items-center justify-center gap-2
     hover:border-cyan-300 hover:text-white hover:bg-cyan-900/70 hover:shadow-neon-blue
