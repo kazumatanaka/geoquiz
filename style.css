@@ -26,6 +26,82 @@ body {
 }
 
 /* Hide / Show Utilities for Screens */
+#screen-quest {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Portrait (Mobile Vertical) Optimizations */
+@media (max-width: 1023px) and (orientation: portrait) {
+    #global-header {
+        height: auto !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    #global-header .flex-col {
+        flex-direction: row !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+
+    #global-header .mt-2 {
+        margin-top: 0 !important;
+    }
+
+    #screen-quest {
+        padding-top: 0 !important;
+        gap: 0 !important;
+    }
+
+    #screen-quest>div.flex-col {
+        gap: 0.5rem !important;
+    }
+
+    /* Map Area - Expand */
+    #screen-quest div.flex-1.relative.rounded-2xl {
+        min-height: 40vh !important;
+        flex: 1.5 !important;
+    }
+
+    #screen-quest .shrink-0.pt-6.pb-2 {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.25rem !important;
+    }
+
+    #screen-quest #quest-flavor {
+        font-size: 1rem !important;
+        padding: 0.5rem 1.5rem !important;
+    }
+
+    /* Kanji Panel - Shrink */
+    #screen-quest div.w-full.lg\:w-\[400px\] {
+        flex: 1 !important;
+        min-height: 0 !important;
+    }
+
+    #screen-quest .border.rounded-2xl.p-4 {
+        padding: 0.75rem !important;
+    }
+
+    #kanji-panel {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.4rem !important;
+    }
+
+    #kanji-panel button {
+        min-height: 3.2rem !important;
+        height: 3.2rem !important;
+        font-size: 1.5rem !important;
+    }
+
+    #quest-answer-box {
+        font-size: 1.5rem !important;
+        height: 2.2rem !important;
+        margin-bottom: 1rem !important;
+    }
+}
+
 .screen-view {
     display: none;
     animation: fadeIn 0.3s ease-in-out;

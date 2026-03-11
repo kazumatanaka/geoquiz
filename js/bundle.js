@@ -1088,7 +1088,7 @@ function renderKanjiPanel(options, onSelect) {
   options.forEach((char, i) => {
     const btn = document.createElement('button');
     btn.className = `
-      w-full h-full min-h-[4rem]
+      w-full h-full min-h-[3rem]
       bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[8px]
       text-2xl md:text-4xl lg:text-5xl font-bold font-noto outline-none text-slate-300 leading-none
       flex items-center justify-center shadow-inner relative overflow-hidden group
