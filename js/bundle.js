@@ -1436,13 +1436,20 @@ function initApp() {
   } catch (e) { console.log('Audio init failed', e); }
 
   window.app = {
+    triggerHaptic: triggerHaptic,
+    startSession: startSession,
     navigate: (screen) => {
       if (sounds.tap && screen !== 'home') sounds.tap.play();
-      navigateTo(screen);
+      if (screen === 'home') currentSession = null;
+
+      if (screen === 'quest' && !currentSession) {
+        navigateTo('category');
+      } else {
+        navigateTo(screen);
+      }
       updateProgressUI();
       if (screen === 'collection') renderCollection();
       if (screen === 'survey') renderMap('survey-map-container', null, true);
-      if (screen === 'quest') startQuest();
       if (screen === 'boss') startBossBattle();
       if (screen === 'ranking') fetchAndShowRanking();
     },
@@ -1450,7 +1457,13 @@ function initApp() {
       document.getElementById('gacha-modal').classList.add('opacity-0');
       setTimeout(() => {
         document.getElementById('gacha-modal').classList.add('hidden');
-        startQuest();
+        if (currentSession) {
+          currentSession.currentIndex++;
+          if (currentSession.currentIndex < 10) nextQuest();
+          else showSessionResult();
+        } else {
+          navigate('home');
+        }
       }, 500);
     },
     submitBossScore: () => {
@@ -1490,72 +1503,21 @@ function initApp() {
   updateProgressUI();
 }
 
-function startQuest() {
-  currentQuestion = getRandomGeography();
-  combo = 0;
-  answeredStr = '';
-  questStartTime = Date.now();
-  questMissed = false;
-  currentDynamicRate = 3; // Reset rate
-
-  document.getElementById('quest-flavor').innerText = currentQuestion.flavorText;
-
-  const comboEl = document.getElementById('quest-combo');
-  if (comboEl) {
-    comboEl.innerText = combo;
-    comboEl.classList.remove('hidden');
-    document.getElementById('combo-indicator').classList.remove('bg-cyber-neonBlue', 'bg-cyber-neonPurple', 'bg-cyber-neonGold');
-    document.getElementById('combo-indicator').classList.add('bg-slate-700');
+function triggerHaptic(pattern) {
+  if (navigator.vibrate) {
+    navigator.vibrate(pattern);
   }
-  document.getElementById('quest-answer-box').innerText = '';
-
-  renderMap('quest-map-container', currentQuestion.geoId, false);
-
-  const targetChars = currentQuestion.name.split('');
-
-  // \u5f31\u70b9\u7279\u8a13: \u904e\u53bb\u306b\u3053\u306e\u554f\u984c\u3067\u5f15\u3063\u304b\u304b\u3063\u305f\u30c0\u30df\u30fc\u6587\u5b57\u3092\u62bd\u51fa
-  const allMistakes = getState().mistakes;
-  const mistakeCharsForThis = allMistakes
-    .filter(m => m.geoId === currentQuestion.geoId)
-    .flatMap(m => (m.tappedDummy || '').split(''))
-    .filter(c => !targetChars.includes(c) && c.trim() !== '');
-
-  // \u9593\u9055\u3048\u56de\u6570\u9806\u306b\u30bd\u30fc\u30c8\u3057\u3001\u4e0a\u4f4d\u3092\u512a\u5148\u4f7f\u7528
-  const mistakeCount = {};
-  mistakeCharsForThis.forEach(c => { mistakeCount[c] = (mistakeCount[c] || 0) + 1; });
-  const sortedMistakeChars = [...new Set(mistakeCharsForThis)]
-    .sort((a, b) => mistakeCount[b] - mistakeCount[a])
-    .slice(0, 4); // \u6700\u592460\u5b57\u307e\u3067\u5f31\u70b9\u6587\u5b57\u3092\u4f7f\u7528
-
-  // \u5f31\u70b9\u6587\u5b57\u3092\u512a\u5148\u3057\u3066\u30d1\u30cd\u30eb\u3092\u69cb\u7bc9
-  const usedChars = new Set([...targetChars, ...sortedMistakeChars]);
-  const remainingDummies = currentQuestion.dummyKanji.filter(c => !usedChars.has(c));
-  const slotsLeft = Math.max(0, 12 - targetChars.length - sortedMistakeChars.length);
-  const fillerDummies = remainingDummies.slice(0, slotsLeft);
-
-  const allChars = [...targetChars, ...sortedMistakeChars, ...fillerDummies];
-  const shuffled = [...new Set(allChars)].slice(0, 12).sort(() => Math.random() - 0.5);
-
-  // \u5f31\u70b9\u30d0\u30c3\u30b8\u306e\u8868\u793a\u5207\u308a\u66ff\u3048
-  const panelLabel = document.querySelector('#combo-container')?.previousElementSibling;
-  if (panelLabel) {
-    if (sortedMistakeChars.length > 0) {
-      panelLabel.innerHTML = `\u89e3\u7b54\u30d1\u30cd\u30eb <span class="text-red-400 font-orbitron text-[10px] tracking-wider animate-pulse">\u26a0 \u5f31\u70b9\u7279\u8a13</span>`;
-    } else {
-      panelLabel.innerHTML = `\u89e3\u7b54\u30d1\u30cd\u30eb`;
-    }
-  }
-
-  renderKanjiPanel(shuffled, handleSelectChar);
-  setKanjiPanelDisabled(false);
 }
+
+let currentSession = null; // { category: string, questions: [], currentIndex: 0, results: [] }
+
 
 function handleSelectChar(char) {
   if (!currentQuestion) return;
 
-  // 讬wordを蹏積するのみ。正誤判定はSUBMIT時に行う。
-  if (answeredStr.length >= currentQuestion.name.length) return; // 必要文字数以上は入力不可
+  if (answeredStr.length >= currentQuestion.name.length) return;
 
+  triggerHaptic(10);
   answeredStr += char;
   document.getElementById('quest-answer-box').innerText = answeredStr;
 
@@ -1567,6 +1529,7 @@ function handleSelectChar(char) {
 
 function handleDeleteChar() {
   if (!currentQuestion || answeredStr.length === 0) return;
+  triggerHaptic(15);
   answeredStr = answeredStr.slice(0, -1);
   document.getElementById('quest-answer-box').innerText = answeredStr;
 }
@@ -1576,6 +1539,7 @@ function handleSubmitAnswer() {
 
   if (answeredStr === currentQuestion.name) {
     // 正解
+    triggerHaptic(30);
     combo++;
     const comboEl = document.getElementById('quest-combo');
     if (comboEl) comboEl.innerText = combo;
@@ -1589,9 +1553,26 @@ function handleSubmitAnswer() {
 
     if (sounds.unlock) sounds.unlock.play();
     setKanjiPanelDisabled(true);
-    setTimeout(() => handleClear(), 300);
+
+    // セッション結果の記録
+    if (currentSession) {
+      currentSession.results.push(true);
+    }
+
+    setTimeout(() => {
+      handleClear();
+      if (currentSession) {
+        currentSession.currentIndex++;
+        if (currentSession.currentIndex < 10) {
+          nextQuest();
+        } else {
+          showSessionResult();
+        }
+      }
+    }, 600);
   } else {
     // 不正解
+    triggerHaptic([50, 100, 50]);
     combo = 0;
     answeredStr = '';
     document.getElementById('quest-answer-box').innerText = '';
@@ -1600,73 +1581,158 @@ function handleSubmitAnswer() {
     const ind = document.getElementById('combo-indicator');
     if (ind) ind.className = 'w-4 h-4 rounded-sm bg-slate-700';
     if (sounds.error) sounds.error.play();
-    questMissed = true; // Mark that a mistake was made in this quest
+    questMissed = true;
     logMistake(currentQuestion.geoId, answeredStr);
 
-    // シェイクエフェクト
     const box = document.getElementById('quest-answer-box');
     if (box) {
       box.classList.add('animate-shake');
       setTimeout(() => box.classList.remove('animate-shake'), 400);
+    }
+
+    // 10問制の場合は、不正解でもセッション結果を記録して次へ進むように変更（仕様に合わせて調整可能）
+    if (currentSession) {
+      currentSession.results.push(false);
+      setKanjiPanelDisabled(true);
+      setTimeout(() => {
+        handleClear();
+        currentSession.currentIndex++;
+        if (currentSession.currentIndex < 10) {
+          nextQuest();
+        } else {
+          showSessionResult();
+        }
+      }, 800);
     }
   }
 }
 
 function handleClear() {
   setKanjiPanelDisabled(true);
-  if (sounds.unlock) sounds.unlock.play();
-
   const currentState = getState();
   const currentMastery = currentState.progress[currentQuestion.geoId]?.masteryLevel || 0;
   saveProgress(currentQuestion.geoId, Math.min(currentMastery + 1, 4));
-
   renderMap('quest-map-container', null, false);
   updateProgressUI();
+}
 
-  // --- ダイナミック・レート計算 ---
-  let rate = 3; // デフォルト 3%
-  const questDuration = (Date.now() - questStartTime) / 1000;
-
-  // 1. フルコンボボーナス (ミスなし & combo>0)
-  if (!questMissed && combo > 0) {
-    rate = 5;
-    console.log('Full Combo Bonus! Rate: 5%');
+function startSession(category) {
+  let filtered = geographyMaster;
+  if (category !== 'all') {
+    filtered = geographyMaster.filter(g => {
+      if (category === 'strait') return ['strait', 'bay', 'cape'].includes(g.type);
+      return g.type === category;
+    });
   }
 
-  // 2. 防衛クエスト（復習）特効
-  // masteryLevel 4 未満 かつ nextReviewDate が過去なら復習クエスト扱い
-  const isDefense = currentMastery < 4 &&
-    currentState.progress[currentQuestion.geoId]?.nextReviewDate &&
-    currentState.progress[currentQuestion.geoId].nextReviewDate < Date.now();
-
-  if (isDefense) {
-    rate = 10;
-    if (!questMissed) rate = 12; // 重複
-    console.log('Defense Quest Bonus! Rate:', rate);
+  // 10問に満たない場合はランダムで補完
+  let sessionQuestions = [...filtered].sort(() => 0.5 - Math.random());
+  if (sessionQuestions.length < 10) {
+    const ids = new Set(sessionQuestions.map(f => f.geoId));
+    const others = geographyMaster.filter(g => !ids.has(g.geoId));
+    const filler = others.sort(() => 0.5 - Math.random()).slice(0, 10 - sessionQuestions.length);
+    sessionQuestions = [...sessionQuestions, ...filler];
+  } else {
+    sessionQuestions = sessionQuestions.slice(0, 10);
   }
 
-  currentDynamicRate = rate;
+  currentSession = {
+    category,
+    questions: sessionQuestions,
+    currentIndex: 0,
+    results: []
+  };
 
-  // 3. スピードスターボーナス (5秒以内)
-  if (questDuration < 5 && !questMissed) {
-    state.silverTickets += 1;
-    console.log('Speed Star! Silver Ticket awarded!');
+  navigate('quest');
+  nextQuest();
+}
+
+function nextQuest() {
+  if (!currentSession) return;
+  currentQuestion = currentSession.questions[currentSession.currentIndex];
+
+  // UI初期化
+  answeredStr = '';
+  document.getElementById('quest-answer-box').innerText = '';
+  const info = document.getElementById('session-info');
+  if (info) info.innerText = `Q ${currentSession.currentIndex + 1} / 10`;
+
+  startQuest();
+}
+
+function startQuest() {
+  combo = 0;
+  questStartTime = Date.now();
+  questMissed = false;
+  currentDynamicRate = 3;
+
+  document.getElementById('quest-flavor').innerText = currentQuestion.flavorText;
+  renderMap('quest-map-container', currentQuestion.geoId, false);
+
+  const targetChars = currentQuestion.name.split('');
+  const allMistakes = getState().mistakes;
+  const mistakeCharsForThis = allMistakes
+    .filter(m => m.geoId === currentQuestion.geoId)
+    .flatMap(m => (m.tappedDummy || '').split(''))
+    .filter(c => !targetChars.includes(c) && c.trim() !== '');
+
+  const mistakeCount = {};
+  mistakeCharsForThis.forEach(c => { mistakeCount[c] = (mistakeCount[c] || 0) + 1; });
+  const sortedMistakeChars = [...new Set(mistakeCharsForThis)]
+    .sort((a, b) => mistakeCount[b] - mistakeCount[a])
+    .slice(0, 4);
+
+  const usedChars = new Set([...targetChars, ...sortedMistakeChars]);
+  const remainingDummies = currentQuestion.dummyKanji.filter(c => !usedChars.has(c));
+  const fillerDummies = remainingDummies.slice(0, Math.max(0, 12 - usedChars.size));
+
+  const allChars = [...targetChars, ...sortedMistakeChars, ...fillerDummies];
+  const shuffled = [...new Set(allChars)].slice(0, 12).sort(() => Math.random() - 0.5);
+
+  const panelLabel = document.querySelector('#combo-container')?.previousElementSibling;
+  if (panelLabel) {
+    if (sortedMistakeChars.length > 0) {
+      panelLabel.innerHTML = `解答パネル <span class="text-red-400 font-orbitron text-[10px] tracking-wider animate-pulse">⚠ 弱点特訓</span>`;
+    } else {
+      panelLabel.innerHTML = `解答パネル`;
+    }
   }
 
-  // 4. 天井システム (開拓ポイント)
-  state.gachaPoints += 1;
-  if (state.gachaPoints >= 100) {
-    state.gachaPoints = 0;
-    state.ssrTickets += 1;
-    console.log('PityReached! SSR Ticket awarded!');
+  renderKanjiPanel(shuffled, handleSelectChar);
+  setKanjiPanelDisabled(false);
+}
+
+function showSessionResult() {
+  const correctCount = currentSession.results.filter(r => r).length;
+  const score = Math.round((correctCount / 10) * 100);
+
+  let rewardText = "残念！8問以上正解でカード獲得です。";
+  let gachaTriggered = false;
+
+  if (correctCount >= 8) {
+    rewardText = "合格！トレーディングカードを獲得しました！";
+    // 正解率が高いほどSSR率アップ
+    let rate = 3;
+    if (correctCount === 10) rate = 15;
+    else if (correctCount === 9) rate = 8;
+
+    currentDynamicRate = rate;
+    const result = drawGacha();
+    addCard(result.geoId);
+    gachaResult = result;
+    gachaTriggered = true;
   }
-  saveGachaState();
 
-  // --- ガチャ実行 ---
-  gachaResult = drawGacha();
-  addCard(gachaResult.geoId);
+  const resultMsg = `【リザルト】\n正解数: ${correctCount} / 10 (${score}%)\n\n${rewardText}`;
+  alert(resultMsg);
 
-  setTimeout(showGacha, 1000);
+  if (gachaTriggered) {
+    showGacha();
+  } else {
+    navigate('home');
+  }
+
+  currentSession = null;
 }
 
 function drawGacha() {
