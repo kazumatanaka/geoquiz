@@ -1537,7 +1537,7 @@ function startQuest() {
   const shuffled = [...new Set(allChars)].slice(0, 12).sort(() => Math.random() - 0.5);
 
   // \u5f31\u70b9\u30d0\u30c3\u30b8\u306e\u8868\u793a\u5207\u308a\u66ff\u3048
-  const panelLabel = document.querySelector('[data-panel-label]') || document.querySelector('#kanji-panel')?.previousElementSibling?.querySelector('span');
+  const panelLabel = document.querySelector('#combo-container')?.previousElementSibling;
   if (panelLabel) {
     if (sortedMistakeChars.length > 0) {
       panelLabel.innerHTML = `\u89e3\u7b54\u30d1\u30cd\u30eb <span class="text-red-400 font-orbitron text-[10px] tracking-wider animate-pulse">\u26a0 \u5f31\u70b9\u7279\u8a13</span>`;

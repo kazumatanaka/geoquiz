@@ -96,6 +96,19 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+
+    <!-- Zoom Prevention Script -->
+    <script>
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 1) e.preventDefault();
+        }, { passive: false });
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) e.preventDefault();
+            lastTouchEnd = now;
+        }, false);
+    </script>
 </head>
 
 <body class="bg-cyber-bg text-slate-100 font-noto h-screen w-screen flex flex-col overflow-hidden relative">
@@ -224,22 +237,22 @@
 
                 <!-- Kanji Panel -->
                 <div class="w-full lg:w-[400px] flex-shrink-0 flex flex-col">
-                    <div class="text-center mb-2">
+                    <div class="flex items-center justify-center gap-4 mb-2">
                         <span
                             class="text-slate-400 font-noto text-sm tracking-widest bg-slate-900/60 px-4 py-1 rounded-full border border-slate-700/50">解答パネル</span>
+                        <div id="combo-container"
+                            class="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded flex items-center gap-2 scale-90">
+                            <span class="text-xs text-cyber-neonGreen font-bold tracking-widest">連鎖:</span>
+                            <div class="w-3 h-3 bg-cyber-neonGreen rounded-sm shadow-neon-green animate-pulse"
+                                id="combo-indicator"></div>
+                            <span id="quest-combo" class="text-sm font-bold text-cyber-neonGreen">0</span>
+                        </div>
                     </div>
                     <div
                         class="border border-slate-600/50 bg-[#151b2b]/80 rounded-2xl p-4 shadow-inner flex-1 flex flex-col justify-start backdrop-blur-md relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl"></div>
 
-                        <div class="flex justify-between items-center mb-6 px-2 mt-2 relative z-10">
-                            <div
-                                class="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded flex items-center gap-2">
-                                <span class="text-xs text-cyber-neonGreen font-orbitron tracking-widest">COMBO:</span>
-                                <div class="w-4 h-4 bg-cyber-neonGreen rounded-sm shadow-neon-green animate-pulse"
-                                    id="combo-indicator"></div>
-                                <span id="quest-combo" class="text-lg font-bold text-cyber-neonGreen hidden">0</span>
-                            </div>
+                        <div class="flex justify-between items-center mb-4 px-2 mt-2 relative z-10">
                             <div id="quest-answer-box"
                                 class="text-cyber-neonGold font-bold text-2xl tracking-[0.5em] h-10 flex items-center justify-end flex-1 drop-shadow-neon-gold border-b-2 border-slate-700/50 mr-2 ml-4">
                             </div>
