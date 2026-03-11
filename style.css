@@ -427,21 +427,23 @@ body {
         font-size: 9px !important;
     }
 
-    /* Blue pill — shrink to content width, ultra-thin */
+    /* Blue pill — shrink to content width, half height */
     #screen-quest .shrink-0.pt-6.pb-2>div {
         width: fit-content !important;
         max-width: 90% !important;
-        padding-top: 2px !important;
-        padding-bottom: 2px !important;
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0.6rem !important;
+        padding-right: 0.6rem !important;
         border-radius: 999px !important;
+        line-height: 1.2 !important;
     }
 
     #screen-quest .text-base,
     #screen-quest #quest-flavor {
-        font-size: 0.75rem !important;
+        font-size: 0.65rem !important;
         white-space: nowrap !important;
+        line-height: 1.2 !important;
     }
 
     #kanji-panel {
