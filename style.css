@@ -387,18 +387,19 @@ body {
     }
 
     #screen-quest {
-        padding-top: 0.25rem !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
     }
 
     #screen-quest>div.flex-col {
         flex-direction: row !important;
         align-items: stretch !important;
-        gap: 0.5rem !important;
+        gap: 0 !important;
     }
 
     #screen-quest div.flex-1.relative.rounded-2xl {
-        /* Map Wrap — expanded */
-        width: 68% !important;
+        /* Map Wrap — maximized */
+        width: 72% !important;
         flex: none !important;
         display: flex !important;
         flex-direction: column !important;
@@ -406,11 +407,16 @@ body {
 
     #screen-quest div.w-full.lg\:w-\[400px\] {
         /* Answer Panel wrapper */
-        width: 32% !important;
+        width: 28% !important;
         flex: none !important;
         margin-top: 0 !important;
         display: flex !important;
         flex-direction: column !important;
+    }
+
+    /* Side padding inside panel = ~0.5 button width */
+    #screen-quest div.w-full.lg\:w-\[400px\] .p-4 {
+        padding: 0.25rem 1rem !important;
     }
 
     /* Quest label row — normal flow, minimal real height, no position:absolute */
