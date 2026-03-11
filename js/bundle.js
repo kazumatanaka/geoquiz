@@ -701,13 +701,24 @@ function addCard(cardId) {
 
 // --- ui.js ---
 function navigateTo(screenId) {
-  document.querySelectorAll('.screen-view').forEach(el => el.classList.remove('active', 'hidden'));
   document.querySelectorAll('.screen-view').forEach(el => {
-    if (el.id === `screen-${screenId}`) {
-      el.classList.add('active', 'flex');
+    const targetId = `screen-${screenId}`;
+    if (el.id === targetId) {
+      // Restore the correct display mode
+      el.classList.remove('hidden');
+      el.classList.add('active');
+      // Determine flex direction from static classes
+      if (el.classList.contains('flex-col')) {
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+      } else {
+        el.style.display = 'flex';
+        el.style.flexDirection = '';
+      }
     } else {
+      el.classList.remove('active');
       el.classList.add('hidden');
-      el.classList.remove('flex', 'active');
+      el.style.display = '';
     }
   });
 
@@ -1462,7 +1473,7 @@ function initApp() {
           if (currentSession.currentIndex < 10) nextQuest();
           else showSessionResult();
         } else {
-          navigate('home');
+          window.app.navigate('home');
         }
       }, 500);
     },
@@ -1472,7 +1483,7 @@ function initApp() {
       const score = parseInt(document.getElementById('boss-final-score')?.innerText || '0');
       if (window.geoFirebase) {
         window.geoFirebase.submitBossScore(score, areaName, nickname).then(() => {
-          app.navigate('ranking');
+          window.app.navigate('ranking');
         });
       }
     }
@@ -1617,15 +1628,17 @@ function handleClear() {
 }
 
 function startSession(category) {
+  console.log('[GeoQuiz] startSession called with:', category);
+
+  // --- Build question list ---
   let filtered = geographyMaster;
   if (category !== 'all') {
     filtered = geographyMaster.filter(g => {
-      if (category === 'strait') return ['strait', 'bay', 'cape'].includes(g.type);
+      if (category === 'strait') return ['strait', 'bay', 'cape', 'channel'].includes(g.type);
       return g.type === category;
     });
   }
 
-  // 10問に満たない場合はランダムで補完
   let sessionQuestions = [...filtered].sort(() => 0.5 - Math.random());
   if (sessionQuestions.length < 10) {
     const ids = new Set(sessionQuestions.map(f => f.geoId));
@@ -1643,7 +1656,30 @@ function startSession(category) {
     results: []
   };
 
-  navigate('quest');
+  // --- Directly show quest screen, hide everything else ---
+  document.querySelectorAll('.screen-view').forEach(el => {
+    el.style.display = 'none';
+    el.classList.add('hidden');
+    el.classList.remove('active');
+  });
+
+  const questScreen = document.getElementById('screen-quest');
+  if (questScreen) {
+    questScreen.style.display = 'flex';
+    questScreen.style.flexDirection = 'column';
+    questScreen.classList.remove('hidden');
+    questScreen.classList.add('active');
+  } else {
+    console.error('[GeoQuiz] #screen-quest not found!');
+  }
+
+  // Show global header
+  const header = document.getElementById('global-header');
+  if (header) header.classList.remove('hidden');
+
+  updateProgressUI();
+
+  // --- Start first question ---
   nextQuest();
 }
 
@@ -1729,7 +1765,7 @@ function showSessionResult() {
   if (gachaTriggered) {
     showGacha();
   } else {
-    navigate('home');
+    navigateTo('home');
   }
 
   currentSession = null;
