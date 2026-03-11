@@ -368,7 +368,7 @@ body {
 
     #screen-quest div.flex-1.relative.rounded-2xl {
         /* Map Wrap */
-        width: 72% !important;
+        width: 65% !important;
         flex: none !important;
         display: flex !important;
         flex-direction: column !important;
@@ -376,7 +376,7 @@ body {
 
     #screen-quest div.w-full.lg\:w-\[400px\] {
         /* Answer Panel wrapper */
-        width: 28% !important;
+        width: 35% !important;
         flex: none !important;
         margin-top: 0 !important;
         display: flex !important;
@@ -398,19 +398,31 @@ body {
     }
 
     #kanji-panel {
-        grid-template-columns: repeat(5, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
         gap: 0.15rem !important;
         flex: 1 !important;
     }
 
     #kanji-panel button {
-        height: 2.2rem !important;
-        font-size: 1.125rem !important;
+        height: 2.1rem !important;
+        font-size: 1rem !important;
+    }
+
+    .kanji-action-row {
+        grid-column: span 4 !important;
+        margin-top: 0.1rem !important;
+        gap: 0.2rem !important;
+    }
+
+    #kanji-delete-btn,
+    #kanji-submit-btn {
+        height: 2.3rem !important;
+        font-size: 0.75rem !important;
     }
 
     #quest-answer-box {
-        height: 1.8rem !important;
-        font-size: 1.125rem !important;
+        height: 1.6rem !important;
+        font-size: 1.1rem !important;
         margin-bottom: 0.15rem !important;
     }
 
