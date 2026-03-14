@@ -11,6 +11,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "日本最長の大動脈、越後平野を潤す恵みの水",
     "stats": { "長さ": "367km (全国1位)", "流域面積": "11,900km² (全国3位)" },
+    "charStats": { "power": 65, "defense": 45, "speed": 85 },
     "relatedKeywords": ["越後平野", "稲作", "大河津分水路"],
     "dummyKanji": ["農", "阿", "賀", "木", "曽", "天", "竜", "黒", "部"],
     "hiddenFacts": [
@@ -31,6 +32,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "『北アルプス』の別名を持つ、3000m級の巨峰群",
     "stats": { "最高峰": "穂高岳 (3,190m)", "通称": "北アルプス" },
+    "charStats": { "power": 95, "defense": 92, "speed": 28 },
     "relatedKeywords": ["氷河地形", "中部山岳国立公園"],
     "dummyKanji": ["弾", "木", "曽", "赤", "石", "白", "山", "御", "嶽"],
     "hiddenFacts": [
@@ -51,6 +53,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "入り組んだ地形がもたらす豊かな漁場",
     "stats": { "地形": "リアス海岸", "海流": "親潮と黒潮の潮目" },
+    "charStats": { "power": 72, "defense": 65, "speed": 58 },
     "relatedKeywords": ["養殖業", "東日本大震災", "津波"],
     "dummyKanji": ["三", "陸", "志", "摩", "若", "狭", "九", "十", "九", "島"],
     "hiddenFacts": [
@@ -71,6 +74,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "日本最大の湖、近畿の水瓶として40万人の命を支える",
     "stats": { "面積": "670km² (全国1位)", "貯水量": "275億m³" },
+    "charStats": { "power": 45, "defense": 82, "speed": 35 },
     "relatedKeywords": ["近畿の水瓶", "固有種", "琵琶湖疏水"],
     "dummyKanji": ["霞", "ヶ", "浦", "サ", "ロ", "マ", "摩", "周", "猪", "苗", "代"],
     "hiddenFacts": [
@@ -91,6 +95,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "日本一の広さを誇る平野、首都圏の基盤",
     "stats": { "面積": "17,000km² (全国1位)", "土壌": "関東ローム層" },
+    "charStats": { "power": 62, "defense": 75, "speed": 48 },
     "relatedKeywords": ["利根川", "近郊農業", "ヒートアイランド現象"],
     "dummyKanji": ["濃", "尾", "石", "狩", "越", "後", "筑", "紫", "十", "勝"],
     "hiddenFacts": [
@@ -111,6 +116,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "『坂東太郎』との異名を持つ、日本最大の流域面積を誇る川",
     "stats": { "長さ": "322km (全国2位)", "流域面積": "16,840km² (全国1位)" },
+    "charStats": { "power": 78, "defense": 52, "speed": 82 },
     "relatedKeywords": ["坂東太郎", "関東平野", "水郷"],
     "dummyKanji": ["信", "濃", "阿", "賀", "木", "曽", "筑", "後", "淀"],
     "hiddenFacts": [
@@ -131,6 +137,7 @@ const geographyMaster = [
     "rarity": "R",
     "flavorText": "山形県を縦断し日本海へ注ぐ、日本三大急流の一つ",
     "stats": { "長さ": "229km", "通称": "日本三大急流" },
+    "charStats": { "power": 62, "defense": 42, "speed": 88 },
     "relatedKeywords": ["山形県", "庄内平野", "松尾芭蕉"],
     "dummyKanji": ["球", "磨", "富士", "信", "濃", "阿", "賀"],
     "hiddenFacts": [
@@ -151,6 +158,7 @@ const geographyMaster = [
     "rarity": "R",
     "flavorText": "北海道西部に広がる広大な平野、大規模な稲作が行われる",
     "stats": { "面積": "約3,800km²", "主要都市": "札幌市" },
+    "charStats": { "power": 58, "defense": 65, "speed": 42 },
     "relatedKeywords": ["泥炭地", "客土", "石狩川"],
     "dummyKanji": ["十", "勝", "根", "釧", "筑", "紫", "佐", "賀"],
     "hiddenFacts": [
@@ -171,6 +179,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "日本の象徴、標高3776mの独立最高峰",
     "stats": { "標高": "3,776m (日本一)", "山容": "成層火山" },
+    "charStats": { "power": 100, "defense": 88, "speed": 35 },
     "relatedKeywords": ["世界遺産", "独立峰", "フォッサマグナ"],
     "dummyKanji": ["剣", "北", "南", "中", "阿", "蘇", "白", "山", "立", "山"],
     "hiddenFacts": [
@@ -191,6 +200,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "東北の背骨、冷たい『やませ』をせき止める壁",
     "stats": { "延長": "約500km (日本最長)", "最高峰": "岩手山 (2,038m)" },
+    "charStats": { "power": 88, "defense": 92, "speed": 28 },
     "relatedKeywords": ["背骨", "やませ", "気候の境界", "分水嶺"],
     "dummyKanji": ["羽", "出", "北", "上", "阿", "武", "隈", "白", "神"],
     "hiddenFacts": [
@@ -211,6 +221,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "中央アルプス、伊那盆地を眼下に見下ろす連峰",
     "stats": { "最高峰": "木曽駒ヶ岳 (2,956m)", "通称": "中央アルプス" },
+    "charStats": { "power": 82, "defense": 78, "speed": 42 },
     "relatedKeywords": ["中央アルプス", "伊那盆地", "天竜川"],
     "dummyKanji": ["曾", "飛", "騨", "赤", "石", "南", "北", "中", "央"],
     "hiddenFacts": [
@@ -231,6 +242,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "南アルプス、鋭くそびえる『南の巨壁』",
     "stats": { "最高峰": "北岳 (3,193m)", "通称": "南アルプス" },
+    "charStats": { "power": 89, "defense": 95, "speed": 22 },
     "relatedKeywords": ["南アルプス", "北岳", "大井川"],
     "dummyKanji": ["飛", "騨", "木", "曽", "中央", "富士", "箱", "根", "伊", "豆"],
     "hiddenFacts": [
@@ -251,6 +263,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "扇状地が広がる果実の王国、武田信玄の故郷",
     "stats": { "特色": "ぶどう・桃の生産日本一", "地形": "扇状地が発達" },
+    "charStats": { "power": 45, "defense": 55, "speed": 72 },
     "relatedKeywords": ["扇状地", "果樹栽培", "ぶどう", "甲州"],
     "dummyKanji": ["府", "神", "戸", "福", "島", "山", "形", "長", "野"],
     "hiddenFacts": [
@@ -271,6 +284,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "三方を山に囲まれた古都、夏は蒸し暑く冬は冷え込む",
     "stats": { "特色": "盆地特有の気候", "河川": "淀川水系" },
+    "charStats": { "power": 35, "defense": 78, "speed": 55 },
     "relatedKeywords": ["古都", "盆地特有の気候", "内陸性気候"],
     "dummyKanji": ["奈", "良", "近", "江", "滋", "賀", "都", "京", "阪"],
     "hiddenFacts": [
@@ -291,6 +305,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "東北東部の古い隆起準平原、リアス海岸の背後に連なる",
     "stats": { "地形": "隆起準平原", "気候": "冷涼 (やませの影響)" },
+    "charStats": { "power": 42, "defense": 65, "speed": 48 },
     "relatedKeywords": ["隆起準平原", "リアス海岸", "三陸"],
     "dummyKanji": ["山", "脈", "奥", "羽", "出", "下", "上", "南", "西"],
     "hiddenFacts": [
@@ -311,6 +326,7 @@ const geographyMaster = [
     "rarity": "R",
     "flavorText": "山形県を南北に走る山地、日本海からの風を遮る",
     "stats": { "位置": "山形県中央部", "信仰": "出羽三山" },
+    "charStats": { "power": 55, "defense": 62, "speed": 38 },
     "relatedKeywords": ["日本海側", "最上川", "庄内平野"],
     "dummyKanji": ["羽", "奥", "羽", "阿", "武", "隈", "北", "上"],
     "hiddenFacts": [
@@ -331,6 +347,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "日本有数の豪雪地帯、信濃川の源流域の一つ",
     "stats": { "気候": "日本有数の豪雪", "用途": "水力発電" },
+    "charStats": { "power": 75, "defense": 82, "speed": 25 },
     "relatedKeywords": ["雪解け水", "水力発電", "信濃川"],
     "dummyKanji": ["超", "後", "期", "飛", "騨", "木", "曽", "赤", "石"],
     "hiddenFacts": [
@@ -351,6 +368,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "複雑なリアス海岸が続く、真珠養殖の発祥地",
     "stats": { "地形": "リアス海岸", "産業": "真珠養殖" },
+    "charStats": { "power": 38, "defense": 52, "speed": 78 },
     "relatedKeywords": ["真珠養殖", "英虞湾", "リアス海岸"],
     "dummyKanji": ["島", "摩", "紀", "伊", "知", "多", "渥", "美", "能", "登"],
     "hiddenFacts": [
@@ -371,6 +389,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "日本最大、黒潮、林業、尾鷲",
     "stats": { "規模": "日本最大級の半島", "気候": "多雨地域" },
+    "charStats": { "power": 85, "defense": 75, "speed": 55 },
     "relatedKeywords": ["日本最大", "黒潮", "林業", "尾鷲"],
     "dummyKanji": ["記", "伊", "志", "摩", "佐", "多", "岬", "室", "戸"],
     "hiddenFacts": [
@@ -391,6 +410,7 @@ const geographyMaster = [
     "rarity": "R",
     "flavorText": "紀伊半島と四国の間の海域、鳴門の渦潮の近く",
     "stats": { "接続": "大阪湾と太平洋", "特徴": "豊かな漁場" },
+    "charStats": { "power": 52, "defense": 38, "speed": 85 },
     "relatedKeywords": ["徳島県", "和歌山県", "鳴門海峡"],
     "dummyKanji": ["豊", "後", "鳴", "門", "明", "石", "海", "峡", "路"],
     "hiddenFacts": [
@@ -411,6 +431,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "日本海側最大のリアス海岸、古くは『御食国』",
     "stats": { "地形": "リアス海岸", "主要都市": "敦賀市" },
+    "charStats": { "power": 45, "defense": 68, "speed": 62 },
     "relatedKeywords": ["リアス海岸", "原子力発電所", "敦賀"],
     "dummyKanji": ["伊", "勢", "富", "山", "大", "阪", "三", "河", "狭"],
     "hiddenFacts": [
@@ -431,6 +452,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "黒潮の影響で温暖な平野、冬の促成栽培が盛ん",
     "stats": { "農業": "促成栽培 (ピーマン等)", "気候": "温暖多雨" },
+    "charStats": { "power": 52, "defense": 45, "speed": 88 },
     "relatedKeywords": ["促成栽培", "ピーマン", "黒潮"],
     "dummyKanji": ["筑", "紫", "佐", "賀", "八", "代", "熊", "本", "薩", "摩"],
     "hiddenFacts": [
@@ -451,6 +473,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "南九州の火山灰地、サツマイモや畜産が盛ん",
     "stats": { "土壌": "シラス (火山砕屑物)", "名産": "サツマイモ" },
+    "charStats": { "power": 68, "defense": 82, "speed": 35 },
     "relatedKeywords": ["火山灰", "サツマイモ", "桜島"],
     "dummyKanji": ["白", "洲", "笠", "野", "原", "牧", "之", "原", "根"],
     "hiddenFacts": [
@@ -471,6 +494,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "古称は大和盆地、水不足を補う『ため池』が点在する",
     "stats": { "別名": "大和盆地", "特徴": "ため池の多さ" },
+    "charStats": { "power": 32, "defense": 85, "speed": 45 },
     "relatedKeywords": ["大和盆地", "ため池", "金魚養殖"],
     "dummyKanji": ["京", "都", "近", "江", "上", "野", "伊", "勢", "志"],
     "hiddenFacts": [
@@ -491,6 +515,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "標高は低いがなだらかに連なる、かつての鉄の産地",
     "stats": { "形状": "隆起準平原", "歴史": "たたら製鉄" },
+    "charStats": { "power": 72, "defense": 68, "speed": 45 },
     "relatedKeywords": ["なだらか", "豪雪地帯", "冬の季節風"],
     "dummyKanji": ["四", "国", "讃", "岐", "石", "鎚", "剣", "山", "脈"],
     "hiddenFacts": [
@@ -511,6 +536,7 @@ const geographyMaster = [
     "rarity": "SSR",
     "flavorText": "鋭く険しい石鎚山を擁する、四国の険しい分水嶺",
     "stats": { "最高峰": "石鎚山 (1,982m)", "気候": "太平洋側多雨" },
+    "charStats": { "power": 100, "defense": 72, "speed": 65 },
     "relatedKeywords": ["険しい", "石鎚山", "剣山", "太平洋側"],
     "dummyKanji": ["中", "国", "讃", "岐", "阿", "讃", "山", "地", "高"],
     "hiddenFacts": [
@@ -531,6 +557,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "長野県最大の湖、精密機械工業の拠点に囲まれる",
     "stats": { "現象": "御神渡り", "流出": "天竜川" },
+    "charStats": { "power": 48, "defense": 65, "speed": 52 },
     "relatedKeywords": ["天竜川", "精密機械工業", "断層"],
     "dummyKanji": ["諏", "訪", "河", "口", "浜", "名", "中", "禅", "寺"],
     "hiddenFacts": [
@@ -551,6 +578,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "日本第2位の面積、利根川の下流域に広がる巨大な湖",
     "stats": { "面積": "約220km² (全国2位)", "名産": "ワカサギ・レンコン" },
+    "charStats": { "power": 45, "defense": 88, "speed": 32 },
     "relatedKeywords": ["日本第2位", "干拓", "利根川"],
     "dummyKanji": ["琵", "琶", "中", "海", "北", "浦", "印", "旛", "沼"],
     "hiddenFacts": [
@@ -571,6 +599,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "中央に雲仙岳がそびえる、火山の恵みと歴史の地",
     "stats": { "主峰": "雲仙岳", "歴史": "島原の乱" },
+    "charStats": { "power": 82, "defense": 55, "speed": 58 },
     "relatedKeywords": ["雲仙岳", "有明海", "火砕流"],
     "dummyKanji": ["大", "隅", "薩", "摩", "国", "東", "北", "松", "浦"],
     "hiddenFacts": [
@@ -591,6 +620,7 @@ const geographyMaster = [
     "rarity": "SR",
     "flavorText": "本州と九州を隔てる狭い海域、壇ノ浦の舞台",
     "stats": { "接続": "日本海と瀬戸内海", "特徴": "非常に複雑で速い潮流" },
+    "charStats": { "power": 65, "defense": 48, "speed": 92 },
     "relatedKeywords": ["下関", "門司", "本州と九州", "壇ノ浦"],
     "dummyKanji": ["明", "石", "鳴", "門", "津", "軽", "宗", "谷", "紀"],
     "hiddenFacts": [
@@ -1168,25 +1198,46 @@ function setKanjiPanelDisabled(disabled) {
 }
 
 function generateCardHTML(geoData) {
+  const rarity = geoData.rarity || 'N';
+  const stats = geoData.charStats || { power: 30, defense: 30, speed: 30 };
+  
+  const getRarityClass = (r) => {
+    switch (r) {
+      case 'SSR': return 'card-frame-ssr card-hologram premium-glint';
+      case 'SR': return 'card-frame-sr premium-glint';
+      case 'R': return 'card-frame-r';
+      default: return 'card-frame-n';
+    }
+  };
+
   const getRarityColors = (r) => {
     switch (r) {
       case 'N': return 'from-slate-500 to-slate-700 shadow-slate-500/50';
-      case 'R': return 'from-blue-400 to-blue-600 shadow-blue-500/50';
-      case 'SR': return 'from-purple-400 to-purple-600 shadow-purple-500/50';
-      case 'SSR': return 'from-yellow-300 via-amber-500 to-yellow-600 shadow-yellow-500/80';
+      case 'R': return 'from-teal-400 to-emerald-600 shadow-emerald-500/50';
+      case 'SR': return 'from-purple-400 to-fuchsia-600 shadow-purple-500/50';
+      case 'SSR': return 'from-yellow-300 via-amber-400 to-orange-500 shadow-yellow-500/80';
       default: return 'from-slate-500 to-slate-700 shadow-slate-500/50';
     }
   };
 
+  const statItem = (label, value, color) => `
+    <div class="flex items-center gap-1.5 w-full">
+      <span class="text-[8px] font-rpg text-slate-400 w-4">${label}</span>
+      <div class="stat-bar-container">
+        <div class="stat-bar-fill ${color}" style="width: ${value}%"></div>
+      </div>
+    </div>
+  `;
+
   const statsHtml = Object.entries(geoData.stats).map(([k, v]) => `
     <li class="flex justify-between border-b border-slate-700/50 pb-1">
       <span class="text-slate-400">${k}:</span>
-      <span class="font-bold text-slate-200 text-right">${v}</span>
+      <span class="font-bold text-slate-200 text-right text-[10px] sm:text-xs">${v}</span>
     </li>
   `).join('');
 
   const kwHtml = geoData.relatedKeywords.map(k => `
-    <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-200 border border-slate-600">${k}</span>
+    <span class="px-1.5 py-0.5 bg-slate-700 rounded text-[9px] text-slate-200 border border-slate-600">${k}</span>
   `).join('');
 
   return `
@@ -1194,28 +1245,50 @@ function generateCardHTML(geoData) {
       <div class="flip-card-inner w-full h-full relative preserve-3d">
         
         <!-- Front -->
-        <div class="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br ${getRarityColors(geoData.rarity)} p-1 shadow-lg pointer-events-none">
-          <div class="w-full h-full bg-slate-900 rounded-lg flex flex-col items-center justify-center p-4 relative overflow-hidden bg-[url('data:image/svg+xml;base64,...')]">
-            <span class="absolute top-2 left-2 px-2 py-1 bg-black/60 rounded text-xs font-bold font-orbitron text-white border border-white/20">${geoData.rarity}</span>
-             <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white/20 flex items-center justify-center mb-4 bg-slate-800 shadow-inner">
-               <span class="text-4xl text-slate-600 opacity-50 bg-clip-text">🗺️</span>
+        <div class="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br ${getRarityColors(rarity)} p-1 shadow-lg pointer-events-none">
+          <div class="w-full h-full bg-slate-900 rounded-lg flex flex-col p-2 relative overflow-hidden ${getRarityClass(rarity)}">
+            
+            <!-- Header: Rarity & Name -->
+            <div class="flex justify-between items-start mb-1 overflow-visible">
+               <span class="px-2 py-0.5 bg-black/80 rounded text-[9px] font-bold font-orbitron text-white border border-white/20 z-10 shadow-lg">${rarity}</span>
+               <div class="text-right z-10">
+                 <div class="text-[8px] font-orbitron text-cyan-400 tracking-tighter opacity-70">${geoData.type.toUpperCase()}</div>
+                 <div class="text-[10px] font-noto text-white font-bold leading-none">${geoData.name}</div>
+               </div>
             </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-center text-white drop-shadow-md">${geoData.name}</h3>
-            <p class="text-sm text-slate-300 mt-2 text-center">${geoData.type}</p>
+
+            <!-- Character Avatar Background -->
+            <div class="flex-1 relative mb-2 flex items-center justify-center">
+              <img src="${geoData.charImage || 'assets/avatars/avatar_sky_1773059837567.png'}" 
+                   class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" 
+                   alt="${geoData.charName}">
+            </div>
+
+            <!-- Footer: Char Name & RPG Stats -->
+            <div class="bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 mt-auto">
+               <div class="text-[11px] font-bold text-white font-orbitron text-center mb-1.5 truncate text-cyber-neonGold drop-shadow-sm">
+                 ${geoData.charName || 'Guardian'}
+               </div>
+               <div class="space-y-1">
+                 ${statItem('POW', stats.power, 'bg-red-500 shadow-red-500/50')}
+                 ${statItem('DEF', stats.defense, 'bg-blue-500 shadow-blue-500/50')}
+                 ${statItem('SPD', stats.speed, 'bg-green-500 shadow-green-500/50')}
+               </div>
+            </div>
           </div>
         </div>
 
         <!-- Back -->
-        <div class="flip-card-back absolute w-full h-full backface-hidden rounded-xl bg-slate-800 border-2 border-slate-600 p-4 overflow-y-auto pointer-events-none">
+        <div class="flip-card-back absolute w-full h-full backface-hidden rounded-xl bg-slate-800 border-2 border-slate-600 p-3 overflow-y-auto pointer-events-none">
            <div class="flex flex-col h-full">
-            <h4 class="text-lg font-bold border-b border-slate-600 pb-2 mb-3 text-cyber-neonBlue">${geoData.name} - 詳細</h4>
-            <p class="text-sm text-slate-300 italic mb-4">"${geoData.flavorText}"</p>
-            <div class="mb-4">
-              <span class="text-xs text-cyber-neonGreen font-orbitron block mb-1">DATA</span>
-              <ul class="text-sm space-y-1">${statsHtml}</ul>
+            <h4 class="text-sm font-bold border-b border-slate-600 pb-1.5 mb-2 text-cyber-neonBlue truncate">${geoData.name} Details</h4>
+            <p class="text-[10px] leading-tight text-slate-300 italic mb-3">"${geoData.flavorText}"</p>
+            <div class="mb-3">
+              <span class="text-[9px] text-cyber-neonGreen font-orbitron block mb-1">GEOGRAPHY DATA</span>
+              <ul class="text-[10px] space-y-1">${statsHtml}</ul>
             </div>
             <div>
-              <span class="text-xs text-cyber-neonPurple font-orbitron block mb-1">KEYWORDS</span>
+              <span class="text-[9px] text-cyber-neonPurple font-orbitron block mb-1">KEYWORDS</span>
               <div class="flex flex-wrap gap-1">${kwHtml}</div>
             </div>
           </div>
@@ -1313,9 +1386,25 @@ function showCardDetail(geo, cardData) {
                     <span class="text-[10px] font-orbitron text-slate-500 tracking-widest uppercase">${geo.type}</span>
                 </div>
                 <h3 class="text-3xl font-bold text-white font-noto mb-4">${geo.name}</h3>
-                <div class="flex items-center gap-2 mb-6 text-sm font-orbitron">
+                <div class="flex items-center gap-2 mb-4 text-xs font-orbitron">
                     <span class="text-slate-400">STATUS:</span>
-                    <span class="text-white px-3 py-1 bg-slate-800 rounded-full border border-slate-700">LEVEL ${level} / 5</span>
+                    <span class="text-white px-2 py-0.5 bg-slate-800 rounded-full border border-slate-700">LEVEL ${level} / 5</span>
+                </div>
+
+                <!-- RPG Stats Detail -->
+                <div class="grid grid-cols-3 gap-2 mb-6">
+                  <div class="bg-slate-900/80 border border-red-900/30 p-2 rounded-xl text-center">
+                    <div class="text-[8px] text-red-400 font-orbitron mb-1">POWER</div>
+                    <div class="text-lg font-bold text-white font-orbitron">${geo.charStats?.power || 30}</div>
+                  </div>
+                  <div class="bg-slate-900/80 border border-blue-900/30 p-2 rounded-xl text-center">
+                    <div class="text-[8px] text-blue-400 font-orbitron mb-1">DEFENSE</div>
+                    <div class="text-lg font-bold text-white font-orbitron">${geo.charStats?.defense || 30}</div>
+                  </div>
+                  <div class="bg-slate-900/80 border border-green-900/30 p-2 rounded-xl text-center">
+                    <div class="text-[8px] text-green-400 font-orbitron mb-1">SPEED</div>
+                    <div class="text-lg font-bold text-white font-orbitron">${geo.charStats?.speed || 30}</div>
+                  </div>
                 </div>
                 
                 <div class="flex-1 space-y-4">
