@@ -6255,16 +6255,57 @@ function showSessionResult() {
     gachaTriggered = true;
   }
 
-  const resultMsg = `【リザルト】\n正解数: ${correctCount} / 10 (${score}%)\n\n${rewardText}`;
-  alert(resultMsg);
+  // Use the new custom UI instead of alert
+  renderSessionResult(correctCount, score, rewardText, gachaTriggered);
+}
 
+function renderSessionResult(count, score, rewardText, gachaTriggered) {
+  const modal = document.getElementById('screen-result');
+  const scorePercent = document.getElementById('result-score-percent');
+  const correctCount = document.getElementById('result-correct-count');
+  const rewardMsg = document.getElementById('result-reward-text');
+  const circle = document.getElementById('result-progress-circle');
+  const actionBtn = document.getElementById('result-action-btn');
+
+  scorePercent.innerText = `${score}%`;
+  correctCount.innerText = count;
+  rewardMsg.innerText = rewardText;
+
+  // Update progress circle (stroke-dasharray="364.4")
+  const offset = 364.4 - (364.4 * score / 100);
+  circle.style.strokeDashoffset = offset;
+
+  // Set action button behavior
   if (gachaTriggered) {
-    showGacha();
+    actionBtn.innerText = "GET REWARD";
+    actionBtn.onclick = () => {
+      closeResult();
+      showGacha();
+    };
   } else {
-    navigateTo('home');
+    actionBtn.innerText = "CLOSE";
+    actionBtn.onclick = () => {
+      closeResult();
+      navigateTo('home');
+    };
   }
 
+  modal.classList.remove('hidden');
+  void modal.offsetWidth; // Force reflow
+  modal.classList.add('active'); // In case we use active class
+  modal.classList.remove('opacity-0');
+  
+  if (sounds.confirm && state.sfxEnabled) sounds.confirm.play();
   currentSession = null;
+}
+
+function closeResult() {
+  const modal = document.getElementById('screen-result');
+  modal.classList.add('opacity-0');
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.classList.remove('active');
+  }, 500);
 }
 
 function drawGacha() {

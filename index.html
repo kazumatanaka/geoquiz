@@ -538,6 +538,44 @@
             </div>
         </div>
 
+        <!-- Session Result Screen -->
+        <div id="screen-result" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-lg p-4 hidden opacity-0 transition-opacity duration-500">
+            <div class="bg-cyber-panel border-2 border-cyber-neonBlue rounded-2xl p-8 max-w-sm w-full text-center shadow-neon-blue relative overflow-hidden">
+                <!-- Decorative scan lines -->
+                <div class="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(0,243,255,0.1)_1px,transparent_1px)] bg-[size:100%_4px]"></div>
+                
+                <h3 class="text-2xl font-orbitron font-bold text-cyber-neonBlue mb-6 tracking-[0.2em]">SESSION COMPLETE</h3>
+                
+                <div class="flex flex-col items-center gap-4 mb-8">
+                    <div id="result-score-container" class="relative">
+                        <svg class="w-32 h-32 transform -rotate-90">
+                            <circle cx="64" cy="64" r="58" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-800" />
+                            <circle id="result-progress-circle" cx="64" cy="64" r="58" stroke="currentColor" stroke-width="8" fill="transparent" stroke-dasharray="364.4" stroke-dashoffset="364.4" class="text-cyber-neonGreen transition-all duration-1000 ease-out" />
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span id="result-score-percent" class="text-3xl font-orbitron font-bold text-white">0%</span>
+                        </div>
+                    </div>
+                    <div class="text-slate-400 font-noto tracking-wider">
+                        正解数: <span id="result-correct-count" class="text-cyber-neonGold font-bold">0</span> / 10
+                    </div>
+                </div>
+
+                <div id="result-reward-status" class="mb-8 p-4 bg-slate-900/60 rounded-xl border border-slate-700">
+                    <p id="result-reward-text" class="text-sm font-noto text-slate-300 leading-relaxed">--</p>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <button id="result-action-btn" onclick="app.closeResult()" class="w-full py-4 bg-cyber-neonBlue text-black font-bold rounded-xl hover:bg-cyan-300 transition-all shadow-neon-blue tracking-widest text-lg">
+                        NEXT
+                    </button>
+                    <button onclick="app.navigate('home'); app.closeResult()" class="w-full py-3 border border-slate-600 text-slate-400 font-bold rounded-xl hover:border-white hover:text-white transition-all text-sm tracking-widest">
+                        QUIT TO HOME
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Gacha Modal Overlay -->
