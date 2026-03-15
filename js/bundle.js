@@ -877,7 +877,7 @@ function navigateTo(screenId) {
 
   const header = document.getElementById('global-header');
   if (header) {
-    if (screenId === 'home') {
+    if (screenId === 'home' || screenId === 'login') {
       header.classList.add('hidden');
     } else {
       header.classList.remove('hidden');
@@ -1783,28 +1783,47 @@ function initApp() {
     }
   };
 
-  // Firebase初期化
-  if (window.geoFirebase) {
-    window.geoFirebase.initFirebase(async (user) => {
-      const statusEl = document.getElementById('firebase-status');
-      if (user) {
-        if (statusEl) {
-          statusEl.innerText = 'ONLINE';
-          statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
-        }
-        // クラウドから進捗を取得してマージ
-        const cloudProgress = await window.geoFirebase.fetchProgressFromCloud();
-        Object.assign(state.progress, cloudProgress);
-        const cloudMistakes = await window.geoFirebase.fetchMistakesFromCloud();
-        if (cloudMistakes.length > 0) state.mistakes = cloudMistakes;
-        updateProgressUI();
-      } else {
-        if (statusEl) statusEl.innerText = 'OFFLINE';
-      }
-    });
+  // Profile Select Function
+  window.app.selectProfile = async (name) => {
+    if (sounds.confirm) sounds.confirm.play();
+    window.geoFirebase.setProfile(name);
+    
+    // Show loading overlay or similar?
+    const statusEl = document.getElementById('firebase-status');
+    if (statusEl) statusEl.innerText = 'SYNCING...';
+
+    // Fetch data for this specific profile
+    const cloudProgress = await window.geoFirebase.fetchProgressFromCloud();
+    const cloudCards = await window.geoFirebase.fetchCardsFromCloud();
+    const cloudMistakes = await window.geoFirebase.fetchMistakesFromCloud();
+
+    // Merge into local state
+    state.progress = cloudProgress || {};
+    state.cards = cloudCards || {};
+    state.mistakes = cloudMistakes || [];
+
+    updateProgressUI();
+    updateProgressionUI();
+    
+    if (statusEl) {
+      statusEl.innerText = 'ONLINE';
+      statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
+    }
+
+    navigateTo('home');
+  };
+
+  // Check if profile already selected
+  const savedProfile = window.geoFirebase.getSelectedProfile();
+  if (savedProfile) {
+    // If already logged in, navigate straight to home after sync
+    navigateTo('login');
+    // Wait for Firebase auth then auto-select if needed?
+    // For now, let's always show login for clarity, or auto-fetch if saved.
+  } else {
+    navigateTo('login');
   }
 
-  navigateTo('home');
   updateProgressUI();
 }
 

@@ -23,71 +23,87 @@ const auth = firebase.auth();
 // Auth State
 // ============================================================
 let currentUser = null;
+let selectedProfile = localStorage.getItem('geoquiz_profile') || null;
 
 function initFirebase(onReady) {
     auth.onAuthStateChanged((user) => {
         if (user) {
             currentUser = user;
-            console.log('[GeoQuiz] ログイン済み:', user.uid);
+            console.log('[GeoQuiz] Firebase Auth Ready:', user.uid);
             onReady(user);
         } else {
-            // 匿名ログイン
             auth.signInAnonymously()
                 .then((result) => {
                     currentUser = result.user;
-                    console.log('[GeoQuiz] 匿名ログイン完了:', result.user.uid);
                     onReady(result.user);
                 })
                 .catch((err) => {
-                    console.error('[GeoQuiz] ログインエラー:', err);
-                    onReady(null); // オフラインでも動作継続
+                    console.error('[GeoQuiz] Login Error:', err);
+                    onReady(null);
                 });
         }
     });
 }
 
-function getCurrentUser() { return currentUser; }
+function setProfile(name) {
+    selectedProfile = name;
+    if (name) {
+        localStorage.setItem('geoquiz_profile', name);
+    } else {
+        localStorage.removeItem('geoquiz_profile');
+    }
+}
+
+function getSelectedProfile() { return selectedProfile; }
+
+// ============================================================
+// Firestore: Helpers
+// ============================================================
+function getProfileDoc() {
+    if (!selectedProfile) return null;
+    return db.collection('profiles').doc(selectedProfile);
+}
 
 // ============================================================
 // Firestore: 学習ログ (learning_logs)
 // ============================================================
 
 async function syncProgressToCloud(geoId, masteryLevel) {
-    if (!currentUser) return;
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return;
     const nextReviewDate = calcNextReviewDate(masteryLevel);
     try {
-        await db.collection('users').doc(currentUser.uid)
-            .collection('learning_logs').doc(geoId).set({
-                geoId,
-                masteryLevel,
-                lastClearedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                nextReviewDate: firebase.firestore.Timestamp.fromDate(nextReviewDate),
-                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-            }, { merge: true });
+        await profileDoc.collection('learning_logs').doc(geoId).set({
+            geoId,
+            masteryLevel,
+            lastClearedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            nextReviewDate: firebase.firestore.Timestamp.fromDate(nextReviewDate),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
     } catch (e) {
         console.warn('[GeoQuiz] 同期失敗 (learning_logs):', e);
     }
 }
 
 async function syncMistakeToCloud(geoId, tappedDummy) {
-    if (!currentUser) return;
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return;
     try {
-        await db.collection('users').doc(currentUser.uid)
-            .collection('mistakes').add({
-                geoId,
-                tappedDummy,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            });
+        await profileDoc.collection('mistakes').add({
+            geoId,
+            tappedDummy,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
     } catch (e) {
         console.warn('[GeoQuiz] 同期失敗 (mistakes):', e);
     }
 }
 
 async function fetchProgressFromCloud() {
-    if (!currentUser) return {};
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return {};
     try {
-        const snap = await db.collection('users').doc(currentUser.uid)
-            .collection('learning_logs').get();
+        const snap = await profileDoc.collection('learning_logs').get();
         const result = {};
         snap.forEach(doc => {
             const d = doc.data();
@@ -106,10 +122,10 @@ async function fetchProgressFromCloud() {
 }
 
 async function fetchMistakesFromCloud() {
-    if (!currentUser) return [];
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return [];
     try {
-        const snap = await db.collection('users').doc(currentUser.uid)
-            .collection('mistakes').orderBy('timestamp', 'desc').limit(200).get();
+        const snap = await profileDoc.collection('mistakes').orderBy('timestamp', 'desc').limit(200).get();
         return snap.docs.map(doc => ({
             geoId: doc.data().geoId,
             tappedDummy: doc.data().tappedDummy,
@@ -121,13 +137,13 @@ async function fetchMistakesFromCloud() {
     }
 }
 
-// 防衛クエスト: nextReviewDate を過ぎた地形を取得
+// 防衛クエスト
 async function fetchDueForReview() {
-    if (!currentUser) return [];
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return [];
     try {
         const now = new Date();
-        const snap = await db.collection('users').doc(currentUser.uid)
-            .collection('learning_logs')
+        const snap = await profileDoc.collection('learning_logs')
             .where('nextReviewDate', '<=', firebase.firestore.Timestamp.fromDate(now))
             .where('masteryLevel', '<', 4)
             .get();
@@ -143,15 +159,31 @@ async function fetchDueForReview() {
 // ============================================================
 
 async function syncCardToCloud(cardId, cardLevel, quantity) {
-    if (!currentUser) return;
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return;
     try {
-        await db.collection('users').doc(currentUser.uid)
-            .collection('cards').doc(cardId).set({
-                cardId, cardLevel, quantity,
-                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-            }, { merge: true });
+        await profileDoc.collection('cards').doc(cardId).set({
+            cardId, cardLevel, quantity,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
     } catch (e) {
         console.warn('[GeoQuiz] 同期失敗 (cards):', e);
+    }
+}
+
+async function fetchCardsFromCloud() {
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return {};
+    try {
+        const snap = await profileDoc.collection('cards').get();
+        const result = {};
+        snap.forEach(doc => {
+            result[doc.id] = doc.data();
+        });
+        return result;
+    } catch (e) {
+        console.warn('[GeoQuiz] 取得失敗 (cards):', e);
+        return {};
     }
 }
 
@@ -160,16 +192,16 @@ async function syncCardToCloud(cardId, cardLevel, quantity) {
 // ============================================================
 
 async function submitBossScore(score, areaName, nickname) {
-    if (!currentUser) return;
+    if (!currentUser || !selectedProfile) return;
     try {
         await db.collection('boss_scores').add({
             uid: currentUser.uid,
-            nickname: nickname || 'Anonymous',
+            profile: selectedProfile,
+            nickname: nickname || selectedProfile,
             score,
             areaName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
-        console.log('[GeoQuiz] ボス戦スコア送信:', score);
     } catch (e) {
         console.warn('[GeoQuiz] ボス戦スコア送信失敗:', e);
     }
@@ -208,13 +240,15 @@ function calcNextReviewDate(masteryLevel) {
 // ============================================================
 window.geoFirebase = {
     initFirebase,
-    getCurrentUser,
+    setProfile,
+    getSelectedProfile,
     syncProgressToCloud,
     syncMistakeToCloud,
     fetchProgressFromCloud,
     fetchMistakesFromCloud,
     fetchDueForReview,
     syncCardToCloud,
+    fetchCardsFromCloud,
     submitBossScore,
     fetchRanking,
     calcNextReviewDate
