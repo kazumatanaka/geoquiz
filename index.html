@@ -156,6 +156,11 @@
             </div>
         </div>
 
+        <!-- Center: Boss Battle Title (Hidden by default) -->
+        <div id="header-boss-title" class="hidden flex-1 text-center">
+            <h2 class="text-xl md:text-2xl font-orbitron font-bold text-red-500 tracking-[0.3em] drop-shadow-[0_0_10px_rgba(255,0,0,0.6)] animate-pulse">BOSS BATTLE</h2>
+        </div>
+
         <!-- Right: Level and Collection -->
         <div id="header-right-info" class="flex gap-4 items-center transition-all duration-300">
             <div id="player-level"
@@ -406,13 +411,6 @@
 
         <!-- Boss Battle Screen -->
         <div id="screen-boss" class="screen-view hidden w-full h-full flex-col items-center justify-start p-2 md:p-4 max-w-[1400px]">
-            <div class="flex justify-between items-center w-full mb-2">
-                <div>
-                    <h2 class="text-2xl lg:text-3xl font-orbitron font-bold text-red-400 drop-shadow-[0_0_10px_rgba(255,50,50,0.8)] tracking-widest">BOSS BATTLE</h2>
-                    <p class="text-slate-400 font-noto tracking-wider text-[10px] md:text-xs">防衛戦 – 強敌を打ち破れ！</p>
-                </div>
-                <button onclick="app.navigate('home')" class="px-4 py-1.5 border border-red-500/50 bg-red-950/40 rounded-full font-bold text-red-400 hover:shadow-[0_0_15px_rgba(255,50,50,0.4)] transition-all tracking-widest text-xs">撃退</button>
-            </div>
 
             <!-- Boss Info Bar -->
             <div class="w-full flex gap-2 mb-2 flex-wrap text-sm">
@@ -507,7 +505,7 @@
     <!-- Application Scripts (order matters) -->
     <script src="js/japan.topojson.js"></script>
     <script src="js/firebase.js"></script>
-    <script src="js/bundle.js?v=4"></script>
+    <script src="js/bundle.js?v=5"></script>
 
     <!-- Footer watermark -->
     <div

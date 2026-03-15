@@ -886,14 +886,18 @@ function navigateTo(screenId) {
         header.classList.add('header-compact');
         const centerInfo = document.getElementById('header-center-info');
         const rightInfo = document.getElementById('header-right-info');
+        const bossTitle = document.getElementById('header-boss-title');
         if (centerInfo) centerInfo.classList.add('hidden');
         if (rightInfo) rightInfo.classList.add('hidden');
+        if (bossTitle) bossTitle.classList.remove('hidden');
       } else {
         header.classList.remove('header-compact');
         const centerInfo = document.getElementById('header-center-info');
         const rightInfo = document.getElementById('header-right-info');
+        const bossTitle = document.getElementById('header-boss-title');
         if (centerInfo) centerInfo.classList.remove('hidden');
         if (rightInfo) rightInfo.classList.remove('hidden');
+        if (bossTitle) bossTitle.classList.add('hidden');
       }
     }
   }
