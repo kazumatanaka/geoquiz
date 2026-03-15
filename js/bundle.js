@@ -27,7 +27,7 @@ const geographyMaster = [
     "kana": "ひださんみゃく",
     "type": "mountain",
     "charName": "ハイダ・ピーク",
-    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
+    "charImage": "assets/avatars/avatar_sky_1773535891178.png",
     "region": "chubu",
     "rarity": "SSR",
     "flavorText": "『北アルプス』の別名を持つ、3000m級の巨峰群",
@@ -69,7 +69,7 @@ const geographyMaster = [
     "kana": "びわこ",
     "type": "lake",
     "charName": "アクア・ビワ",
-    "charImage": "assets/avatars/avatar_city_1773059899618.png",
+    "charImage": "assets/avatars/avatar_water_1773059849617.png",
     "region": "kinki",
     "rarity": "SR",
     "flavorText": "日本最大の湖、近畿の水瓶として40万人の命を支える",
@@ -90,7 +90,7 @@ const geographyMaster = [
     "kana": "かんとうへいや",
     "type": "plain",
     "charName": "テラ・カントウ",
-    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
+    "charImage": "assets/avatars/avatar_earth_v2_1773536009354.png",
     "region": "kanto",
     "rarity": "SR",
     "flavorText": "日本一の広さを誇る平野、首都圏の基盤",
@@ -131,8 +131,8 @@ const geographyMaster = [
     "name": "最上川",
     "kana": "もがみがわ",
     "type": "river",
-    "charName": "モガミ・フロウ",
-    "charImage": "assets/avatars/avatar_water_1773059849617.png",
+    "charName": "モガミ・アース",
+    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
     "region": "tohoku",
     "rarity": "R",
     "flavorText": "山形県を縦断し日本海へ注ぐ、日本三大急流の一つ",
@@ -174,7 +174,7 @@ const geographyMaster = [
     "kana": "ふじさん",
     "type": "mountain",
     "charName": "マウント・フジ",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_sky_v2_1773535974703.png",
     "region": "chubu",
     "rarity": "SSR",
     "flavorText": "日本の象徴、標高3776mの独立最高峰",
@@ -195,7 +195,7 @@ const geographyMaster = [
     "kana": "おううさんみゃく",
     "type": "mountain",
     "charName": "オウウ・スパイン",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_sky_1773535891178.png",
     "region": "tohoku",
     "rarity": "SSR",
     "flavorText": "東北の背骨、冷たい『やませ』をせき止める壁",
@@ -216,7 +216,7 @@ const geographyMaster = [
     "kana": "きそさんみゃく",
     "type": "mountain",
     "charName": "キソ・リッジ",
-    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
+    "charImage": "assets/avatars/avatar_forest_1773535946512.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "中央アルプス、伊那盆地を眼下に見下ろす連峰",
@@ -237,7 +237,7 @@ const geographyMaster = [
     "kana": "あかいしさんみゃく",
     "type": "mountain",
     "charName": "アカイシ・ウォール",
-    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
+    "charImage": "assets/avatars/avatar_sky_v2_1773535974703.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "南アルプス、鋭くそびえる『南の巨壁』",
@@ -258,7 +258,7 @@ const geographyMaster = [
     "kana": "こうふぼんち",
     "type": "basin",
     "charName": "コウフ・ベイスン",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_fire_1773535917004.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "扇状地が広がる果実の王国、武田信玄の故郷",
@@ -299,8 +299,8 @@ const geographyMaster = [
     "name": "北上高地",
     "kana": "きたかみこうち",
     "type": "highland",
-    "charName": "キタカミ-プラトー",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charName": "キタカミ-プレイス",
+    "charImage": "assets/avatars/avatar_earth_v2_1773536009354.png",
     "region": "tohoku",
     "rarity": "SR",
     "flavorText": "東北東部の古い隆起準平原、リアス海岸の背後に連なる",
@@ -321,7 +321,7 @@ const geographyMaster = [
     "kana": "でわさんち",
     "type": "mountain",
     "charName": "デワ-フォレスト",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_forest_1773535946512.png",
     "region": "tohoku",
     "rarity": "R",
     "flavorText": "山形県を南北に走る山地、日本海からの風を遮る",
@@ -342,7 +342,7 @@ const geographyMaster = [
     "kana": "えちごさんみゃく",
     "type": "mountain",
     "charName": "エチゴ-スノー",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_ice_1773059882411.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "日本有数の豪雪地帯、信濃川の源流域の一つ",
@@ -362,8 +362,8 @@ const geographyMaster = [
     "name": "志摩半島",
     "kana": "しまはんとう",
     "type": "peninsula",
-    "charName": "シマ-パール",
-    "charImage": "assets/avatars/avatar_ice_1773059882411.png",
+    "charName": "シマ-アクア",
+    "charImage": "assets/avatars/avatar_water_1773059849617.png",
     "region": "kinki",
     "rarity": "SR",
     "flavorText": "複雑なリアス海岸が続く、真珠養殖の発祥地",
@@ -383,8 +383,8 @@ const geographyMaster = [
     "name": "紀伊半島",
     "kana": "きいはんとう",
     "type": "peninsula",
-    "charName": "キイ・ジャイアント",
-    "charImage": "assets/avatars/avatar_ice_1773059882411.png",
+    "charName": "キイ・フォレスト",
+    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
     "region": "kinki",
     "rarity": "SSR",
     "flavorText": "日本最大、黒潮、林業、尾鷲",
@@ -447,7 +447,7 @@ const geographyMaster = [
     "kana": "みやざきへいや",
     "type": "plain",
     "charName": "ミヤザキ-サン",
-    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
+    "charImage": "assets/avatars/avatar_earth_v2_1773536009354.png",
     "region": "kyushu",
     "rarity": "SR",
     "flavorText": "黒潮の影響で温暖な平野、冬の促成栽培が盛ん",
@@ -467,8 +467,8 @@ const geographyMaster = [
     "name": "シラス台地",
     "kana": "しらすだいち",
     "type": "plateau",
-    "charName": "シラス-ダスト",
-    "charImage": "assets/avatars/avatar_earth_1773059868884.png",
+    "charName": "シラス-マグマ",
+    "charImage": "assets/avatars/avatar_fire_1773535917004.png",
     "region": "kyushu",
     "rarity": "SR",
     "flavorText": "南九州の火山灰地、サツマイモや畜産が盛ん",
@@ -510,7 +510,7 @@ const geographyMaster = [
     "kana": "ちゅうごくさんち",
     "type": "mountain",
     "charName": "チュウゴク-テール",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_sky_1773535891178.png",
     "region": "chugoku",
     "rarity": "SSR",
     "flavorText": "標高は低いがなだらかに連なる、かつての鉄の産地",
@@ -531,7 +531,7 @@ const geographyMaster = [
     "kana": "しこくさんみゃく",
     "type": "mountain",
     "charName": "シコク-ピーク",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_sky_v2_1773535974703.png",
     "region": "shikoku",
     "rarity": "SSR",
     "flavorText": "鋭く険しい石鎚山を擁する、四国の険しい分水嶺",
@@ -552,7 +552,7 @@ const geographyMaster = [
     "kana": "すわこ",
     "type": "lake",
     "charName": "スワ-ミラー",
-    "charImage": "assets/avatars/avatar_city_1773059899618.png",
+    "charImage": "assets/avatars/avatar_water_1773059849617.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "長野県最大の湖、精密機械工業の拠点に囲まれる",
@@ -572,8 +572,8 @@ const geographyMaster = [
     "name": "霞ヶ浦",
     "kana": "かすみがうら",
     "type": "lake",
-    "charName": "カスミ-ミス",
-    "charImage": "assets/avatars/avatar_city_1773059899618.png",
+    "charName": "カスミ-フリーズ",
+    "charImage": "assets/avatars/avatar_ice_1773059882411.png",
     "region": "kanto",
     "rarity": "SR",
     "flavorText": "日本第2位の面積、利根川の下流域に広がる巨大な湖",
@@ -594,7 +594,7 @@ const geographyMaster = [
     "kana": "しまばらはんとう",
     "type": "peninsula",
     "charName": "シマバラ-ファイヤ",
-    "charImage": "assets/avatars/avatar_sky_1773059837567.png",
+    "charImage": "assets/avatars/avatar_fire_1773535917004.png",
     "region": "kyushu",
     "rarity": "SR",
     "flavorText": "中央に雲仙岳がそびえる、火山の恵みと歴史の地",
@@ -614,8 +614,8 @@ const geographyMaster = [
     "name": "関門海峡",
     "kana": "かんもんかいきょう",
     "type": "strait",
-    "charName": "カンモン-リンク",
-    "charImage": "assets/avatars/avatar_water_1773059849617.png",
+    "charName": "カンモン-シティー",
+    "charImage": "assets/avatars/avatar_city_1773059899618.png",
     "region": "chugoku",
     "rarity": "SR",
     "flavorText": "本州と九州を隔てる狭い海域、壇ノ浦の舞台",
@@ -648,7 +648,11 @@ const STORAGE_KEYS = {
   MISTAKES: 'hq_mistakes',
   GACHA_POINTS: 'hq_gacha_points',
   SILVER_TICKETS: 'hq_silver_tickets',
-  SSR_TICKETS: 'hq_ssr_tickets'
+  SSR_TICKETS: 'hq_ssr_tickets',
+  PLAYER_EXP: 'hq_player_exp',
+  PLAYER_LEVEL: 'hq_player_level',
+  BGM_ENABLED: 'hq_bgm_enabled',
+  SFX_ENABLED: 'hq_sfx_enabled'
 };
 
 const state = {
@@ -657,7 +661,11 @@ const state = {
   mistakes: [],
   gachaPoints: 0,
   silverTickets: 0,
-  ssrTickets: 0
+  ssrTickets: 0,
+  playerExp: 0,
+  playerLevel: 1,
+  bgmEnabled: true,
+  sfxEnabled: true
 };
 
 function loadState() {
@@ -671,9 +679,11 @@ function loadState() {
     const savedMistakes = localStorage.getItem(STORAGE_KEYS.MISTAKES);
     if (savedMistakes) state.mistakes = JSON.parse(savedMistakes);
 
-    state.gachaPoints = parseInt(localStorage.getItem(STORAGE_KEYS.GACHA_POINTS) || '0');
-    state.silverTickets = parseInt(localStorage.getItem(STORAGE_KEYS.SILVER_TICKETS) || '0');
     state.ssrTickets = parseInt(localStorage.getItem(STORAGE_KEYS.SSR_TICKETS) || '0');
+    state.playerExp = parseInt(localStorage.getItem(STORAGE_KEYS.PLAYER_EXP) || '0'); // Default to 0
+    state.playerLevel = parseInt(localStorage.getItem(STORAGE_KEYS.PLAYER_LEVEL) || '1'); // Default to 1
+    state.bgmEnabled = localStorage.getItem(STORAGE_KEYS.BGM_ENABLED) !== 'false';
+    state.sfxEnabled = localStorage.getItem(STORAGE_KEYS.SFX_ENABLED) !== 'false';
   } catch (e) {
     console.error('Failed to load state', e);
   }
@@ -683,6 +693,10 @@ function saveGachaState() {
   localStorage.setItem(STORAGE_KEYS.GACHA_POINTS, String(state.gachaPoints));
   localStorage.setItem(STORAGE_KEYS.SILVER_TICKETS, String(state.silverTickets));
   localStorage.setItem(STORAGE_KEYS.SSR_TICKETS, String(state.ssrTickets));
+  localStorage.setItem(STORAGE_KEYS.PLAYER_EXP, String(state.playerExp));
+  localStorage.setItem(STORAGE_KEYS.PLAYER_LEVEL, String(state.playerLevel));
+  localStorage.setItem(STORAGE_KEYS.BGM_ENABLED, String(state.bgmEnabled));
+  localStorage.setItem(STORAGE_KEYS.SFX_ENABLED, String(state.sfxEnabled));
 }
 
 function getState() {
@@ -727,6 +741,115 @@ function addCard(cardId) {
   localStorage.setItem(STORAGE_KEYS.CARDS, JSON.stringify(state.cards));
   // クラウド同期
   if (window.geoFirebase) window.geoFirebase.syncCardToCloud(cardId, state.cards[cardId].level, state.cards[cardId].quantity);
+}
+
+// --- progression.js ---
+function addExp(amount) {
+  state.playerExp += amount;
+  const nextLevelExp = state.playerLevel * 1000;
+
+  if (state.playerExp >= nextLevelExp) {
+    state.playerLevel++;
+    state.playerExp -= nextLevelExp;
+    showLevelUpNotification(state.playerLevel);
+  }
+  saveGachaState();
+  updateProgressionUI();
+}
+
+function playBGM(type) {
+  if (!bgm[type]) return;
+
+  if (!state.bgmEnabled) {
+    if (bgm.current) bgm.current.stop();
+    bgm.current = bgm[type];
+    return;
+  }
+  
+  if (bgm.current === bgm[type] && bgm.current.playing()) return;
+  
+  if (bgm.current) bgm.current.stop();
+  bgm.current = bgm[type];
+  if (bgm.current) bgm.current.play();
+}
+
+function stopBGM() {
+  if (bgm.current) bgm.current.stop();
+  bgm.current = null;
+}
+
+function updateAudioToggles() {
+  const bgmBtn = document.getElementById('toggle-bgm');
+  const bgmKnob = document.getElementById('toggle-bgm-knob');
+  const sfxBtn = document.getElementById('toggle-sfx');
+  const sfxKnob = document.getElementById('toggle-sfx-knob');
+
+  if (bgmBtn && bgmKnob) {
+    if (state.bgmEnabled) {
+      bgmBtn.className = 'w-8 h-4 bg-cyber-neonBlue/40 rounded-full relative transition-colors shadow-neon-blue';
+      bgmKnob.className = 'absolute top-0.5 right-0.5 w-3 h-3 bg-cyber-neonBlue rounded-full transition-all';
+    } else {
+      bgmBtn.className = 'w-8 h-4 bg-slate-700 rounded-full relative transition-colors';
+      bgmKnob.className = 'absolute top-0.5 left-0.5 w-3 h-3 bg-slate-400 rounded-full transition-all';
+    }
+  }
+
+  if (sfxBtn && sfxKnob) {
+    if (state.sfxEnabled) {
+      sfxBtn.className = 'w-8 h-4 bg-cyber-neonBlue/40 rounded-full relative transition-colors shadow-neon-blue';
+      sfxKnob.className = 'absolute top-0.5 right-0.5 w-3 h-3 bg-cyber-neonBlue rounded-full transition-all';
+    } else {
+      sfxBtn.className = 'w-8 h-4 bg-slate-700 rounded-full relative transition-colors';
+      sfxKnob.className = 'absolute top-0.5 left-0.5 w-3 h-3 bg-slate-400 rounded-full transition-all';
+    }
+  }
+}
+
+function getPlayerTitle(level) {
+  if (level >= 50) return "地理の覇者";
+  if (level >= 40) return "日本地図の達人";
+  if (level >= 30) return "地理の専門家";
+  if (level >= 20) return "地理の探究者";
+  if (level >= 10) return "見習い案内人";
+  return "新米旅行者";
+}
+
+function updateProgressionUI() {
+  const levelEl = document.getElementById('player-level');
+  const xpCurrentEl = document.getElementById('player-xp-current');
+  const xpNextEl = document.getElementById('player-xp-next');
+  const xpBarEl = document.getElementById('player-xp-bar');
+  const titleEl = document.getElementById('player-title');
+
+  if (levelEl) levelEl.innerText = `LEVEL ${state.playerLevel}`;
+  if (xpCurrentEl) xpCurrentEl.innerText = state.playerExp;
+  
+  const nextLevelExp = state.playerLevel * 1000;
+  if (xpNextEl) xpNextEl.innerText = nextLevelExp;
+  
+  if (xpBarEl) {
+    const percent = (state.playerExp / nextLevelExp) * 100;
+    xpBarEl.style.width = `${percent}%`;
+  }
+  
+  if (titleEl) titleEl.innerText = `称号: ${getPlayerTitle(state.playerLevel)}`;
+}
+
+function showLevelUpNotification(level) {
+  const toast = document.createElement('div');
+  toast.className = 'fixed top-24 left-1/2 -translate-x-1/2 z-[200] bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-8 py-4 rounded-full font-bold shadow-[0_0_30px_rgba(255,215,0,0.5)] border-2 border-white/20 animate-bounce';
+  toast.innerHTML = `
+    <div class="flex items-center gap-3">
+      <span class="text-2xl">UP!</span>
+      <div>
+        <div class="text-[10px] opacity-80 uppercase tracking-widest font-orbitron">Level Up</div>
+        <div class="text-xl font-orbitron">LEVEL ${level} REACHED</div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  if (sounds.unlock) sounds.unlock.play();
+  setTimeout(() => toast.remove(), 4000);
 }
 
 // --- ui.js ---
@@ -1520,7 +1643,14 @@ let currentDynamicRate = 3;
 let gachaResult = null; // Store the drawn card for showGacha
 
 const sounds = {
-  tap: null, correct: null, error: null, unlock: null, gacha: null
+  tap: null, correct: null, error: null, unlock: null, gacha: null,
+  key: null, delete: null, submit: null
+};
+
+const bgm = {
+  normal: null,
+  boss: null,
+  current: null
 };
 
 function initApp() {
@@ -1528,19 +1658,39 @@ function initApp() {
 
   // Safely initialize sounds
   try {
-    sounds.tap = new Howl({ src: ['https://actions.google.com/sounds/v1/water/wood_block_drop.ogg'], volume: 0.5 });
-    sounds.correct = new Howl({ src: ['https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg'], volume: 0.5 });
-    sounds.error = new Howl({ src: ['https://actions.google.com/sounds/v1/alarms/beep_short.ogg'], volume: 0.4 });
-    sounds.unlock = new Howl({ src: ['https://actions.google.com/sounds/v1/science_fiction/robot_startup.ogg'], volume: 0.8 });
+    sounds.tap = new Howl({ src: ['assets/sounds/kettei.wav'], volume: 0.5 });
+    sounds.key = new Howl({ src: ['assets/sounds/key.wav'], volume: 0.3 });
+    sounds.delete = new Howl({ src: ['assets/sounds/delete.wav'], volume: 0.4 });
+    sounds.submit = new Howl({ src: ['assets/sounds/submit.wav'], volume: 0.5 });
+    sounds.correct = new Howl({ src: ['assets/sounds/seikai.wav'], volume: 0.5 });
+    sounds.error = new Howl({ src: ['assets/sounds/fuseikai.wav'], volume: 0.4 });
+    sounds.unlock = new Howl({ src: ['assets/sounds/seikai.wav'], volume: 0.5 }); // Fallback or reuse
     sounds.gacha = new Howl({ src: ['https://actions.google.com/sounds/v1/magic/magical_sweep.ogg'], volume: 1.0 });
+
+    bgm.normal = new Howl({ src: ['assets/bgm/normal.mp3'], loop: true, volume: 0.4, html5: true });
+    bgm.boss = new Howl({ src: ['assets/bgm/boss.mp3'], loop: true, volume: 0.5, html5: true });
   } catch (e) { console.log('Audio init failed', e); }
+
+  updateAudioToggles();
+
+  updateProgressionUI();
 
   window.app = {
     triggerHaptic: triggerHaptic,
     startSession: startSession,
     navigate: (screen) => {
-      if (sounds.tap && screen !== 'home') sounds.tap.play();
-      if (screen === 'home') currentSession = null;
+      if (sounds.tap && screen !== 'home' && state.sfxEnabled) sounds.tap.play();
+      if (screen === 'home') {
+        currentSession = null;
+        stopBGM();
+      }
+
+      // Ensure header is visible on all screens (except maybe home if previously hidden)
+      const header = document.getElementById('global-header');
+      if (header) {
+        header.classList.remove('hidden');
+        header.style.display = 'flex';
+      }
 
       if (screen === 'quest' && !currentSession) {
         navigateTo('category');
@@ -1548,10 +1698,31 @@ function initApp() {
         navigateTo(screen);
       }
       updateProgressUI();
+      updateProgressionUI(); // Always update RPG UI on navigation
+      if (header) updateAudioToggles(); // Sync toggles
+
       if (screen === 'collection') renderCollection();
       if (screen === 'survey') renderMap('survey-map-container', null, true);
       if (screen === 'boss') startBossBattle();
       if (screen === 'ranking') fetchAndShowRanking();
+    },
+    toggleBGM: () => {
+      state.bgmEnabled = !state.bgmEnabled;
+      saveGachaState();
+      updateAudioToggles();
+      if (state.bgmEnabled) {
+        if (bgm.current) bgm.current.play();
+      } else {
+        if (bgm.current) bgm.current.pause();
+      }
+    },
+    toggleSFX: () => {
+      state.sfxEnabled = !state.sfxEnabled;
+      saveGachaState();
+      updateAudioToggles();
+      Howler.mute(!state.sfxEnabled && !state.bgmEnabled); // Global mute if both off, but Howler.mute affects all. 
+      // Better: we just check state.sfxEnabled before .play()
+      if (state.sfxEnabled && sounds.tap) sounds.tap.play();
     },
     closeGacha: () => {
       document.getElementById('gacha-modal').classList.add('opacity-0');
@@ -1621,9 +1792,9 @@ function handleSelectChar(char) {
   answeredStr += char;
   document.getElementById('quest-answer-box').innerText = answeredStr;
 
-  if (sounds.correct) {
-    sounds.correct.rate(1.0);
-    sounds.correct.play();
+  if (sounds.key && state.sfxEnabled) {
+    sounds.key.rate(0.9 + Math.random() * 0.2); // Variable pitch for better feel
+    sounds.key.play();
   }
 }
 
@@ -1632,6 +1803,7 @@ function handleDeleteChar() {
   triggerHaptic(15);
   answeredStr = answeredStr.slice(0, -1);
   document.getElementById('quest-answer-box').innerText = answeredStr;
+  if (sounds.delete && state.sfxEnabled) sounds.delete.play();
 }
 
 function flashMap(color, durationMs = 400) {
@@ -1661,12 +1833,14 @@ function showAnswerReveal(correctName, durationMs = 1500) {
 
 function handleSubmitAnswer() {
   if (!currentQuestion) return;
+  if (sounds.submit) sounds.submit.play();
 
   if (answeredStr === currentQuestion.name) {
     // 正解
     triggerHaptic(30);
     flashMap('rgba(0, 243, 255, 1)', 500); // 青く光る
     combo++;
+    addExp(100); // RPG EXP gain
     const comboEl = document.getElementById('quest-combo');
     if (comboEl) comboEl.innerText = combo;
 
@@ -1677,7 +1851,7 @@ function handleSubmitAnswer() {
       if (combo > 4) ind.className = 'w-4 h-4 rounded-sm animate-pulse shadow-neon-gold bg-cyber-neonGold';
     }
 
-    if (sounds.unlock) sounds.unlock.play();
+    if (sounds.unlock && state.sfxEnabled) sounds.unlock.play();
     setKanjiPanelDisabled(true);
 
     // セッション結果の記録
@@ -1708,7 +1882,7 @@ function handleSubmitAnswer() {
     if (comboEl) comboEl.innerText = combo;
     const ind = document.getElementById('combo-indicator');
     if (ind) ind.className = 'w-4 h-4 rounded-sm bg-slate-700';
-    if (sounds.error) sounds.error.play();
+    if (sounds.error && state.sfxEnabled) sounds.error.play();
     questMissed = true;
     logMistake(currentQuestion.geoId, answeredStr);
 
@@ -1745,6 +1919,7 @@ function handleClear() {
 }
 
 function startSession(category) {
+  if (sounds.tap) sounds.tap.play();
   console.log('[GeoQuiz] startSession called with:', category);
 
   // --- Build question list ---
@@ -1790,13 +1965,11 @@ function startSession(category) {
     console.error('[GeoQuiz] #screen-quest not found!');
   }
 
-  // Show global header
-  const header = document.getElementById('global-header');
-  if (header) header.classList.remove('hidden');
-
   updateProgressUI();
+  updateProgressionUI();
 
   // --- Start first question ---
+  playBGM('normal');
   nextQuest();
 }
 
@@ -1983,6 +2156,7 @@ function startBossBattle() {
     }
   }, 1000);
 
+  playBGM('boss');
   nextBossQuestion();
 }
 
@@ -2103,7 +2277,7 @@ function handleBossSubmit() {
     const timeBonus = bossTimeLeft * 2;
     bossScore += basePoints + timeBonus;
     document.getElementById('boss-score').innerText = bossScore;
-    if (sounds?.unlock) sounds.unlock.play();
+    if (sounds?.unlock && state.sfxEnabled) sounds.unlock.play();
     nextBossQuestion();
   } else {
     // \u4e0d\u6b63\u89e3\n    bossAnsweredStr = '';
