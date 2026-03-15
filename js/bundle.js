@@ -1675,11 +1675,26 @@ function initApp() {
 
   updateProgressionUI();
 
+  // Visibility API for background audio
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (bgm.current && bgm.current.playing()) {
+        bgm.current.pause();
+        bgm.pausedByVisibility = true;
+      }
+    } else {
+      if (bgm.pausedByVisibility && state.bgmEnabled) {
+        if (bgm.current) bgm.current.play();
+        bgm.pausedByVisibility = false;
+      }
+    }
+  });
+
   window.app = {
     triggerHaptic: triggerHaptic,
     startSession: startSession,
     navigate: (screen) => {
-      if (sounds.tap && screen !== 'home' && state.sfxEnabled) sounds.tap.play();
+      if (sounds.tap && state.sfxEnabled) sounds.tap.play();
       if (screen === 'home') {
         currentSession = null;
         stopBGM();
@@ -1725,6 +1740,7 @@ function initApp() {
       if (state.sfxEnabled && sounds.tap) sounds.tap.play();
     },
     closeGacha: () => {
+      if (sounds.tap && state.sfxEnabled) sounds.tap.play();
       document.getElementById('gacha-modal').classList.add('opacity-0');
       setTimeout(() => {
         document.getElementById('gacha-modal').classList.add('hidden');
