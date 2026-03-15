@@ -2213,7 +2213,12 @@ function renderBossMap() {
 
   svg.selectAll('path').data(topoData.features).enter().append('path')
     .attr('d', path)
-    .attr('fill', '#1a0a0a').attr('stroke', '#7f1d1d').attr('stroke-width', 1);
+    .attr('fill', '#0f172a') // Consistent with Quest background
+    .attr('stroke', '#ff2855') // Neon pink/red for boss alert feel
+    .attr('stroke-width', 1.2)
+    .attr('stroke-linecap', 'round')
+    .attr('stroke-linejoin', 'round')
+    .attr('class', 'transition-colors duration-500');
 
   // \u4e2d\u5fc3\u306b\u8b66\u6212\u8272\u6ce2\u7d0b
   const isLandmarkQ = ['river_shinano', 'mount_hida', 'coast_sanriku'].includes(bossCurrentQ.geoId);
@@ -2275,20 +2280,31 @@ function renderBossKanjiPanel(options) {
 
 function handleBossSelect(char) {
   if (!bossCurrentQ || bossAnsweredStr.length >= bossCurrentQ.name.length) return;
+  triggerHaptic(10);
   bossAnsweredStr += char;
   document.getElementById('boss-answer-box').innerText = bossAnsweredStr;
+
+  if (sounds.key && state.sfxEnabled) {
+    sounds.key.rate(0.85 + Math.random() * 0.2); // Slower/deeper pitch for Boss
+    sounds.key.play();
+  }
 }
 
 function handleBossDelete() {
   if (bossAnsweredStr.length === 0) return;
+  triggerHaptic(15);
   bossAnsweredStr = bossAnsweredStr.slice(0, -1);
   document.getElementById('boss-answer-box').innerText = bossAnsweredStr;
+  if (sounds.delete && state.sfxEnabled) sounds.delete.play();
 }
 
 function handleBossSubmit() {
   if (!bossCurrentQ) return;
+  
+  if (sounds.submit && state.sfxEnabled) sounds.submit.play();
+
   if (bossAnsweredStr === bossCurrentQ.name) {
-    // \u6b63\u89e3: \u6642\u9593\u30dc\u30fc\u30ca\u30b9 + \u30b3\u30f3\u30dc
+    // 正解: 時間ボーナス + コンボ
     const basePoints = 100;
     const timeBonus = bossTimeLeft * 2;
     bossScore += basePoints + timeBonus;
@@ -2296,12 +2312,13 @@ function handleBossSubmit() {
     if (sounds?.unlock && state.sfxEnabled) sounds.unlock.play();
     nextBossQuestion();
   } else {
-    // \u4e0d\u6b63\u89e3\n    bossAnsweredStr = '';
+    // 不正解
     document.getElementById('boss-answer-box').innerText = '';
-    if (sounds?.error) sounds.error.play();
-    // \u30da\u30ca\u30eb\u30c6\u30a3: 5\u79d2\u899a\u5f15
+    if (sounds?.error && state.sfxEnabled) sounds.error.play();
+    // ペナルティ: 5秒差し引き
     bossTimeLeft = Math.max(0, bossTimeLeft - 5);
     document.getElementById('boss-timer').innerText = bossTimeLeft;
+    bossAnsweredStr = '';
   }
 }
 
