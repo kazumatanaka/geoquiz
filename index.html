@@ -403,47 +403,38 @@
                     戻る
                 </button>
             </div>
-            <div id="collection-stats" class="w-full max-w-[1400px] mb-6 shrink-0">
-                <!-- Stats injected by JS -->
-            </div>
-            <div id="collection-grid"
-                class="w-full max-w-[1400px] grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 pb-12">
-                <!-- Cards injected by JS -->
-            </div>
-        </div>
-
-        <!-- Boss Battle Screen -->
+            <div id="collection-stats" class="w-full max-w-[1400px] mb-        <!-- Boss Battle Screen -->
         <div id="screen-boss"
-            class="screen-view hidden w-full h-full flex-col items-center justify-start p-4 md:p-8 max-w-[1400px]">
-            <div class="flex justify-between items-center w-full mb-4">
+            class="screen-view hidden w-full h-full flex-col items-center justify-start p-2 md:p-4 max-w-[1400px]">
+            <div class="flex justify-between items-center w-full mb-2">
                 <div>
                     <h2
-                        class="text-3xl lg:text-4xl font-orbitron font-bold text-red-400 drop-shadow-[0_0_10px_rgba(255,50,50,0.8)] tracking-widest">
+                        class="text-2xl lg:text-3xl font-orbitron font-bold text-red-400 drop-shadow-[0_0_10px_rgba(255,50,50,0.8)] tracking-widest">
                         BOSS BATTLE</h2>
-                    <p class="text-slate-400 font-noto tracking-wider mt-1 text-sm">防衛戦 – 強敌を打ち破れ！</p>
+                    <p class="text-slate-400 font-noto tracking-wider text-[10px] md:text-xs">防衛戦 – 強敌を打ち破れ！</p>
                 </div>
                 <button onclick="app.navigate('home')"
-                    class="px-6 py-2 border border-red-500/50 bg-red-950/40 rounded-full font-bold text-red-400 hover:shadow-[0_0_15px_rgba(255,50,50,0.4)] transition-all tracking-widest text-sm">撃退</button>
+                    class="px-4 py-1.5 border border-red-500/50 bg-red-950/40 rounded-full font-bold text-red-400 hover:shadow-[0_0_15px_rgba(255,50,50,0.4)] transition-all tracking-widest text-xs">撃退</button>
             </div>
 
             <!-- Boss Info Bar -->
-            <div class="w-full flex gap-4 mb-4 flex-wrap">
-                <div class="flex-1 bg-red-950/40 border border-red-700/50 rounded-xl p-3 flex items-center gap-3">
-                    <span class="text-red-400 font-orbitron text-xs tracking-widest">今週の敵:</span>
-                    <span id="boss-area-name" class="text-white font-bold font-noto text-lg">中部地方 強化戦</span>
+            <div class="w-full flex gap-2 mb-2 flex-wrap text-sm">
+                <div class="flex-1 bg-red-950/40 border border-red-700/50 rounded-xl p-2 flex items-center gap-2">
+                    <span class="text-red-400 font-orbitron text-[10px] tracking-widest">今週の敵:</span>
+                    <span id="boss-area-name" class="text-white font-bold font-noto text-base">中部地方 強化戦</span>
                 </div>
-                <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 flex items-center gap-3 min-w-[130px]">
-                    <span class="text-xs text-slate-400 font-orbitron">残時間:</span>
-                    <span id="boss-timer" class="text-2xl font-orbitron font-bold text-red-300">60</span>
+                <div class="bg-slate-900 border border-slate-700 rounded-xl p-2 flex items-center gap-3 min-w-[110px]">
+                    <span class="text-[10px] text-slate-400 font-orbitron">残時間:</span>
+                    <span id="boss-timer" class="text-xl font-orbitron font-bold text-red-300">60</span>
                 </div>
-                <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 flex items-center gap-3 min-w-[130px]">
-                    <span class="text-xs text-slate-400 font-orbitron">SCORE:</span>
-                    <span id="boss-score" class="text-2xl font-orbitron font-bold text-cyber-neonGold">0</span>
+                <div class="bg-slate-900 border border-slate-700 rounded-xl p-2 flex items-center gap-3 min-w-[110px]">
+                    <span class="text-[10px] text-slate-400 font-orbitron">SCORE:</span>
+                    <span id="boss-score" class="text-xl font-orbitron font-bold text-cyber-neonGold">0</span>
                 </div>
             </div>
 
             <!-- Boss Battle Area -->
-            <div class="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0">
+            <div class="w-full flex flex-col lg:flex-row gap-3 flex-1 min-h-0">
                 <!-- Boss Map -->
                 <div class="flex-1 relative rounded-2xl overflow-hidden bg-[#051020] border border-red-900/50 shadow-[inset_0_0_50px_rgba(255,0,0,0.1)]">
                     <div id="boss-map-container" class="w-full h-full bg-cyber-grid bg-[length:30px_30px]"></div>
@@ -452,13 +443,19 @@
                         <div
                             class="px-8 py-2 bg-gradient-to-r from-red-950/80 via-red-900/80 to-red-950/80 border-t-2 border-b-2 border-red-400/80 rounded-full shadow-[0_0_30px_rgba(255,50,50,0.4)] backdrop-blur-md">
                             <span id="boss-flavor"
-                                class="text-white font-bold tracking-wider text-base drop-shadow-lg">ボス戦锏備中...</span>
+                                class="text-white font-bold tracking-wider text-base drop-shadow-lg">ボス戦準備中...</span>
                         </div>
                     </div>
                 </div>
                 <!-- Boss Panel -->
-                <div class="w-full lg:w-[360px] flex-shrink-0 flex flex-col gap-3">
+                <div class="w-full lg:w-[280px] flex-shrink-0 flex flex-col gap-2">
                     <div id="boss-answer-box"
+                        class="h-10 bg-slate-900 border-2 border-red-700/60 rounded-xl flex items-center justify-center text-xl font-bold text-cyber-neonGold font-noto tracking-[0.4em]">
+                    </div>
+                    <div id="boss-kanji-panel" class="grid grid-cols-3 gap-2 flex-1"></div>
+                </div>
+            </div>
+     <div id="boss-answer-box"
                         class="h-12 bg-slate-900 border-2 border-red-700/60 rounded-xl flex items-center justify-center text-2xl font-bold text-cyber-neonGold font-noto tracking-[0.5em]">
                     </div>
                     <div id="boss-kanji-panel" class="grid grid-cols-3 gap-2 flex-1"></div>

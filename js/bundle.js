@@ -2258,8 +2258,8 @@ function renderBossKanjiPanel(options) {
   panel.innerHTML = '';
   options.forEach(char => {
     const btn = document.createElement('button');
-    btn.className = `w-full h-16 bg-red-950/40 border-2 border-red-800/60 rounded-lg
-      text-3xl font-bold font-noto text-red-200 leading-none
+    btn.className = `w-full h-12 md:h-14 bg-red-950/40 border-2 border-red-800/60 rounded-lg
+      text-2xl font-bold font-noto text-red-200 leading-none
       flex items-center justify-center
       hover:border-red-400 hover:bg-red-900/60 hover:text-white
       transition-all duration-150 transform hover:scale-105 active:scale-95`;
@@ -2268,12 +2268,12 @@ function renderBossKanjiPanel(options) {
     panel.appendChild(btn);
   });
 
-  // DEL + SUBMIT\u30dc\u30bf\u30f3
+  // DEL + SUBMITボタン
   const row = document.createElement('div');
-  row.className = 'col-span-3 flex gap-2 mt-1';
+  row.className = 'col-span-3 flex gap-2 mt-0.5';
   row.innerHTML = `
-    <button onclick="handleBossDelete()" class="flex-1 h-12 bg-slate-900/60 border border-slate-600 rounded-lg font-orbitron text-sm text-slate-400 hover:text-white hover:border-slate-400 transition-all">&#x232B; DEL</button>
-    <button onclick="handleBossSubmit()" class="flex-[2] h-12 bg-red-900/60 border-2 border-red-500/70 rounded-lg font-orbitron text-sm font-bold text-red-300 hover:border-red-300 hover:text-white hover:bg-red-800/60 transition-all tracking-widest">&#x25B7; SUBMIT</button>
+    <button onclick="handleBossDelete()" class="flex-1 h-10 bg-slate-900/60 border border-slate-600 rounded-lg font-orbitron text-[10px] text-slate-400 hover:text-white hover:border-slate-400 transition-all uppercase tracking-tighter">&#x232B; DEL</button>
+    <button onclick="handleBossSubmit()" class="flex-[2] h-10 bg-red-900/60 border-2 border-red-500/70 rounded-lg font-orbitron text-xs font-bold text-red-300 hover:border-red-300 hover:text-white hover:bg-red-800/60 transition-all tracking-widest uppercase">&#x25B7; SUBMIT</button>
   `;
   panel.appendChild(row);
 }
