@@ -629,6 +629,216 @@ const geographyMaster = [
       "Lv4: 源平合戦の最終決戦場、壇ノ浦（だんのうら）の舞台",
       "Lv5: 非常に複雑で速い潮流があり、1日約700隻の船が行き交う"
     ]
+  },
+  {
+    "geoId": "cape_soya",
+    "name": "宗谷岬",
+    "kana": "そうやみさき",
+    "type": "cape",
+    "charName": "ソウヤ-ノース",
+    "charImage": "assets/avatars/avatar_ice_1773059882411.png",
+    "region": "hokkaido",
+    "rarity": "N",
+    "flavorText": "日本の最北端、サハリンを望む絶壁の岬",
+    "stats": { "位置": "北海道稚内市", "特徴": "日本最北端" },
+    "charStats": { "power": 35, "defense": 45, "speed": 72 },
+    "relatedKeywords": ["最北端", "稚内", "サハリン"],
+    "dummyKanji": ["岬", "納", "沙", "布", "襟", "裳", "知", "床"],
+    "hiddenFacts": [
+      "Lv2: 日本最北端の地として知られ、記念碑が立っている",
+      "Lv3: 晴れた日には、海の向こうにサハリン（樺太）が見える",
+      "Lv4: 周辺は強い風が吹き抜けることが多く、風力発電も行われている",
+      "Lv5: 北極圏に近い、日本で最も厳しい冬を経験する場所の一つ"
+    ]
+  },
+  {
+    "geoId": "lake_hamana",
+    "name": "浜名湖",
+    "kana": "はまなこ",
+    "type": "lake",
+    "charName": "ハマナ-アクア",
+    "charImage": "assets/avatars/avatar_water_1773059849617.png",
+    "region": "chubu",
+    "rarity": "N",
+    "flavorText": "ウナギ養殖で有名、海とつながる汽水湖",
+    "stats": { "種類": "汽水湖", "名産": "ウナギ・スッポン" },
+    "charStats": { "power": 42, "defense": 52, "speed": 55 },
+    "relatedKeywords": ["ウナギ", "汽水湖", "浜松市"],
+    "dummyKanji": ["名", "古", "屋", "琵", "琶", "霞", "浦", "中", "海"],
+    "hiddenFacts": [
+      "Lv2: 淡水と海水が混ざり合う『汽水湖』で、魚の種類が非常に豊富",
+      "Lv3: 日本のウナギ養殖発祥の地として知られている",
+      "Lv4: 湖畔には浜松市などの都市があり、精密機械工業も盛ん",
+      "Lv5: 地震による津波で海とつながった歴史を持つ"
+    ]
+  },
+  {
+    "geoId": "cape_muroto",
+    "name": "室戸岬",
+    "kana": "むろとみさき",
+    "type": "cape",
+    "charName": "ムロト-ウェーブ",
+    "charImage": "assets/avatars/avatar_water_1773059849617.png",
+    "region": "shikoku",
+    "rarity": "N",
+    "flavorText": "太平洋に突き出した『台風銀座』、荒波が削る豪快な海岸",
+    "stats": { "位置": "高知県", "指定": "世界ジオパーク" },
+    "charStats": { "power": 48, "defense": 65, "speed": 35 },
+    "relatedKeywords": ["台風銀座", "高知県", "ジオパーク"],
+    "dummyKanji": ["岬", "足", "摺", "佐", "多", "潮", "岬", "御", "前"],
+    "hiddenFacts": [
+      "Lv2: 台風の通り道になりやすいため『台風銀座』とも呼ばれる",
+      "Lv3: 地殻変動によって地面が何度も隆起した跡が見られる",
+      "Lv4: 弘法大師（空海）が修行したと言われる洞窟がある",
+      "Lv5: 巨大な白い灯台は、日本の灯台の中でもトップクラスの光達距離を誇る"
+    ]
+  },
+  {
+    "geoId": "lake_shinji",
+    "name": "宍道湖",
+    "kana": "しんじこ",
+    "type": "lake",
+    "charName": "シンジ-ミスト",
+    "charImage": "assets/avatars/avatar_city_1773059899618.png",
+    "region": "chugoku",
+    "rarity": "N",
+    "flavorText": "シジミ漁が盛ん、夕日が美しい島根のシンボル",
+    "stats": { "名産": "ヤマトシジミ (日本一)", "景観": "夕日の絶景" },
+    "charStats": { "power": 32, "defense": 48, "speed": 62 },
+    "relatedKeywords": ["シジミ", "中海", "松江市"],
+    "dummyKanji": ["中", "海", "穴", "道", "琵", "琶", "諏", "訪", "猪"],
+    "hiddenFacts": [
+      "Lv2: ヤマトシジミの漁獲量が日本一の湖として有名",
+      "Lv3: 汽水湖であり、隣の中海（なかうみ）と繋がっている",
+      "Lv4: 湖に浮かぶ嫁ヶ島と夕日のコントラストは日本屈指の美しさ",
+      "Lv5: 宍道湖七珍（しんじこしっちん）と呼ばれる7種の名産品がある"
+    ]
+  },
+  {
+    "geoId": "cape_sata",
+    "name": "佐多岬",
+    "kana": "さたみさき",
+    "type": "cape",
+    "charName": "サタ-サウス",
+    "charImage": "assets/avatars/avatar_fire_1773535917004.png",
+    "region": "kyushu",
+    "rarity": "N",
+    "flavorText": "本土の最南端、亜熱帯の植物が茂る絶景の岬",
+    "stats": { "位置": "鹿児島県大隅半島", "特徴": "本土最南端" },
+    "charStats": { "power": 45, "defense": 42, "speed": 78 },
+    "relatedKeywords": ["最南端", "大隅半島", "種子島"],
+    "dummyKanji": ["佐", "多", "野", "母", "崎", "指", "宿", "都", "井"],
+    "hiddenFacts": [
+      "Lv2: 九州の、そして本土の最南端に位置する岬",
+      "Lv3: 北緯31度線上にあり、ソテツなどの亜熱帯植物が自生している",
+      "Lv4: 太平洋と東シナ海が交わる壮大な海の景色が見られる",
+      "Lv5: 晴れて視界が良い日には、種子島や屋久島が遠くに見える"
+    ]
+  },
+  {
+    "geoId": "strait_tsugaru",
+    "name": "津軽海峡",
+    "kana": "つがるかいきょう",
+    "type": "strait",
+    "charName": "ツガル-トンネル",
+    "charImage": "assets/avatars/avatar_ice_1773059882411.png",
+    "region": "tohoku",
+    "rarity": "R",
+    "flavorText": "本州と北海道を分かつ荒波、海底を通る青函トンネル",
+    "stats": { "海底": "青函トンネル", "接続": "日本海と太平洋" },
+    "charStats": { "power": 62, "defense": 78, "speed": 55 },
+    "relatedKeywords": ["青函トンネル", "青森県", "北海道", "冬景色"],
+    "dummyKanji": ["津", "軽", "軽", "海", "峡", "宗", "谷", "対", "馬"],
+    "hiddenFacts": [
+      "Lv2: 本州（青森）と北海道（函館）の間にある重要な海峡",
+      "Lv3: 世界最大級の海底トンネル『青函トンネル』が地下を通っている",
+      "Lv4: 非常に流れが速く、冬には厳しい寒波が押し寄せる",
+      "Lv5: 国際海峡であり、多くの中央国籍の船も通行する"
+    ]
+  },
+  {
+    "geoId": "channel_bungosuido",
+    "name": "豊後水道",
+    "kana": "ぶんごすいどう",
+    "type": "channel",
+    "charName": "ブンゴ-カレント",
+    "charImage": "assets/avatars/avatar_water_1773059849617.png",
+    "region": "kyushu",
+    "rarity": "R",
+    "flavorText": "九州と四国の間の急流、関サバ・関アジの宝庫",
+    "stats": { "接続": "瀬戸内海と太平洋", "名産": "関サバ・関アジ" },
+    "charStats": { "power": 58, "defense": 45, "speed": 82 },
+    "relatedKeywords": ["大分県", "愛媛県", "急流", "一本釣り"],
+    "dummyKanji": ["豊", "後", "水道", "紀", "伊", "伊", "予", "灘"],
+    "hiddenFacts": [
+      "Lv2: 九州（大分）と四国（愛媛）に挟まれた海域",
+      "Lv3: 潮流が非常に速く、身の締まった高級魚が育つ好漁場",
+      "Lv4: ここで捕れるマサバ・マアジは『関サバ』『関アジ』としてブランド化されている",
+      "Lv5: 足摺岬からの太平洋の荒波が流れ込むダイナミックなエリア"
+    ]
+  },
+  {
+    "geoId": "bay_ise",
+    "name": "伊勢湾",
+    "kana": "いせわん",
+    "type": "bay",
+    "charName": "イセ-ポート",
+    "charImage": "assets/avatars/avatar_city_1773059899618.png",
+    "region": "chubu",
+    "rarity": "R",
+    "flavorText": "中京工業地帯を支える日本有数の巨大湾",
+    "stats": { "産業": "名古屋港 (貨物量日本一)", "湾": "日本有数の広さ" },
+    "charStats": { "power": 55, "defense": 72, "speed": 48 },
+    "relatedKeywords": ["名古屋港", "中京工業地帯", "伊勢神宮"],
+    "dummyKanji": ["三", "河", "大", "阪", "東", "京", "若", "狭", "湾"],
+    "hiddenFacts": [
+      "Lv2: 愛知県と三重県に囲まれた、日本有数の広さを誇る湾",
+      "Lv3: 名古屋港は、日本国内で貨物取扱量がトップクラスの重要港",
+      "Lv4: 木曽三川（木曽・長良・揖斐）などの大河が注ぎ込んでいる",
+      "Lv5: かつて伊勢湾台風という甚大な被害をもたらした自然災害の歴史もある"
+    ]
+  },
+  {
+    "geoId": "sea_ariake",
+    "name": "有明海",
+    "kana": "ありあけかい",
+    "type": "sea",
+    "charName": "アリアケ-タイド",
+    "charImage": "assets/avatars/avatar_earth_v2_1773536009354.png",
+    "region": "kyushu",
+    "rarity": "R",
+    "flavorText": "最大6mの干満差、広大な干潟が育む海苔の産地",
+    "stats": { "特徴": "遠浅の干潟", "名産": "有明海苔" },
+    "charStats": { "power": 42, "defense": 68, "speed": 35 },
+    "relatedKeywords": ["干潟", "ムツゴロウ", "海苔養殖", "干満差"],
+    "dummyKanji": ["八", "代", "橘", "湾", "天", "草", "薩", "摩"],
+    "hiddenFacts": [
+      "Lv2: 日本一の干満の差（最大約6メートル）がある海",
+      "Lv3: 引き潮の時には広大な泥の干潟が現れ、ムツゴロウなどの固有種が生息する",
+      "Lv4: 日本の海苔生産の中心地であり、品質の高い海苔が全国に出荷される",
+      "Lv5: 周囲を複数の県に囲まれ、筑後川などの大河が注ぐ豊かな内海"
+    ]
+  },
+  {
+    "geoId": "lake_inawashiro",
+    "name": "猪苗代湖",
+    "kana": "いなわしろこ",
+    "type": "lake",
+    "charName": "イナワシロ-ミラー",
+    "charImage": "assets/avatars/avatar_sky_v2_1773535974703.png",
+    "region": "tohoku",
+    "rarity": "R",
+    "flavorText": "『天鏡湖』の別名を持つ、磐梯山を映す福島の名湖",
+    "stats": { "標高": "約514m (高地の湖)", "面積": "全国4位" },
+    "charStats": { "power": 38, "defense": 75, "speed": 42 },
+    "relatedKeywords": ["磐梯山", "天鏡湖", "野口英世"],
+    "dummyKanji": ["猪", "苗", "代", "十", "和田", "田", "沢", "洞", "爺"],
+    "hiddenFacts": [
+      "Lv2: 湖面が鏡のように美しいことから『天鏡湖（てんきょうこ）』とも呼ばれる",
+      "Lv3: 日本で4番目に広い面積を持つ、東北屈指の大湖",
+      "Lv4: 磐梯（ばんだい）山の麓にあり、四季折々の美しい景色が楽しめる",
+      "Lv5: 野口英世の出身地である猪苗代町に隣接している"
+    ]
   }
 ];
 
