@@ -188,6 +188,42 @@ async function fetchCardsFromCloud() {
 }
 
 // ============================================================
+// Firestore: ステータス (stats)
+// ============================================================
+
+async function syncStatsToCloud(level, exp) {
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return;
+    try {
+        await profileDoc.set({
+            level,
+            exp,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+    } catch (e) {
+        console.warn('[GeoQuiz] 同期失敗 (stats):', e);
+    }
+}
+
+async function fetchStatsFromCloud() {
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return null;
+    try {
+        const doc = await profileDoc.get();
+        if (doc.exists) {
+            return {
+                level: doc.data().level || 1,
+                exp: doc.data().exp || 0
+            };
+        }
+        return null;
+    } catch (e) {
+        console.warn('[GeoQuiz] 取得失敗 (stats):', e);
+        return null;
+    }
+}
+
+// ============================================================
 // Firestore: ボス戦スコア (boss_scores) - 全ユーザー共有
 // ============================================================
 
@@ -251,5 +287,7 @@ window.geoFirebase = {
     fetchCardsFromCloud,
     submitBossScore,
     fetchRanking,
-    calcNextReviewDate
+    calcNextReviewDate,
+    syncStatsToCloud,
+    fetchStatsFromCloud
 };

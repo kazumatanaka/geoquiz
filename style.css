@@ -251,27 +251,27 @@ body {
 }
 
 /* 脈打つアニメーション (Target Area) */
+/* Questモード用の青い脈打ち */
+@keyframes questPulse {
+    0% { filter: drop-shadow(0 0 5px #00f3ff); stroke-width: 3px; }
+    50% { filter: drop-shadow(0 0 20px #00f3ff); stroke-width: 6px; }
+    100% { filter: drop-shadow(0 0 5px #00f3ff); stroke-width: 3px; }
+}
+
+/* Bossモード用の赤い脈打ち */
 @keyframes mapPulse {
-    0% {
-        filter: drop-shadow(0 0 5px #ff3366);
-        stroke-width: 2px;
-    }
+    0% { filter: drop-shadow(0 0 5px #ff3366); stroke-width: 3px; }
+    50% { filter: drop-shadow(0 0 20px #ff3366); stroke-width: 6px; }
+    100% { filter: drop-shadow(0 0 5px #ff3366); stroke-width: 3px; }
+}
 
-    50% {
-        filter: drop-shadow(0 0 20px #ff3366);
-        stroke-width: 4px;
-    }
-
-    100% {
-        filter: drop-shadow(0 0 5px #ff3366);
-        stroke-width: 2px;
-    }
+.animate-quest-pulse {
+    animation: questPulse 1.5s infinite ease-in-out;
 }
 
 .animate-map-pulse {
     animation: mapPulse 1.5s infinite ease-in-out;
 }
-
 /* Gacha Animations */
 .gacha-enter {
     opacity: 1 !important;
