@@ -1813,6 +1813,30 @@ function initApp() {
     navigateTo('home');
   };
 
+  // Logout / Switch User
+  window.app.logout = () => {
+    if (sounds.confirm) sounds.confirm.play();
+    if (window.geoFirebase) window.geoFirebase.setProfile(null);
+    
+    // Reset state to defaults
+    state.progress = {};
+    state.cards = {};
+    state.mistakes = [];
+    state.playerExp = 0;
+    state.playerLevel = 1;
+    
+    updateProgressUI();
+    updateProgressionUI();
+    
+    const statusEl = document.getElementById('firebase-status');
+    if (statusEl) {
+      statusEl.innerText = 'OFFLINE';
+      statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-slate-700 text-slate-400 tracking-widest';
+    }
+
+    navigateTo('login');
+  };
+
   // Check if profile already selected
   const savedProfile = window.geoFirebase.getSelectedProfile();
   if (savedProfile) {
