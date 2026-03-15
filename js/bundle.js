@@ -881,6 +881,20 @@ function navigateTo(screenId) {
       header.classList.add('hidden');
     } else {
       header.classList.remove('hidden');
+      // In Boss Battle, hide Title and EXP to maximize map area
+      if (screenId === 'boss') {
+        header.classList.add('header-compact');
+        const centerInfo = document.getElementById('header-center-info');
+        const rightInfo = document.getElementById('header-right-info');
+        if (centerInfo) centerInfo.classList.add('hidden');
+        if (rightInfo) rightInfo.classList.add('hidden');
+      } else {
+        header.classList.remove('header-compact');
+        const centerInfo = document.getElementById('header-center-info');
+        const rightInfo = document.getElementById('header-right-info');
+        if (centerInfo) centerInfo.classList.remove('hidden');
+        if (rightInfo) rightInfo.classList.remove('hidden');
+      }
     }
   }
 }
@@ -1935,7 +1949,7 @@ function handleClear() {
 }
 
 function startSession(category) {
-  if (sounds.tap) sounds.tap.play();
+  if (sounds.tap && state.sfxEnabled) sounds.tap.play();
   console.log('[GeoQuiz] startSession called with:', category);
 
   // --- Build question list ---

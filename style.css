@@ -615,3 +615,15 @@ body {
     10% { transform: translate(70%, 70%) rotate(45deg); }
     100% { transform: translate(70%, 70%) rotate(45deg); }
 }
+
+/* Header Compact Mode for Boss Battle */
+#global-header.header-compact {
+    height: 60px !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+#global-header.header-compact #header-center-info,
+#global-header.header-compact #header-right-info {
+    display: none !important;
+}
