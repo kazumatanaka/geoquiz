@@ -4973,13 +4973,13 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
       },
       {
         type: "Feature",
-        properties: { id: "range_kitami", type: "mountain" },
-        geometry: { type: "LineString", coordinates: [[143.0, 44.0], [143.2, 44.8]] }
+        properties: { id: "range_kitami", type: "point" },
+        geometry: { type: "Point", coordinates: [143.0, 44.4] }
       },
       {
         type: "Feature",
-        properties: { id: "range_teshio", type: "mountain" },
-        geometry: { type: "LineString", coordinates: [[142.0, 44.2], [142.1, 44.9]] }
+        properties: { id: "range_teshio", type: "point" },
+        geometry: { type: "Point", coordinates: [142.0, 44.6] }
       },
       {
         type: "Feature",
@@ -5175,6 +5175,101 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
         type: "Feature",
         properties: { id: "strait_kanmon", type: "point" },
         geometry: { type: "Point", coordinates: [130.95, 33.95] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_kanto", type: "point" },
+        geometry: { type: "Point", coordinates: [139.7, 36.0] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_nobi", type: "point" },
+        geometry: { type: "Point", coordinates: [136.7, 35.3] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_ishikari", type: "point" },
+        geometry: { type: "Point", coordinates: [141.6, 43.1] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_kyoto", type: "point" },
+        geometry: { type: "Point", coordinates: [135.7, 35.0] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_nara", type: "point" },
+        geometry: { type: "Point", coordinates: [135.8, 34.6] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_kofu", type: "point" },
+        geometry: { type: "Point", coordinates: [138.6, 35.6] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "range_hidaka", type: "point" },
+        geometry: { type: "Point", coordinates: [142.8, 42.5] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "range_yubari", type: "point" },
+        geometry: { type: "Point", coordinates: [142.2, 43.1] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_nagano", type: "point" },
+        geometry: { type: "Point", coordinates: [138.2, 36.6] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_matsumoto", type: "point" },
+        geometry: { type: "Point", coordinates: [137.9, 36.2] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_aizu", type: "point" },
+        geometry: { type: "Point", coordinates: [139.9, 37.5] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_yamagata", type: "point" },
+        geometry: { type: "Point", coordinates: [140.3, 38.3] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_tsukushi", type: "point" },
+        geometry: { type: "Point", coordinates: [130.5, 33.3] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_osaka", type: "point" },
+        geometry: { type: "Point", coordinates: [135.5, 34.6] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_echigo", type: "point" },
+        geometry: { type: "Point", coordinates: [139.0, 37.8] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "plain_sendai", type: "point" },
+        geometry: { type: "Point", coordinates: [140.9, 38.2] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "bay_tokyo", type: "point" },
+        geometry: { type: "Point", coordinates: [139.8, 35.5] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "bay_osaka", type: "point" },
+        geometry: { type: "Point", coordinates: [135.3, 34.6] }
+      },
+      {
+        type: "Feature",
+        properties: { id: "basin_kamikawa", type: "point" },
+        geometry: { type: "Point", coordinates: [142.4, 43.8] }
       }
     ]
   };
@@ -6438,35 +6533,39 @@ function renderBossMap() {
     .attr('viewBox', `0 0 ${width} ${height}`)
     .attr('class', 'w-full h-full overflow-visible');
 
+  // Higher scale for more detailed view
   const projection = d3.geoMercator().center([136.5, 35.5]).scale(1750).translate([width / 2, height / 2]);
   const path = d3.geoPath().projection(projection);
   const topoData = topojson.feature(JAPAN_TOPOJSON, JAPAN_TOPOJSON.objects.japan);
 
   svg.selectAll('path').data(topoData.features).enter().append('path')
     .attr('d', path)
-    .attr('fill', '#0f172a') // Consistent with Quest background
-    .attr('stroke', '#ff2855') // Neon pink/red for boss alert feel
+    .attr('fill', '#0f172a')
+    .attr('stroke', '#ff2855')
     .attr('stroke-width', 1.2)
     .attr('stroke-linecap', 'round')
     .attr('stroke-linejoin', 'round')
     .attr('class', 'transition-colors duration-500');
 
-  // \u4e2d\u5fc3\u306b\u8b66\u6212\u8272\u6ce2\u7d0b
-  const isLandmarkQ = ['river_shinano', 'mount_hida', 'coast_sanriku'].includes(bossCurrentQ.geoId);
+  if (!bossCurrentQ) return;
+
   let center = null;
-  if (isLandmarkQ) {
-    // landmark centroid from custom coords
-    const coordMap = {
-      river_shinano: [138.5, 37.0], mount_hida: [137.2, 36.4], coast_sanriku: [141.8, 39.5]
-    };
-    if (coordMap[bossCurrentQ.geoId]) {
-      center = projection(coordMap[bossCurrentQ.geoId]);
+  // 1. Try to find in customLandmarks
+  const isLandmark = (geoId) => customLandmarks.features.some(f => f.properties.id === geoId);
+  const feature = customLandmarks.features.find(f => f.properties.id === bossCurrentQ.geoId);
+  
+  if (feature) {
+    center = path.centroid(feature);
+  } 
+  
+  // 2. Fallback to Prefecture mapping
+  if (!center || isNaN(center[0])) {
+    const prefs = geoToPrefecture[bossCurrentQ.geoId];
+    if (prefs && prefs.length > 0) {
+      // Find the first matching prefecture in topoData
+      const feat = topoData.features.find(f => prefs.includes(f.properties.nam));
+      if (feat) center = path.centroid(feat);
     }
-  }
-  if (!center) {
-    const geoToPref = { hokkaido_region: ['Hokkaido'] };
-    const feat = topoData.features.find(f => geoToPref[bossCurrentQ.geoId]?.includes(f.properties.nam));
-    if (feat) center = path.centroid(feat);
   }
 
   if (center && !isNaN(center[0])) {
