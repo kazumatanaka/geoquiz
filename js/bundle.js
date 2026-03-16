@@ -8315,7 +8315,7 @@ const geographyMaster = [
     "kana": "ながのぼんち",
     "type": "basin",
     "charName": "ナガノ-アップル",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_nagano_basin_r.png",
     "region": "chubu",
     "rarity": "R",
     "flavorText": "善光寺平とも呼ばれる、千曲川沿いの豊かな盆地",
