@@ -152,7 +152,7 @@ async function fetchMistakesFromCloud() {
     if (!profileDoc) return [];
     try {
         console.log(`[GeoQuiz] Fetching mistakes for: ${selectedProfile}...`);
-        const snap = await profileDoc.collection('mistakes').orderBy('timestamp', 'desc').limit(200).get();
+        const snap = await profileDoc.collection('mistakes').limit(200).get();
         return snap.docs.map(doc => ({
             geoId: doc.data().geoId,
             tappedDummy: doc.data().tappedDummy,
