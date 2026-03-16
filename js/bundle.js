@@ -8274,7 +8274,7 @@ const geographyMaster = [
     "kana": "つくしへいや",
     "type": "plain",
     "charName": "ツクシ-ライス",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_chikushisan_r.png",
     "region": "kyushu",
     "rarity": "SR",
     "flavorText": "九州最大級の穀倉地帯、筑後川が潤す水田地帯",
