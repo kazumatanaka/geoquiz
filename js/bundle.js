@@ -7951,7 +7951,7 @@ const geographyMaster = [
     "kana": "たんばこうち",
     "type": "mountain",
     "charName": "タンバ-ミスト",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_tanbasan_sr.png",
     "region": "kinki",
     "rarity": "N",
     "flavorText": "京都・兵庫にまたがる、霧深い高原地帯",
