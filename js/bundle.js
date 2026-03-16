@@ -11320,6 +11320,7 @@ function nextBossQuestion() {
   bossAnsweredStr = '';
 
   const flavorEl = document.getElementById('boss-flavor');
+  if (flavorEl) flavorEl.innerText = bossCurrentQ.flavorText;
   renderBossMap();
 
   // \u30ab\u30f3\u30b8\u30d1\u30cd\u30eb\u751f\u6210
