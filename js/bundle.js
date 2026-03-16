@@ -6077,7 +6077,7 @@ function initApp() {
 
       if (!fetchFailed && cloudProgress && Object.keys(cloudProgress).length > 0) {
         for (const geoId in cloudProgress) {
-          if (geoId === '_error') continue;
+          if (geoId === '_error') continue; // Skip poison pill
           const cloudItem = cloudProgress[geoId];
           const localItem = state.progress[geoId];
           // Take the one with higher mastery or newer date
@@ -6090,6 +6090,7 @@ function initApp() {
       // Merge Cards
       if (cloudCards && Object.keys(cloudCards).length > 0) {
         for (const cardId in cloudCards) {
+          if (cardId === '_error') continue; // Skip poison pill
           const cloudCard = cloudCards[cardId];
           const localCard = state.cards[cardId];
           // Support both 'level' and 'cardLevel' (from cloud)

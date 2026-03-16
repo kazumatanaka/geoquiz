@@ -292,6 +292,7 @@ async function syncFullProfileToCloud(state) {
 
         // Sync Cards
         for (const cardId in state.cards) {
+            if (cardId === '_error') continue; // Prevent syncing poison pill
             const c = state.cards[cardId];
             const cardDoc = profileDoc.collection('cards').doc(cardId);
             batch.set(cardDoc, {
