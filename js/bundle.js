@@ -11323,7 +11323,11 @@ function nextBossQuestion() {
   if (flavorEl) flavorEl.innerText = bossCurrentQ.flavorText;
 
   // \u30dc\u30b9\u30de\u30c3\u30d7: \u8b66\u6212\u8272\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3
-  renderBossMap();
+  try {
+    renderBossMap();
+  } catch (e) {
+    console.error('[GeoQuiz] renderBossMap failed:', e);
+  }
 
   // \u30ab\u30f3\u30b8\u30d1\u30cd\u30eb\u751f\u6210
   const targetChars = bossCurrentQ.name.split('');
@@ -11402,15 +11406,19 @@ function renderBossKanjiPanel(options) {
   }
   panel.innerHTML = '';
   options.forEach(char => {
-    const btn = document.createElement('button');
-    btn.className = `w-full h-12 md:h-14 bg-red-950/40 border-2 border-red-800/60 rounded-lg
-      text-2xl font-bold font-noto text-red-200 leading-none
-      flex items-center justify-center
-      hover:border-red-400 hover:bg-red-900/60 hover:text-white
-      transition-all duration-150 transform hover:scale-105 active:scale-95`;
-    btn.innerHTML = `<span>${char}</span>`;
-    btn.onclick = () => handleBossSelect(char);
-    panel.appendChild(btn);
+    try {
+      const btn = document.createElement('button');
+      btn.className = `w-full h-12 md:h-14 bg-red-950/40 border-2 border-red-800/60 rounded-lg
+        text-2xl font-bold font-noto text-red-200 leading-none
+        flex items-center justify-center
+        hover:border-red-400 hover:bg-red-900/60 hover:text-white
+        transition-all duration-150 transform hover:scale-105 active:scale-95`;
+      btn.innerHTML = `<span>${char}</span>`;
+      btn.onclick = () => handleBossSelect(char);
+      panel.appendChild(btn);
+    } catch (err) {
+      console.error('[GeoQuiz] Error appending kanji button:', err);
+    }
   });
 
   // DEL + SUBMITボタン
