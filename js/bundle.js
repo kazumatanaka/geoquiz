@@ -851,7 +851,7 @@ const geographyMaster = [
     "kana": "わかさわん",
     "type": "bay",
     "charName": "ワカサ-ブルー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_wakasabay_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "日本海側最大のリアス海岸、古くは『御食国』",
