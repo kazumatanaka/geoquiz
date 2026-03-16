@@ -1105,7 +1105,7 @@ const geographyMaster = [
     "kana": "すわこ",
     "type": "lake",
     "charName": "スワ-ミラー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_suwa_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "長野県最大の湖、精密機械工業の拠点に囲まれる",
