@@ -219,7 +219,7 @@ body {
     #boss-kanji-panel {
         grid-template-columns: repeat(6, 1fr) !important;
         gap: 0.15rem !important;
-        overflow-y: auto !important;
+        overflow: visible !important;
     }
 
     #boss-kanji-panel button {

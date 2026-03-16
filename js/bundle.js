@@ -11410,7 +11410,7 @@ function renderBossKanjiPanel(options) {
 
   // DEL + SUBMITボタン
   const row = document.createElement('div');
-  row.className = 'col-span-3 flex gap-2 mt-0.5';
+  row.className = 'col-span-full flex gap-2 mt-0.5';
   row.innerHTML = `
     <button onclick="handleBossDelete()" class="flex-1 h-10 bg-slate-900/60 border border-slate-600 rounded-lg font-orbitron text-[10px] text-slate-400 hover:text-white hover:border-slate-400 transition-all uppercase tracking-tighter">&#x232B; DEL</button>
     <button onclick="handleBossSubmit()" class="flex-[2] h-10 bg-red-900/60 border-2 border-red-500/70 rounded-lg font-orbitron text-xs font-bold text-red-300 hover:border-red-300 hover:text-white hover:bg-red-800/60 transition-all tracking-widest uppercase">&#x25B7; SUBMIT</button>
