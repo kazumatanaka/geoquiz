@@ -10087,8 +10087,13 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
   const drawFeatures = (topo) => {
     const geojson = topojson.feature(topo, topo.objects.japan);
 
-    const projection = d3.geoMercator()
-      .fitExtent([[10, 10], [width - 50, height - 10]], geojson);
+    const projection = d3.geoMercator();
+    if (isHistoryMode) {
+      projection.fitExtent([[10, 10], [width - 50, height - 10]], geojson);
+    } else {
+      // BOSS戦と同じ固定センター・高倍率設定を適用
+      projection.center([136.5, 35.5]).scale(1750).translate([width / 2, height / 2]);
+    }
 
     const path = d3.geoPath().projection(projection);
 
