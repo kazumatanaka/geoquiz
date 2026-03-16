@@ -640,7 +640,7 @@ const geographyMaster = [
     "kana": "でわさんち",
     "type": "mountain",
     "charName": "デワ-フォレスト",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_dewasan_r.png",
     "region": "tohoku",
     "rarity": "R",
     "flavorText": "山形県を南北に走る山地、日本海からの風を遮る",
