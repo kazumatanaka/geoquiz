@@ -11382,15 +11382,15 @@ function renderBossMap() {
 
   if (center && !isNaN(center[0])) {
     const r1 = svg.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 4)
-      .attr('fill', 'none').attr('stroke', 'rgba(255,80,80,0.9)').attr('stroke-width', 2).attr('pointer-events', 'none');
+      .attr('fill', 'none').attr('stroke', 'rgba(0,255,255,0.9)').attr('stroke-width', 2).attr('pointer-events', 'none');
     r1.node().innerHTML = `<animate attributeName="r" from="4" to="50" dur="1.5s" repeatCount="indefinite"/>
       <animate attributeName="stroke-opacity" from="0.9" to="0" dur="1.5s" repeatCount="indefinite"/>`;
     const r2 = svg.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 4)
-      .attr('fill', 'none').attr('stroke', 'rgba(255,150,50,0.7)').attr('stroke-width', 1.5).attr('pointer-events', 'none');
+      .attr('fill', 'none').attr('stroke', 'rgba(0,200,255,0.7)').attr('stroke-width', 1.5).attr('pointer-events', 'none');
     r2.node().innerHTML = `<animate attributeName="r" from="4" to="50" dur="1.5s" begin="0.75s" repeatCount="indefinite"/>
       <animate attributeName="stroke-opacity" from="0.7" to="0" dur="1.5s" begin="0.75s" repeatCount="indefinite"/>`;
     svg.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 6)
-      .attr('fill', 'rgba(255,80,80,1)').attr('pointer-events', 'none');
+      .attr('fill', 'rgba(0,255,255,1)').attr('pointer-events', 'none');
   }
 }
 
