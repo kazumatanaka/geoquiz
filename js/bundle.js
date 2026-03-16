@@ -9368,6 +9368,17 @@ const geoToPrefecture = {
   "kyushu": ["Fukuoka Ken", "Saga Ken", "Nagasaki Ken", "Kumamoto Ken", "Oita Ken", "Miyazaki Ken", "Kagoshima Ken"],
   "lake_biwa": ["Shiga Ken"],
   "lake_suwa": ["Nagano Ken"],
+  "lake_shinji": ["Shimane Ken"],
+  "lake_akan": ["Hokkaido"],
+  "lake_inawashiro": ["Fukushima Ken"],
+  "lake_nakaumi": ["Shimane Ken", "Tottori Ken"],
+  "lake_saroma": ["Hokkaido"],
+  "lake_shikotsu": ["Hokkaido"],
+  "lake_ikeda": ["Kagoshima Ken"],
+  "lake_kussharo": ["Hokkaido"],
+  "lake_mashu": ["Hokkaido"],
+  "lake_chuzenji": ["Tochigi Ken"],
+  "lake_hamana": ["Shizuoka Ken"],
   "lake_kasumigaura": ["Ibaraki Ken"],
   "lake_toyako": ["Hokkaido"],
   "lake_towadako": ["Aomori Ken", "Akita Ken"],
@@ -9864,6 +9875,171 @@ const customLandmarks = {
       type: "Feature",
       properties: { id: "basin_kamikawa", type: "point" },
       geometry: { type: "Point", coordinates: [142.4, 43.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_shinji", type: "point" },
+      geometry: { type: "Point", coordinates: [133.0, 35.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_akan", type: "point" },
+      geometry: { type: "Point", coordinates: [144.1, 43.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_hamana", type: "point" },
+      geometry: { type: "Point", coordinates: [137.6, 34.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_inawashiro", type: "point" },
+      geometry: { type: "Point", coordinates: [140.1, 37.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_saroma", type: "point" },
+      geometry: { type: "Point", coordinates: [143.8, 44.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_kussharo", type: "point" },
+      geometry: { type: "Point", coordinates: [144.3, 43.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_mashu", type: "point" },
+      geometry: { type: "Point", coordinates: [144.5, 43.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_shikotsu", type: "point" },
+      geometry: { type: "Point", coordinates: [141.3, 42.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_nakaumi", type: "point" },
+      geometry: { type: "Point", coordinates: [133.2, 35.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_biwa", type: "point" },
+      geometry: { type: "Point", coordinates: [136.0, 35.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_shima", type: "point" },
+      geometry: { type: "Point", coordinates: [136.8, 34.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_oshika", type: "point" },
+      geometry: { type: "Point", coordinates: [141.5, 38.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_shimane", type: "point" },
+      geometry: { type: "Point", coordinates: [133.0, 35.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "cape_inuwasaki", type: "point" },
+      geometry: { type: "Point", coordinates: [140.8, 35.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "cape_shionomisaki", type: "point" },
+      geometry: { type: "Point", coordinates: [135.7, 33.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_tokachi", type: "point" },
+      geometry: { type: "Point", coordinates: [143.3, 42.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_teshio", type: "point" },
+      geometry: { type: "Point", coordinates: [141.8, 44.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_omono", type: "point" },
+      geometry: { type: "Point", coordinates: [140.1, 39.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_mogami", type: "point" },
+      geometry: { type: "Point", coordinates: [139.8, 38.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_agano", type: "point" },
+      geometry: { type: "Point", coordinates: [139.1, 37.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_arakawa", type: "point" },
+      geometry: { type: "Point", coordinates: [139.8, 35.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_tamagawa", type: "point" },
+      geometry: { type: "Point", coordinates: [139.7, 35.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_fuji", type: "point" },
+      geometry: { type: "Point", coordinates: [138.6, 35.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_tenryu", type: "point" },
+      geometry: { type: "Point", coordinates: [137.8, 34.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_oi", type: "point" },
+      geometry: { type: "Point", coordinates: [138.2, 34.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_jintsu", type: "point" },
+      geometry: { type: "Point", coordinates: [137.2, 36.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_joganji", type: "point" },
+      geometry: { type: "Point", coordinates: [137.2, 36.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_kinokawa", type: "point" },
+      geometry: { type: "Point", coordinates: [135.1, 34.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_kumano", type: "point" },
+      geometry: { type: "Point", coordinates: [136.0, 33.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_gonogawa", type: "point" },
+      geometry: { type: "Point", coordinates: [132.4, 35.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_yoshinogawa", type: "point" },
+      geometry: { type: "Point", coordinates: [134.6, 34.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_kumagawa", type: "point" },
+      geometry: { type: "Point", coordinates: [130.5, 32.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_oyodogawa", type: "point" },
+      geometry: { type: "Point", coordinates: [131.4, 31.9] }
     }
   ]
 };
