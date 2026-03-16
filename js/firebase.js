@@ -253,7 +253,7 @@ async function fetchStatsFromCloud() {
             };
         }
         console.log('[GeoQuiz] No stats found on cloud for this profile');
-        return null;
+        return {}; 
     } catch (e) {
         console.error('[GeoQuiz] Cloud Fetch Error (stats):', e);
         return { _error: true };
