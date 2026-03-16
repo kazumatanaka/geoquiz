@@ -470,7 +470,7 @@ const geographyMaster = [
     "kana": "あかいしさんみゃく",
     "type": "mountain",
     "charName": "アカイシ・ウォール",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_akaishisan_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "南アルプス、鋭くそびえる『南の巨壁』",
