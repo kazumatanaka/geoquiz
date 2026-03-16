@@ -8357,7 +8357,7 @@ const geographyMaster = [
     "kana": "こんせんだいち",
     "type": "plateau",
     "charName": "コンセン-ミルク",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_konsensan_sr.png",
     "region": "hokkaido",
     "rarity": "R",
     "flavorText": "霧に包まれる広大な牧草地、大規模酪農の聖地",
