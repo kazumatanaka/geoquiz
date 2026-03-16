@@ -6057,6 +6057,14 @@ function initApp() {
           (cloudStats && cloudStats._error)
       );
       
+      console.log('[GeoQuiz] Debug - Fetch Results:', {
+          progress: !!cloudProgress, progressError: !!(cloudProgress && cloudProgress._error),
+          cards: !!cloudCards, cardsError: !!(cloudCards && cloudCards._error),
+          stats: !!cloudStats, statsError: !!(cloudStats && cloudStats._error),
+          mistakes: !!cloudMistakes, mistakesError: !!(cloudMistakes && cloudMistakes._error)
+      });
+      console.log('[GeoQuiz] Debug - fetchFailed:', fetchFailed);
+      
       const mistakesFailed = cloudMistakes && cloudMistakes._error;
       
       if (fetchFailed) {
