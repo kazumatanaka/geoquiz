@@ -4631,6 +4631,8 @@ function updateProgressionUI() {
   const titleEl = document.getElementById('player-title');
 
   if (levelEl) levelEl.innerText = `LEVEL ${state.playerLevel}`;
+  const headerLevelEl = document.getElementById('player-level-header');
+  if (headerLevelEl) headerLevelEl.innerText = state.playerLevel;
   if (xpCurrentEl) xpCurrentEl.innerText = state.playerExp;
   
   const nextLevelExp = state.playerLevel * 1000;
