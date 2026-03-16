@@ -8152,7 +8152,7 @@ const geographyMaster = [
     "kana": "とかちへいや",
     "type": "plain",
     "charName": "トカチ-ファーム",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_tokachi_plain_sr.png",
     "region": "hokkaido",
     "rarity": "SR",
     "flavorText": "日本最大の畑作・酪農地帯、『日本の食糧基地』",
