@@ -6090,6 +6090,14 @@ function initApp() {
       // Persist the merged state back to local storage
       persistAllState();
       
+      // BIDIRECTIONAL SYNC: 
+      // After merging cloud data into local state, push the most complete version back to cloud.
+      // This helps in cases where local play happened while offline, or data was partially missing on cloud.
+      if (window.geoFirebase.syncFullProfileToCloud) {
+          console.log('[GeoQuiz] Pushing merged state back to cloud...');
+          await window.geoFirebase.syncFullProfileToCloud(state);
+      }
+
       if (statusEl) {
         statusEl.innerText = 'ONLINE';
         statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';

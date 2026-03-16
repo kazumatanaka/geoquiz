@@ -258,6 +258,52 @@ async function fetchStatsFromCloud() {
     }
 }
 
+async function syncFullProfileToCloud(state) {
+    await waitForAuth();
+    const profileDoc = getProfileDoc();
+    if (!profileDoc) return;
+
+    try {
+        console.log('[GeoQuiz] Starting Full Cloud Sync (Upload)...');
+        const batch = db.batch();
+
+        // Sync Stats
+        batch.set(profileDoc, {
+            level: state.playerLevel || 1,
+            exp: state.playerExp || 0,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+
+        // Sync Progress (limited to avoid huge batches, though GeoQuiz data is small)
+        for (const geoId in state.progress) {
+            const p = state.progress[geoId];
+            const logDoc = profileDoc.collection('learning_logs').doc(geoId);
+            batch.set(logDoc, {
+                geoId,
+                masteryLevel: p.masteryLevel,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+        }
+
+        // Sync Cards
+        for (const cardId in state.cards) {
+            const c = state.cards[cardId];
+            const cardDoc = profileDoc.collection('cards').doc(cardId);
+            batch.set(cardDoc, {
+                cardId,
+                cardLevel: c.level || 1,
+                quantity: c.quantity || 1,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+        }
+
+        await batch.commit();
+        console.log('[GeoQuiz] Full Cloud Sync Completed.');
+    } catch (e) {
+        console.error('[GeoQuiz] Full Sync Failed:', e);
+    }
+}
+
 // ============================================================
 // Firestore: ボス戦スコア (boss_scores) - 全ユーザー共有
 // ============================================================
@@ -325,5 +371,6 @@ window.geoFirebase = {
     fetchRanking,
     calcNextReviewDate,
     syncStatsToCloud,
-    fetchStatsFromCloud
+    fetchStatsFromCloud,
+    syncFullProfileToCloud
 };
