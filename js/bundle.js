@@ -10106,12 +10106,14 @@ function navigateTo(screenId) {
   }
 
   // Screen-specific BGM transitions
-  if (screenId === 'home') {
+  if (screenId === 'home' || screenId === 'login') {
     playBGM('menu');
   } else if (screenId === 'category') {
     playBGM('category');
   } else if (['survey', 'collection', 'ranking'].includes(screenId)) {
     playBGM('others');
+  } else if (screenId === 'boss') {
+    playBGM('boss');
   }
 }
 
@@ -10857,7 +10859,6 @@ function initApp() {
       if (sounds.tap && state.sfxEnabled) sounds.tap.play();
       if (screen === 'home') {
         currentSession = null;
-        stopBGM();
       }
 
       // Ensure header is visible on all screens (except maybe home if previously hidden)
