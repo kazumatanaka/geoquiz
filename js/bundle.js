@@ -513,7 +513,7 @@ const geographyMaster = [
     "kana": "こうふぼんち",
     "type": "basin",
     "charName": "コウフ・ベイスン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kofubasin_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "扇状地が広がる果実の王国、武田信玄の故郷",
