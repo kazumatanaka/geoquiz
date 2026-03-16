@@ -9977,7 +9977,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
 
   const svg = container.append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("class", `w-full h-full ${isHistoryMode ? 'drop-shadow-neon-blue max-h-[70vh]' : 'drop-shadow-[0_0_15px_rgba(0,255,255,0.1)] max-h-[60vh]'} overflow-visible`);
+    .attr("class", `w-full h-full ${isHistoryMode ? 'drop-shadow-neon-blue' : 'drop-shadow-[0_0_15px_rgba(0,255,255,0.1)]'} overflow-visible`);
 
   // ネオングローフィルター定義
   const defs = svg.append('defs');
