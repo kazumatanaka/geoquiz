@@ -11320,21 +11320,13 @@ function nextBossQuestion() {
   bossAnsweredStr = '';
 
   const flavorEl = document.getElementById('boss-flavor');
-  if (flavorEl) flavorEl.innerText = bossCurrentQ.flavorText;
-
-  // \u30dc\u30b9\u30de\u30c3\u30d7: \u8b66\u6212\u8272\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3
-  try {
-    renderBossMap();
-  } catch (e) {
-    console.error('[GeoQuiz] renderBossMap failed:', e);
-  }
+  renderBossMap();
 
   // \u30ab\u30f3\u30b8\u30d1\u30cd\u30eb\u751f\u6210
   const targetChars = bossCurrentQ.name.split('');
   const combined = [...new Set([...targetChars, ...bossCurrentQ.dummyKanji])].slice(0, 12);
   const shuffled = combined.sort(() => Math.random() - 0.5);
   renderBossKanjiPanel(shuffled);
-  console.log(`[GeoQuiz] nextBossQuestion: renderBossKanjiPanel called with ${shuffled.length} items`);
   document.getElementById('boss-answer-box').innerText = '';
 }
 
@@ -11398,16 +11390,11 @@ function renderBossMap() {
 }
 
 function renderBossKanjiPanel(options) {
-  console.log(`[GeoQuiz] renderBossKanjiPanel called with ${options.length} options`);
   const panel = document.getElementById('boss-kanji-panel');
-  if (!panel) {
-    console.error('[GeoQuiz] boss-kanji-panel NOT FOUND in DOM!');
-    return;
-  }
+  if (!panel) return;
   panel.innerHTML = '';
   options.forEach(char => {
-    try {
-      const btn = document.createElement('button');
+    const btn = document.createElement('button');
       btn.className = `w-full h-12 md:h-14 bg-red-950/40 border-2 border-red-800/60 rounded-lg
         text-2xl font-bold font-noto text-red-200 leading-none
         flex items-center justify-center
@@ -11416,10 +11403,7 @@ function renderBossKanjiPanel(options) {
       btn.innerHTML = `<span>${char}</span>`;
       btn.onclick = () => handleBossSelect(char);
       panel.appendChild(btn);
-    } catch (err) {
-      console.error('[GeoQuiz] Error appending kanji button:', err);
-    }
-  });
+    });
 
   // DEL + SUBMITボタン
   const row = document.createElement('div');
