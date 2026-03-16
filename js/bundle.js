@@ -132,7 +132,7 @@ const geographyMaster = [
     "kana": "びわこ",
     "type": "lake",
     "charName": "アクア・ビワ",
-    "charImage": "assets/avatars/avatar_lake_biwa_sr_v2.png",
+    "charImage": "assets/avatars/avatar_biwa_ssr.png",
     "region": "kinki",
     "rarity": "SR",
     "flavorText": "日本最大の湖、近畿の水瓶として40万人の命を支える",
