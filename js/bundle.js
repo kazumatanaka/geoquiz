@@ -1399,7 +1399,7 @@ const geographyMaster = [
     "kana": "しんじこ",
     "type": "lake",
     "charName": "シンジ-ミスト",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_shinji_mist_v1.png",
     "region": "chugoku",
     "rarity": "N",
     "flavorText": "シジミ漁が盛ん、夕日が美しい島根のシンボル",
