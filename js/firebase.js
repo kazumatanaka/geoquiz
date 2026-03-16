@@ -22,6 +22,8 @@ const auth = firebase.auth();
 // ============================================================
 // Auth State
 // ============================================================
+let currentUser = null;
+let selectedProfile = localStorage.getItem('geoquiz_profile') || null;
 let authResolver = null;
 const authReady = new Promise((resolve) => {
     authResolver = resolve;
