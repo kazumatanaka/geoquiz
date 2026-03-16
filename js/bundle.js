@@ -556,7 +556,7 @@ const geographyMaster = [
     "kana": "きょうとぼんち",
     "type": "basin",
     "charName": "キョウト・ミスト",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kyoto_basin_sr.png",
     "region": "kinki",
     "rarity": "SR",
     "flavorText": "三方を山に囲まれた古都、夏は蒸し暑く冬は冷え込む",
