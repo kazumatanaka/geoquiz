@@ -893,7 +893,7 @@ const geographyMaster = [
     "kana": "みやざきへいや",
     "type": "plain",
     "charName": "ミヤザキ-サン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_miyazakisan_sr.png",
     "region": "kyushu",
     "rarity": "SR",
     "flavorText": "黒潮の影響で温暖な平野、冬の促成栽培が盛ん",
