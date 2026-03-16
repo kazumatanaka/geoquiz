@@ -6051,8 +6051,19 @@ function initApp() {
       ]);
 
       // Merge Progress (Mastery Levels)
-      if (cloudProgress && Object.keys(cloudProgress).length > 0) {
+      const fetchFailed = (cloudProgress._error || cloudCards._error || cloudStats._error);
+      
+      if (fetchFailed) {
+          console.warn('[GeoQuiz] Cloud fetch failed. Skipping destructive cloud sync/merge.');
+          if (statusEl) {
+            statusEl.innerText = 'SYNC ERROR (AUTH/PERMISSION)';
+            statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-red-700 text-red-500 tracking-widest';
+          }
+      }
+
+      if (!fetchFailed && cloudProgress && Object.keys(cloudProgress).length > 0) {
         for (const geoId in cloudProgress) {
+          if (geoId === '_error') continue;
           const cloudItem = cloudProgress[geoId];
           const localItem = state.progress[geoId];
           // Take the one with higher mastery or newer date
@@ -6101,16 +6112,18 @@ function initApp() {
       persistAllState();
       
       // BIDIRECTIONAL SYNC: 
-      // After merging cloud data into local state, push the most complete version back to cloud.
-      // This helps in cases where local play happened while offline, or data was partially missing on cloud.
-      if (window.geoFirebase.syncFullProfileToCloud) {
+      // Only push back to cloud if we successfully fetched. 
+      // This prevents overwriting cloud data with defaults if the API call failed.
+      if (!fetchFailed && window.geoFirebase.syncFullProfileToCloud) {
           console.log('[GeoQuiz] Pushing merged state back to cloud...');
           await window.geoFirebase.syncFullProfileToCloud(state);
       }
 
-      if (statusEl) {
-        statusEl.innerText = 'ONLINE';
-        statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
+      if (!fetchFailed) {
+          if (statusEl) {
+            statusEl.innerText = 'ONLINE';
+            statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
+          }
       }
 
       console.log('[GeoQuiz] --- Sync Success ---');

@@ -142,7 +142,7 @@ async function fetchProgressFromCloud() {
         return result;
     } catch (e) {
         console.error('[GeoQuiz] Cloud Fetch Error (learning_logs):', e);
-        return {};
+        return { _error: true };
     }
 }
 
@@ -214,7 +214,7 @@ async function fetchCardsFromCloud() {
         return result;
     } catch (e) {
         console.error('[GeoQuiz] Cloud Fetch Error (cards):', e);
-        return {};
+        return { _error: true };
     }
 }
 
@@ -256,7 +256,7 @@ async function fetchStatsFromCloud() {
         return null;
     } catch (e) {
         console.error('[GeoQuiz] Cloud Fetch Error (stats):', e);
-        return null;
+        return { _error: true };
     }
 }
 
