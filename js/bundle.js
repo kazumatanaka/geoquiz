@@ -10871,10 +10871,10 @@ function initApp() {
   // Check if profile already selected
   const savedProfile = window.geoFirebase.getSelectedProfile();
   if (savedProfile) {
-    console.log(`[GeoQuiz] Autoloading profile: ${savedProfile}`);
-    navigateTo('login'); // Show login briefly or just home? 
-    // Auto-select to trigger sync
-    window.app.selectProfile(savedProfile);
+    console.log(`[GeoQuiz] Saved profile found: ${savedProfile}`);
+    // We no longer auto-autoload to ensure the user can switch if they want.
+    // They must explicitly click or we stay on login.
+    navigateTo('login');
   } else {
     navigateTo('login');
   }

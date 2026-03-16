@@ -193,6 +193,54 @@ body {
     #screen-quest .px-8.py-2 {
         padding: 0.2rem 0.75rem !important;
     }
+
+    /* Boss Battle Screen Optimizations */
+    #screen-boss {
+        padding-top: 0 !important;
+        padding-bottom: 0.5rem !important;
+        gap: 0.25rem !important;
+    }
+
+    /* Boss Map - prioritize visibility but leave room for pad */
+    #screen-boss div.flex-1.relative.rounded-2xl {
+        flex: 1.5 1 0% !important;
+        min-height: 0 !important;
+    }
+
+    /* Boss Panel (Response Pad) - Ensure it's not cut off */
+    #screen-boss div.w-full.lg\:w-\[280px\] {
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        gap: 0.25rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #boss-kanji-panel {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 0.15rem !important;
+        overflow-y: auto !important;
+    }
+
+    #boss-kanji-panel button {
+        height: 2.5rem !important;
+        font-size: 1.2rem !important;
+    }
+
+    #boss-answer-box {
+        height: 2.2rem !important;
+        font-size: 1.2rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    #screen-boss .flex-wrap {
+        gap: 0.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    #screen-boss .p-2 {
+        padding: 0.25rem 0.5rem !important;
+    }
 }
 
 .screen-view {
