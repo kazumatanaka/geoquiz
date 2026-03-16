@@ -8399,7 +8399,7 @@ const geographyMaster = [
     "kana": "むさしのだいち",
     "type": "plateau",
     "charName": "ムサシノ-アーバン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_musashinosan_r.png",
     "region": "kanto",
     "rarity": "SR",
     "flavorText": "関東ローム層が厚く積もる、首都東京の西側土台",
