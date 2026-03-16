@@ -11330,6 +11330,7 @@ function nextBossQuestion() {
   const combined = [...new Set([...targetChars, ...bossCurrentQ.dummyKanji])].slice(0, 12);
   const shuffled = combined.sort(() => Math.random() - 0.5);
   renderBossKanjiPanel(shuffled);
+  console.log(`[GeoQuiz] nextBossQuestion: renderBossKanjiPanel called with ${shuffled.length} items`);
   document.getElementById('boss-answer-box').innerText = '';
 }
 
