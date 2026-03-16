@@ -7992,7 +7992,7 @@ const geographyMaster = [
     "kana": "ようていざん",
     "type": "mountain",
     "charName": "ヨウテイ-エゾフジ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_yoteizan_ssr.png",
     "region": "hokkaido",
     "rarity": "SR",
     "flavorText": "『蝦夷富士』と称えられる、完璧な円錐形の山",
