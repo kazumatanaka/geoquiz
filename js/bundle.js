@@ -4556,18 +4556,29 @@ function addExp(amount) {
 }
 
 function playBGM(type) {
-  if (!bgm[type]) return;
+  let target = null;
+  if (type === 'boss') {
+    target = bgm.boss;
+  } else if (type === 'normal') {
+    // If we're already playing a normal track, don't switch
+    if (bgm.current && bgm.normalTracks.includes(bgm.current) && bgm.current.playing()) return;
+    // Pick a random track
+    const idx = Math.floor(Math.random() * bgm.normalTracks.length);
+    target = bgm.normalTracks[idx];
+  }
+
+  if (!target) return;
 
   if (!state.bgmEnabled) {
     if (bgm.current) bgm.current.stop();
-    bgm.current = bgm[type];
+    bgm.current = target;
     return;
   }
   
-  if (bgm.current === bgm[type] && bgm.current.playing()) return;
+  if (bgm.current === target && bgm.current.playing()) return;
   
   if (bgm.current) bgm.current.stop();
-  bgm.current = bgm[type];
+  bgm.current = target;
   if (bgm.current) bgm.current.play();
 }
 
@@ -5868,7 +5879,7 @@ const sounds = {
 };
 
 const bgm = {
-  normal: null,
+  normalTracks: [],
   boss: null,
   current: null
 };
@@ -5887,8 +5898,24 @@ function initApp() {
     sounds.unlock = new Howl({ src: ['assets/sounds/seikai.wav'], volume: 0.5 }); // Fallback or reuse
     sounds.gacha = new Howl({ src: ['https://actions.google.com/sounds/v1/magic/magical_sweep.ogg'], volume: 1.0 });
 
-    bgm.normal = new Howl({ src: ['assets/bgm/normal.mp3'], loop: true, volume: 0.4, html5: true });
-    bgm.boss = new Howl({ src: ['assets/bgm/boss.mp3'], loop: true, volume: 0.5, html5: true });
+    // Load 9 random Quest tracks
+    for (let i = 1; i <= 9; i++) {
+      bgm.normalTracks.push(new Howl({ src: [`assets/bgm/BGM${i}.mp3`], loop: true, volume: 0.4, html5: true }));
+    }
+    bgm.boss = new Howl({ src: ['assets/bgm/BossBGM.mp3'], loop: true, volume: 0.5, html5: true });
+
+    // Initialize Firebase session
+    if (window.geoFirebase) {
+      window.geoFirebase.initFirebase((user) => {
+        const statusEl = document.getElementById('firebase-status');
+        if (statusEl) {
+          statusEl.innerText = user ? 'CONNECTED' : 'OFFLINE';
+          if (user) {
+            statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
+          }
+        }
+      });
+    }
   } catch (e) { console.log('Audio init failed', e); }
 
   updateAudioToggles();
@@ -5988,13 +6015,20 @@ function initApp() {
   // Profile Select Function
   window.app.selectProfile = async (name) => {
     if (sounds.confirm && state.sfxEnabled) sounds.confirm.play();
+    console.log(`[GeoQuiz] Selecting profile: ${name}`);
     window.geoFirebase.setProfile(name);
     
     // Load local data for this profile first
     loadState();
 
     const statusEl = document.getElementById('firebase-status');
-    if (statusEl) statusEl.innerText = 'SYNCING...';
+    if (statusEl) {
+      statusEl.innerText = 'SYNCING...';
+      statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-yellow-700 text-yellow-400 tracking-widest animate-pulse';
+    }
+
+    // Ensure we are authenticated before fetching
+    await window.geoFirebase.waitForAuth();
 
     // Fetch data for this specific profile
     const cloudProgress = await window.geoFirebase.fetchProgressFromCloud();
@@ -6010,12 +6044,10 @@ function initApp() {
       state.cards = { ...state.cards, ...cloudCards };
     }
     if (cloudMistakes && cloudMistakes.length > 0) {
-      // For mistakes, we might just take cloud since it's a list
       state.mistakes = cloudMistakes;
     }
     
     if (cloudStats) {
-      // Only overwrite if cloud has data
       state.playerLevel = cloudStats.level || state.playerLevel;
       state.playerExp = cloudStats.exp || state.playerExp;
     }
@@ -6032,6 +6064,7 @@ function initApp() {
     }
 
     navigateTo('home');
+    console.log('[GeoQuiz] Profile sync complete.');
   };
 
   // Logout / Switch User
@@ -6061,10 +6094,10 @@ function initApp() {
   // Check if profile already selected
   const savedProfile = window.geoFirebase.getSelectedProfile();
   if (savedProfile) {
-    // If already logged in, navigate straight to home after sync
-    navigateTo('login');
-    // Wait for Firebase auth then auto-select if needed?
-    // For now, let's always show login for clarity, or auto-fetch if saved.
+    console.log(`[GeoQuiz] Autoloading profile: ${savedProfile}`);
+    navigateTo('login'); // Show login briefly or just home? 
+    // Auto-select to trigger sync
+    window.app.selectProfile(savedProfile);
   } else {
     navigateTo('login');
   }
