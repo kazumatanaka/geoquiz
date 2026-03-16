@@ -5907,11 +5907,12 @@ function initApp() {
     // Initialize Firebase session
     if (window.geoFirebase) {
       window.geoFirebase.initFirebase((user) => {
-        const statusEl = document.getElementById('firebase-status');
+        const statusEl = document.getElementById('firebase-status-text');
         if (statusEl) {
           statusEl.innerText = user ? 'CONNECTED' : 'OFFLINE';
           if (user) {
-            statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
+            const wrap = document.getElementById('firebase-status');
+            if (wrap) wrap.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest flex items-center gap-1.5';
           }
         }
       });
@@ -5986,6 +5987,14 @@ function initApp() {
       // Better: we just check state.sfxEnabled before .play()
       if (state.sfxEnabled && sounds.tap) sounds.tap.play();
     },
+    syncManually: () => {
+      const p = window.geoFirebase.getSelectedProfile();
+      if (p) {
+        window.app.selectProfile(p);
+      } else {
+        alert('プロフィールが選択されていません。');
+      }
+    },
     closeGacha: () => {
       if (sounds.tap && state.sfxEnabled) sounds.tap.play();
       document.getElementById('gacha-modal').classList.add('opacity-0');
@@ -6014,8 +6023,8 @@ function initApp() {
 
   // Profile Select Function
   window.app.selectProfile = async (name) => {
-    if (sounds.confirm && state.sfxEnabled) sounds.confirm.play();
-    console.log(`[GeoQuiz] Selecting profile: ${name}`);
+    if (sounds.tap && state.sfxEnabled) sounds.tap.play(); // Use tap instead of confirm if confirm is missing
+    console.log(`[GeoQuiz] --- Starting Sync for Profile: ${name} ---`);
     window.geoFirebase.setProfile(name);
     
     // Load local data for this profile first
@@ -6027,44 +6036,76 @@ function initApp() {
       statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-yellow-700 text-yellow-400 tracking-widest animate-pulse';
     }
 
-    // Ensure we are authenticated before fetching
-    await window.geoFirebase.waitForAuth();
+    try {
+      // Ensure we are authenticated before fetching
+      await window.geoFirebase.waitForAuth();
 
-    // Fetch data for this specific profile
-    const cloudProgress = await window.geoFirebase.fetchProgressFromCloud();
-    const cloudCards = await window.geoFirebase.fetchCardsFromCloud();
-    const cloudMistakes = await window.geoFirebase.fetchMistakesFromCloud();
-    const cloudStats = await window.geoFirebase.fetchStatsFromCloud();
+      // Fetch all data in parallel for speed
+      const [cloudProgress, cloudCards, cloudMistakes, cloudStats] = await Promise.all([
+        window.geoFirebase.fetchProgressFromCloud(),
+        window.geoFirebase.fetchCardsFromCloud(),
+        window.geoFirebase.fetchMistakesFromCloud(),
+        window.geoFirebase.fetchStatsFromCloud()
+      ]);
 
-    // Merge cloud data into local state if cloud data exists
-    if (cloudProgress && Object.keys(cloudProgress).length > 0) {
-      state.progress = { ...state.progress, ...cloudProgress };
-    }
-    if (cloudCards && Object.keys(cloudCards).length > 0) {
-      state.cards = { ...state.cards, ...cloudCards };
-    }
-    if (cloudMistakes && cloudMistakes.length > 0) {
-      state.mistakes = cloudMistakes;
-    }
-    
-    if (cloudStats) {
-      state.playerLevel = cloudStats.level || state.playerLevel;
-      state.playerExp = cloudStats.exp || state.playerExp;
-    }
+      // Merge Progress (Mastery Levels)
+      if (cloudProgress && Object.keys(cloudProgress).length > 0) {
+        for (const geoId in cloudProgress) {
+          const cloudItem = cloudProgress[geoId];
+          const localItem = state.progress[geoId];
+          // Take the one with higher mastery or newer date
+          if (!localItem || cloudItem.masteryLevel > localItem.masteryLevel) {
+            state.progress[geoId] = cloudItem;
+          }
+        }
+      }
 
-    updateProgressUI();
-    updateProgressionUI();
-    
-    // Persist all synced data to local storage
-    persistAllState();
-    
-    if (statusEl) {
-      statusEl.innerText = 'ONLINE';
-      statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
-    }
+      // Merge Cards
+      if (cloudCards && Object.keys(cloudCards).length > 0) {
+        for (const cardId in cloudCards) {
+          const cloudCard = cloudCards[cardId];
+          const localCard = state.cards[cardId];
+          if (!localCard || cloudCard.level > (localCard.level || 1) || cloudCard.quantity > localCard.quantity) {
+             state.cards[cardId] = cloudCard;
+          }
+        }
+      }
 
-    navigateTo('home');
-    console.log('[GeoQuiz] Profile sync complete.');
+      // Merge Mistakes
+      if (cloudMistakes && cloudMistakes.length > 0) {
+        state.mistakes = cloudMistakes; // Take cloud as primary for history
+      }
+      
+      // Merge Stats
+      if (cloudStats) {
+        if (cloudStats.level > state.playerLevel || (cloudStats.level === state.playerLevel && cloudStats.exp > state.playerExp)) {
+          state.playerLevel = cloudStats.level;
+          state.playerExp = cloudStats.exp;
+        }
+      }
+
+      updateProgressUI();
+      updateProgressionUI();
+      
+      // Persist the merged state back to local storage
+      persistAllState();
+      
+      if (statusEl) {
+        statusEl.innerText = 'ONLINE';
+        statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest';
+      }
+
+      console.log('[GeoQuiz] --- Sync Success ---');
+      navigateTo('home');
+    } catch (err) {
+      console.error('[GeoQuiz] Sync Process Failed:', err);
+      if (statusEl) {
+        statusEl.innerText = 'SYNC ERROR';
+        statusEl.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-red-700 text-red-500 tracking-widest';
+      }
+      // Still go home but with local data
+      navigateTo('home');
+    }
   };
 
   // Logout / Switch User

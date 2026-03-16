@@ -116,8 +116,12 @@ async function syncMistakeToCloud(geoId, tappedDummy) {
 async function fetchProgressFromCloud() {
     await waitForAuth();
     const profileDoc = getProfileDoc();
-    if (!profileDoc) return {};
+    if (!profileDoc) {
+        console.warn('[GeoQuiz] Cannot fetch progress: profile not set');
+        return {};
+    }
     try {
+        console.log(`[GeoQuiz] Fetching progress for: ${selectedProfile}...`);
         const snap = await profileDoc.collection('learning_logs').get();
         const result = {};
         snap.forEach(doc => {
@@ -129,10 +133,10 @@ async function fetchProgressFromCloud() {
                 nextReviewDate: d.nextReviewDate?.toDate?.() || new Date()
             };
         });
-        console.log('[GeoQuiz] Progress fetched from cloud');
+        console.log(`[GeoQuiz] Progress fetched: ${Object.keys(result).length} items`);
         return result;
     } catch (e) {
-        console.warn('[GeoQuiz] 取得失敗 (learning_logs):', e);
+        console.error('[GeoQuiz] Cloud Fetch Error (learning_logs):', e);
         return {};
     }
 }
@@ -190,17 +194,21 @@ async function syncCardToCloud(cardId, cardLevel, quantity) {
 async function fetchCardsFromCloud() {
     await waitForAuth();
     const profileDoc = getProfileDoc();
-    if (!profileDoc) return {};
+    if (!profileDoc) {
+        console.warn('[GeoQuiz] Cannot fetch cards: profile not set');
+        return {};
+    }
     try {
+        console.log(`[GeoQuiz] Fetching cards for: ${selectedProfile}...`);
         const snap = await profileDoc.collection('cards').get();
         const result = {};
         snap.forEach(doc => {
             result[doc.id] = doc.data();
         });
-        console.log('[GeoQuiz] Cards fetched from cloud');
+        console.log(`[GeoQuiz] Cards fetched: ${Object.keys(result).length} cards`);
         return result;
     } catch (e) {
-        console.warn('[GeoQuiz] 取得失敗 (cards):', e);
+        console.error('[GeoQuiz] Cloud Fetch Error (cards):', e);
         return {};
     }
 }
@@ -224,19 +232,25 @@ async function syncStatsToCloud(level, exp) {
 async function fetchStatsFromCloud() {
     await waitForAuth();
     const profileDoc = getProfileDoc();
-    if (!profileDoc) return null;
+    if (!profileDoc) {
+        console.warn('[GeoQuiz] Cannot fetch stats: profile not set');
+        return null;
+    }
     try {
+        console.log(`[GeoQuiz] Fetching stats for: ${selectedProfile}...`);
         const doc = await profileDoc.get();
         if (doc.exists) {
-            console.log('[GeoQuiz] Stats fetched from cloud');
+            const data = doc.data();
+            console.log(`[GeoQuiz] Stats fetched: Level ${data.level}`);
             return {
-                level: doc.data().level || 1,
-                exp: doc.data().exp || 0
+                level: data.level || 1,
+                exp: data.exp || 0
             };
         }
+        console.log('[GeoQuiz] No stats found on cloud for this profile');
         return null;
     } catch (e) {
-        console.warn('[GeoQuiz] 取得失敗 (stats):', e);
+        console.error('[GeoQuiz] Cloud Fetch Error (stats):', e);
         return null;
     }
 }
