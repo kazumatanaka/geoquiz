@@ -71,7 +71,10 @@ function getSelectedProfile() { return selectedProfile; }
 // Firestore: Helpers
 // ============================================================
 function getProfileDoc() {
-    if (!selectedProfile) return null;
+    if (!selectedProfile) {
+        console.warn('[GeoQuiz] No profile selected for getProfileDoc');
+        return null;
+    }
     return db.collection('profiles').doc(selectedProfile);
 }
 
