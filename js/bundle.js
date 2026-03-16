@@ -6052,20 +6052,12 @@ function initApp() {
 
       // Merge Progress (Mastery Levels)
       const fetchFailed = (
-          (cloudProgress && cloudProgress._error) || 
-          (cloudCards && cloudCards._error) || 
-          (cloudStats && cloudStats._error)
+          (cloudProgress && cloudProgress._error === true) || 
+          (cloudCards && cloudCards._error === true) || 
+          (cloudStats && cloudStats._error === true)
       );
       
-      console.log('[GeoQuiz] Debug - Fetch Results:', {
-          progress: !!cloudProgress, progressError: !!(cloudProgress && cloudProgress._error),
-          cards: !!cloudCards, cardsError: !!(cloudCards && cloudCards._error),
-          stats: !!cloudStats, statsError: !!(cloudStats && cloudStats._error),
-          mistakes: !!cloudMistakes, mistakesError: !!(cloudMistakes && cloudMistakes._error)
-      });
-      console.log('[GeoQuiz] Debug - fetchFailed:', fetchFailed);
-      
-      const mistakesFailed = cloudMistakes && cloudMistakes._error;
+      const mistakesFailed = cloudMistakes && cloudMistakes._error === true;
       
       if (fetchFailed) {
           console.warn('[GeoQuiz] Cloud fetch failed. Skipping destructive cloud sync/merge.');
