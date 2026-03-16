@@ -6054,9 +6054,10 @@ function initApp() {
       const fetchFailed = (
           (cloudProgress && cloudProgress._error) || 
           (cloudCards && cloudCards._error) || 
-          (cloudMistakes && cloudMistakes._error) || 
           (cloudStats && cloudStats._error)
       );
+      
+      const mistakesFailed = cloudMistakes && cloudMistakes._error;
       
       if (fetchFailed) {
           console.warn('[GeoQuiz] Cloud fetch failed. Skipping destructive cloud sync/merge.');
