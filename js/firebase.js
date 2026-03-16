@@ -141,7 +141,7 @@ async function fetchProgressFromCloud() {
         console.log(`[GeoQuiz] Progress fetched: ${Object.keys(result).length} items`);
         return result;
     } catch (e) {
-        console.error('[GeoQuiz] Cloud Fetch Error (learning_logs):', e);
+        console.error('[GeoQuiz] Cloud Fetch Error (learning_logs):', e.code, e.message, e);
         return { _error: true };
     }
 }
@@ -158,8 +158,8 @@ async function fetchMistakesFromCloud() {
             timestamp: doc.data().timestamp?.toMillis?.() || Date.now()
         }));
     } catch (e) {
-        console.warn('[GeoQuiz] 取得失敗 (mistakes):', e);
-        return [];
+        console.error('[GeoQuiz] Cloud Fetch Error (mistakes):', e.code, e.message, e);
+        return { _error: true };
     }
 }
 
@@ -213,7 +213,7 @@ async function fetchCardsFromCloud() {
         console.log(`[GeoQuiz] Cards fetched: ${Object.keys(result).length} cards`);
         return result;
     } catch (e) {
-        console.error('[GeoQuiz] Cloud Fetch Error (cards):', e);
+        console.error('[GeoQuiz] Cloud Fetch Error (cards):', e.code, e.message, e);
         return { _error: true };
     }
 }
@@ -255,7 +255,7 @@ async function fetchStatsFromCloud() {
         console.log('[GeoQuiz] No stats found on cloud for this profile');
         return {}; 
     } catch (e) {
-        console.error('[GeoQuiz] Cloud Fetch Error (stats):', e);
+        console.error('[GeoQuiz] Cloud Fetch Error (stats):', e.code, e.message, e);
         return { _error: true };
     }
 }
