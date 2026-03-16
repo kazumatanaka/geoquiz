@@ -7493,7 +7493,7 @@ const geographyMaster = [
     "kana": "ゆうばりさんち",
     "type": "mountain",
     "charName": "ユウバリ-ストーン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_yubarisan_sr.png",
     "region": "hokkaido",
     "rarity": "R",
     "flavorText": "石狩平野を見下ろす、かつての石炭の山",
