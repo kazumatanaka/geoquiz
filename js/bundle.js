@@ -11393,8 +11393,12 @@ function renderBossMap() {
 }
 
 function renderBossKanjiPanel(options) {
+  console.log(`[GeoQuiz] renderBossKanjiPanel called with ${options.length} options`);
   const panel = document.getElementById('boss-kanji-panel');
-  if (!panel) return;
+  if (!panel) {
+    console.error('[GeoQuiz] boss-kanji-panel NOT FOUND in DOM!');
+    return;
+  }
   panel.innerHTML = '';
   options.forEach(char => {
     const btn = document.createElement('button');
