@@ -428,7 +428,7 @@ const geographyMaster = [
     "kana": "きそさんみゃく",
     "type": "mountain",
     "charName": "キソ・リッジ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kisoridge_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "中央アルプス、伊那盆地を眼下に見下ろす連峰",
