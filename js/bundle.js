@@ -9253,6 +9253,17 @@ function addExp(amount) {
   }
 }
 
+function stopAllBGM() {
+  if (bgm.menu) bgm.menu.stop();
+  if (bgm.category) bgm.category.stop();
+  if (bgm.others) bgm.others.stop();
+  if (bgm.boss) bgm.boss.stop();
+  if (bgm.bossTracks) bgm.bossTracks.forEach(t => t.stop());
+  if (bgm.normalTracks) bgm.normalTracks.forEach(t => t.stop());
+  if (bgm.current) bgm.current.stop();
+  bgm.current = null;
+}
+
 function playBGM(type) {
   let target = null;
   if (type === 'boss') {
@@ -9276,17 +9287,14 @@ function playBGM(type) {
 
   if (!target) return;
 
-  if (!state.bgmEnabled) {
-    if (bgm.current) bgm.current.stop();
+  // Stop everything else before playing the new target
+  if (bgm.current !== target || !target.playing()) {
+    stopAllBGM();
     bgm.current = target;
-    return;
+    if (state.bgmEnabled) {
+      bgm.current.play();
+    }
   }
-  
-  if (bgm.current === target && bgm.current.playing()) return;
-  
-  if (bgm.current) bgm.current.stop();
-  bgm.current = target;
-  if (bgm.current) bgm.current.play();
 }
 
 function stopBGM() {
@@ -9897,6 +9905,16 @@ const customLandmarks = {
     },
     {
       type: "Feature",
+      properties: { id: "lake_tazawako", type: "point" },
+      geometry: { type: "Point", coordinates: [140.66, 39.72] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_towadako", type: "point" },
+      geometry: { type: "Point", coordinates: [140.9, 40.46] }
+    },
+    {
+      type: "Feature",
       properties: { id: "lake_hamana", type: "point" },
       geometry: { type: "Point", coordinates: [137.6, 34.7] }
     },
@@ -10245,10 +10263,11 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
 
   const getStyleForLandmark = (feature) => {
     const featureId = feature.properties.id;
+    const isPoint = feature.properties.type === 'point';
     let isTarget = (currentGeoId === featureId);
 
     if (isTarget && !isHistoryMode) {
-      return 'fill-none stroke-cyan-400 stroke-[6px] drop-shadow-[0_0_10px_rgba(0,243,255,0.8)] outline-none animate-quest-pulse';
+      return (isPoint ? 'fill-cyan-400' : 'fill-none') + ' stroke-cyan-400 stroke-[6px] drop-shadow-[0_0_10px_rgba(0,243,255,0.8)] outline-none animate-quest-pulse';
     }
 
     let achievedLevel = 0;
@@ -10260,7 +10279,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     }
 
     // デフォルトは見えないか、うっすら表示
-    let baseClass = 'fill-none stroke-slate-500 stroke-[2px] opacity-0 outline-none transition-all duration-500 pointer-events-auto';
+    let baseClass = (isPoint ? 'fill-slate-500' : 'fill-none') + ' stroke-slate-500 stroke-[2px] opacity-0 outline-none transition-all duration-500 pointer-events-auto';
 
     if (achievedLevel > 0) {
       let isActive = true;
@@ -10268,13 +10287,13 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
       if (achievedLevel === 2 && daysPassed > 7) isActive = false;
       if (achievedLevel === 3 && daysPassed > 30) isActive = false;
 
-      if (!isActive) return `fill-none stroke-slate-500 stroke-[3px] grayscale outline-none transition-opacity opacity-50`;
+      if (!isActive) return (isPoint ? 'fill-slate-500' : 'fill-none') + ` stroke-slate-500 stroke-[3px] grayscale outline-none transition-opacity opacity-50`;
 
       switch (achievedLevel) {
-        case 1: baseClass = `fill-none stroke-cyan-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 2: baseClass = `fill-none stroke-green-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 3: baseClass = `fill-none stroke-purple-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(192,132,252,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 4: baseClass = `fill-none stroke-yellow-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 1: baseClass = (isPoint ? 'fill-cyan-400' : 'fill-none') + ` stroke-cyan-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 2: baseClass = (isPoint ? 'fill-green-400' : 'fill-none') + ` stroke-green-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 3: baseClass = (isPoint ? 'fill-purple-400' : 'fill-none') + ` stroke-purple-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(192,132,252,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 4: baseClass = (isPoint ? 'fill-yellow-400' : 'fill-none') + ` stroke-yellow-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] outline-none pointer-events-auto transition-opacity`; break;
       }
     }
     return baseClass;
