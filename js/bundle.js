@@ -9256,13 +9256,22 @@ function addExp(amount) {
 function playBGM(type) {
   let target = null;
   if (type === 'boss') {
-    target = bgm.boss;
+    if (bgm.bossTracks && bgm.bossTracks.length > 0) {
+      const idx = Math.floor(Math.random() * bgm.bossTracks.length);
+      target = bgm.bossTracks[idx];
+    } else {
+      target = bgm.boss;
+    }
   } else if (type === 'normal') {
-    // If we're already playing a normal track, don't switch
     if (bgm.current && bgm.normalTracks.includes(bgm.current) && bgm.current.playing()) return;
-    // Pick a random track
     const idx = Math.floor(Math.random() * bgm.normalTracks.length);
     target = bgm.normalTracks[idx];
+  } else if (type === 'menu') {
+    target = bgm.menu;
+  } else if (type === 'category') {
+    target = bgm.category;
+  } else if (type === 'others') {
+    target = bgm.others;
   }
 
   if (!target) return;
@@ -10095,6 +10104,15 @@ function navigateTo(screenId) {
       }
     }
   }
+
+  // Screen-specific BGM transitions
+  if (screenId === 'home') {
+    playBGM('menu');
+  } else if (screenId === 'category') {
+    playBGM('category');
+  } else if (['survey', 'collection', 'ranking'].includes(screenId)) {
+    playBGM('others');
+  }
 }
 
 function updateProgressUI() {
@@ -10761,6 +10779,10 @@ const sounds = {
 
 const bgm = {
   normalTracks: [],
+  bossTracks: [],
+  menu: null,
+  category: null,
+  others: null,
   boss: null,
   current: null
 };
@@ -10783,7 +10805,16 @@ function initApp() {
     for (let i = 1; i <= 9; i++) {
       bgm.normalTracks.push(new Howl({ src: [`assets/bgm/BGM${i}.mp3`], loop: true, volume: 0.4, html5: true }));
     }
+    
+    // Boss Tracks
     bgm.boss = new Howl({ src: ['assets/bgm/BossBGM.mp3'], loop: true, volume: 0.5, html5: true });
+    bgm.bossTracks.push(bgm.boss);
+    bgm.bossTracks.push(new Howl({ src: ['assets/bgm/BossBGM2.mp3'], loop: true, volume: 0.5, html5: true }));
+    
+    // Screen specific tracks
+    bgm.menu = new Howl({ src: ['assets/bgm/MenuBGM.mp3'], loop: true, volume: 0.5, html5: true });
+    bgm.category = new Howl({ src: ['assets/bgm/CategoryBGM.mp3'], loop: true, volume: 0.5, html5: true });
+    bgm.others = new Howl({ src: ['assets/bgm/others.mp3'], loop: true, volume: 0.5, html5: true });
 
     // Initialize Firebase session
     if (window.geoFirebase) {
