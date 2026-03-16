@@ -9915,6 +9915,16 @@ const customLandmarks = {
     },
     {
       type: "Feature",
+      properties: { id: "lake_tazawako", type: "point" },
+      geometry: { type: "Point", coordinates: [140.66, 39.72] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_towadako", type: "point" },
+      geometry: { type: "Point", coordinates: [140.9, 40.46] }
+    },
+    {
+      type: "Feature",
       properties: { id: "lake_hamana", type: "point" },
       geometry: { type: "Point", coordinates: [137.6, 34.7] }
     },
