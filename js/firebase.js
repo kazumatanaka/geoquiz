@@ -179,13 +179,13 @@ async function fetchDueForReview() {
     }
 }
 
-async function syncCardToCloud(cardId, cardLevel, quantity) {
+async function syncCardToCloud(cardId, level, quantity) {
     await waitForAuth();
     const profileDoc = getProfileDoc();
     if (!profileDoc) return;
     try {
         await profileDoc.collection('cards').doc(cardId).set({
-            cardId, cardLevel, quantity,
+            cardId, level, quantity,
             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         }, { merge: true });
         console.log(`[GeoQuiz] Card synced: ${cardId}`);
@@ -281,6 +281,8 @@ async function syncFullProfileToCloud(state) {
             batch.set(logDoc, {
                 geoId,
                 masteryLevel: p.masteryLevel,
+                lastClearedAt: p.lastClearedAt ? firebase.firestore.Timestamp.fromMillis(p.lastClearedAt) : firebase.firestore.FieldValue.serverTimestamp(),
+                nextReviewDate: firebase.firestore.Timestamp.fromDate(calcNextReviewDate(p.masteryLevel)),
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp()
             }, { merge: true });
         }
@@ -291,7 +293,7 @@ async function syncFullProfileToCloud(state) {
             const cardDoc = profileDoc.collection('cards').doc(cardId);
             batch.set(cardDoc, {
                 cardId,
-                cardLevel: c.level || 1,
+                level: c.level || 1,
                 quantity: c.quantity || 1,
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp()
             }, { merge: true });

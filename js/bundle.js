@@ -6067,8 +6067,16 @@ function initApp() {
         for (const cardId in cloudCards) {
           const cloudCard = cloudCards[cardId];
           const localCard = state.cards[cardId];
-          if (!localCard || cloudCard.level > (localCard.level || 1) || cloudCard.quantity > localCard.quantity) {
-             state.cards[cardId] = cloudCard;
+          // Support both 'level' and 'cardLevel' (from cloud)
+          const cloudLevel = cloudCard.level || cloudCard.cardLevel || 1;
+          const localLevel = localCard ? (localCard.level || 1) : 0;
+          
+          if (!localCard || cloudLevel > localLevel || cloudCard.quantity > (localCard.quantity || 0)) {
+             state.cards[cardId] = {
+               cardId: cardId,
+               level: cloudLevel,
+               quantity: Math.max(cloudCard.quantity || 1, localCard ? localCard.quantity : 0)
+             };
           }
         }
       }
