@@ -1568,7 +1568,7 @@ const geographyMaster = [
     "kana": "いせわん",
     "type": "bay",
     "charName": "イセ-ポート",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_ise_r.png",
     "region": "chubu",
     "rarity": "R",
     "flavorText": "中京工業地帯を支える日本有数の巨大湾",
