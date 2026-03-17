@@ -1274,7 +1274,7 @@ const geographyMaster = [
     "kana": "そうやみさき",
     "type": "cape",
     "charName": "ソウヤ-ノース",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_soya_n.png",
     "region": "hokkaido",
     "rarity": "N",
     "flavorText": "日本の最北端、サハリンを望む絶壁の岬",
