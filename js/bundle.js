@@ -10118,7 +10118,7 @@ function generateCardHTML(geoData) {
   `).join('');
 
   return `
-    <div class="perspective-1000 w-full aspect-[3/4] cursor-pointer" onclick="this.querySelector('.flip-card-inner').classList.toggle('flipped')">
+    <div class="perspective-1000 w-full aspect-[2/3] cursor-pointer" onclick="this.querySelector('.flip-card-inner').classList.toggle('flipped')">
       <div class="flip-card-inner w-full h-full relative preserve-3d">
         
         <!-- Front -->
@@ -10253,7 +10253,7 @@ function showCardDetail(geo, cardData) {
         </button>
         <div class="flex flex-col md:flex-row gap-8">
             <div class="w-full md:w-5/12 flex justify-center items-start">
-                <div class="w-full max-w-[240px] aspect-[2/3] transform hover:rotate-1 transition-transform duration-500">
+                <div class="w-full max-w-[240px] transform hover:rotate-1 transition-transform duration-500">
                     ${generateCardHTML(geo)}
                 </div>
             </div>
