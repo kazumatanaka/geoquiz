@@ -1610,7 +1610,7 @@ const geographyMaster = [
     "kana": "きゅうしゅうさんち",
     "type": "mountain",
     "charName": "キュウシュウ-ボルケーノ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kyushusan_r.png",
     "region": "kyushu",
     "rarity": "R",
     "flavorText": "九州中央部を南北に貫く、峻険な山地",
