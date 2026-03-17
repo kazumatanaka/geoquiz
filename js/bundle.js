@@ -10074,6 +10074,7 @@ function setKanjiPanelDisabled(disabled) {
   });
 }
 
+// Card display revision v1.1
 function generateCardHTML(geoData) {
   const rarity = geoData.rarity || 'N';
   const stats = geoData.charStats || { power: 30, defense: 30, speed: 30 };
@@ -10118,39 +10119,41 @@ function generateCardHTML(geoData) {
   `).join('');
 
   return `
-    <div class="perspective-1000 w-full aspect-[2/3] cursor-pointer" onclick="this.querySelector('.flip-card-inner').classList.toggle('flipped')">
+    <div class="perspective-1000 w-full card-aspect-ratio cursor-pointer" onclick="this.querySelector('.flip-card-inner').classList.toggle('flipped')">
       <div class="flip-card-inner w-full h-full relative preserve-3d">
         
         <!-- Front -->
         <div class="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br ${getRarityColors(rarity)} p-1 shadow-lg pointer-events-none">
-          <div class="w-full h-full bg-slate-900 rounded-lg flex flex-col p-2 relative overflow-hidden ${getRarityClass(rarity)}">
-            
-            <!-- Header: Rarity & Name -->
-            <div class="flex justify-between items-start mb-1 overflow-visible">
-               <span class="px-2 py-0.5 bg-black/80 rounded text-[9px] font-bold font-orbitron text-white border border-white/20 z-10 shadow-lg">${rarity}</span>
-               <div class="text-right z-10">
-                 <div class="text-[8px] font-orbitron text-cyan-400 tracking-tighter opacity-70">${geoData.type.toUpperCase()}</div>
-                 <div class="text-[10px] font-noto text-white font-bold leading-none">${geoData.name}</div>
-               </div>
-            </div>
+          <div class="w-full h-full bg-slate-900 rounded-lg relative ${getRarityClass(rarity)}">
+            <div class="card-content-wrapper p-2 overflow-hidden">
+              
+              <!-- Header: Rarity & Name -->
+              <div class="flex justify-between items-start mb-1 overflow-visible">
+                 <span class="px-2 py-0.5 bg-black/80 rounded text-[9px] font-bold font-orbitron text-white border border-white/20 z-10 shadow-lg">${rarity}</span>
+                 <div class="text-right z-10">
+                   <div class="text-[8px] font-orbitron text-cyan-400 tracking-tighter opacity-70">${geoData.type.toUpperCase()}</div>
+                   <div class="text-[10px] font-noto text-white font-bold leading-none">${geoData.name}</div>
+                 </div>
+              </div>
 
-            <!-- Character Avatar Background -->
-            <div class="flex-1 relative mb-2 flex items-center justify-center">
-              <img src="${geoData.charImage || 'assets/avatars/avatar_sky_1773059837567.png'}" 
-                   class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" 
-                   alt="${geoData.charName}">
-            </div>
+              <!-- Character Avatar Background -->
+              <div class="flex-1 relative mb-2 flex items-center justify-center min-h-0">
+                <img src="${geoData.charImage || 'assets/avatars/avatar_sky_1773059837567.png'}" 
+                     class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" 
+                     alt="${geoData.charName}">
+              </div>
 
-            <!-- Footer: Char Name & RPG Stats -->
-            <div class="bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 mt-auto">
-               <div class="text-[11px] font-bold text-white font-orbitron text-center mb-1.5 truncate text-cyber-neonGold drop-shadow-sm">
-                 ${geoData.charName || 'Guardian'}
-               </div>
-               <div class="space-y-1">
-                 ${statItem('POW', stats.power, 'bg-red-500 shadow-red-500/50')}
-                 ${statItem('DEF', stats.defense, 'bg-blue-500 shadow-blue-500/50')}
-                 ${statItem('SPD', stats.speed, 'bg-green-500 shadow-green-500/50')}
-               </div>
+              <!-- Footer: Char Name & RPG Stats -->
+              <div class="bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10 mt-auto mb-1">
+                 <div class="text-[11px] font-bold text-white font-orbitron text-center mb-1.5 truncate text-cyber-neonGold drop-shadow-sm">
+                   ${geoData.charName || 'Guardian'}
+                 </div>
+                 <div class="space-y-1">
+                   ${statItem('POW', stats.power, 'bg-red-500 shadow-red-500/50')}
+                   ${statItem('DEF', stats.defense, 'bg-blue-500 shadow-blue-500/50')}
+                   ${statItem('SPD', stats.speed, 'bg-green-500 shadow-green-500/50')}
+                 </div>
+              </div>
             </div>
           </div>
         </div>
