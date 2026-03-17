@@ -1315,7 +1315,7 @@ const geographyMaster = [
     "kana": "はまなこ",
     "type": "lake",
     "charName": "ハマナ-アクア",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_hamana_n.png",
     "region": "chubu",
     "rarity": "N",
     "flavorText": "ウナギ養殖で有名、海とつながる汽水湖",
