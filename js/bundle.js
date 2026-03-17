@@ -8886,30 +8886,50 @@ function stopBGM() {
 }
 
 function updateAudioToggles() {
-  const bgmBtn = document.getElementById('toggle-bgm');
-  const bgmKnob = document.getElementById('toggle-bgm-knob');
-  const sfxBtn = document.getElementById('toggle-sfx');
-  const sfxKnob = document.getElementById('toggle-sfx-knob');
+  const bgmBtns = document.querySelectorAll('.toggle-bgm');
+  const bgmKnobs = document.querySelectorAll('.toggle-bgm-knob');
+  const sfxBtns = document.querySelectorAll('.toggle-sfx');
+  const sfxKnobs = document.querySelectorAll('.toggle-sfx-knob');
 
-  if (bgmBtn && bgmKnob) {
+  bgmBtns.forEach(btn => {
     if (state.bgmEnabled) {
-      bgmBtn.className = 'w-8 h-4 bg-cyber-neonBlue/40 rounded-full relative transition-colors shadow-neon-blue';
-      bgmKnob.className = 'absolute top-0.5 right-0.5 w-3 h-3 bg-cyber-neonBlue rounded-full transition-all';
+      btn.classList.remove('bg-slate-700');
+      btn.classList.add('bg-cyber-neonBlue/40', 'shadow-neon-blue');
     } else {
-      bgmBtn.className = 'w-8 h-4 bg-slate-700 rounded-full relative transition-colors';
-      bgmKnob.className = 'absolute top-0.5 left-0.5 w-3 h-3 bg-slate-400 rounded-full transition-all';
+      btn.classList.add('bg-slate-700');
+      btn.classList.remove('bg-cyber-neonBlue/40', 'shadow-neon-blue');
     }
-  }
+  });
+  
+  bgmKnobs.forEach(knob => {
+    if (state.bgmEnabled) {
+      knob.classList.remove('left-0.5', 'bg-slate-400');
+      knob.classList.add('right-0.5', 'bg-cyber-neonBlue');
+    } else {
+      knob.classList.add('left-0.5', 'bg-slate-400');
+      knob.classList.remove('right-0.5', 'bg-cyber-neonBlue');
+    }
+  });
 
-  if (sfxBtn && sfxKnob) {
+  sfxBtns.forEach(btn => {
     if (state.sfxEnabled) {
-      sfxBtn.className = 'w-8 h-4 bg-cyber-neonBlue/40 rounded-full relative transition-colors shadow-neon-blue';
-      sfxKnob.className = 'absolute top-0.5 right-0.5 w-3 h-3 bg-cyber-neonBlue rounded-full transition-all';
+      btn.classList.remove('bg-slate-700');
+      btn.classList.add('bg-cyber-neonBlue/40', 'shadow-neon-blue');
     } else {
-      sfxBtn.className = 'w-8 h-4 bg-slate-700 rounded-full relative transition-colors';
-      sfxKnob.className = 'absolute top-0.5 left-0.5 w-3 h-3 bg-slate-400 rounded-full transition-all';
+      btn.classList.add('bg-slate-700');
+      btn.classList.remove('bg-cyber-neonBlue/40', 'shadow-neon-blue');
     }
-  }
+  });
+  
+  sfxKnobs.forEach(knob => {
+    if (state.sfxEnabled) {
+      knob.classList.remove('left-0.5', 'bg-slate-400');
+      knob.classList.add('right-0.5', 'bg-cyber-neonBlue');
+    } else {
+      knob.classList.add('left-0.5', 'bg-slate-400');
+      knob.classList.remove('right-0.5', 'bg-cyber-neonBlue');
+    }
+  });
 }
 
 function getPlayerTitle(level) {
@@ -9826,7 +9846,7 @@ function navigateTo(screenId) {
 
   const header = document.getElementById('global-header');
   if (header) {
-    if (screenId === 'home' || screenId === 'login') {
+    if (screenId === 'login') {
       header.classList.add('hidden');
     } else {
       header.classList.remove('hidden');
