@@ -1483,7 +1483,7 @@ const geographyMaster = [
     "kana": "つがるかいきょう",
     "type": "strait",
     "charName": "ツガル-トンネル",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_tsugarustrait_r.png",
     "region": "tohoku",
     "rarity": "R",
     "flavorText": "本州と北海道を分かつ荒波、海底を通る青函トンネル",
