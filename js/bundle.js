@@ -1526,7 +1526,7 @@ const geographyMaster = [
     "kana": "ぶんごすいどう",
     "type": "channel",
     "charName": "ブンゴ-カレント",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_bungochannel_r.png",
     "region": "kyushu",
     "rarity": "R",
     "flavorText": "九州と四国の間の急流、関サバ・関アジの宝庫",
