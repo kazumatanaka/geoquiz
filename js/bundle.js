@@ -1893,7 +1893,7 @@ const geographyMaster = [
     "kana": "しれとこはんとう",
     "type": "peninsula",
     "charName": "シレトコ-エンシェント",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_shiretoko_ssr.png",
     "region": "hokkaido",
     "rarity": "SSR",
     "flavorText": "世界自然遺産の断崖、流氷が運ぶ豊かな生態系",
