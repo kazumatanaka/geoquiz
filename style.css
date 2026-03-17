@@ -116,12 +116,18 @@ body {
         margin-top: 0 !important;
     }
 
-    /* Panel — gets 1/3 of available height (flex:1 vs map flex:2) */
     #screen-quest div.w-full.lg\:w-\[400px\] {
         flex: 1 1 0% !important;
         min-height: 0 !important;
         max-height: none !important;
         overflow: hidden !important;
+    }
+
+    /* Map containers need touch-action: none for D3 zoom to work correctly on touch devices */
+    #quest-map-container,
+    #boss-map-container,
+    #survey-map-container {
+        touch-action: none;
     }
 
     /* Inner panel grid: no gaps so everything fits */

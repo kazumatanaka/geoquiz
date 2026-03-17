@@ -9786,6 +9786,16 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("class", `w-full h-full ${isHistoryMode ? 'drop-shadow-neon-blue' : 'drop-shadow-[0_0_15px_rgba(0,255,255,0.1)]'} overflow-visible`);
 
+  // Zoom Behavior Implementation
+  const g = svg.append("g");
+  const zoom = d3.zoom()
+    .scaleExtent([1, 15]) // Max zoom 15x
+    .on("zoom", (event) => {
+      g.attr("transform", event.transform);
+    });
+
+  svg.call(zoom);
+
   // ネオングローフィルター定義
   const defs = svg.append('defs');
   const filter = defs.append('filter').attr('id', 'neon-glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
@@ -9906,7 +9916,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     const path = d3.geoPath().projection(projection);
 
     // 1. 都道府県を描画
-    svg.selectAll('.pref')
+    g.selectAll('.pref')
       .data(geojson.features)
       .enter()
       .append('path')
@@ -9921,7 +9931,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     // titleタグは削除（ホバー時に答えが表示されないようにするため）
 
     // 2. 川・山・海岸線などの地形データを上に重ねて描画
-    svg.selectAll('.landmark')
+    g.selectAll('.landmark')
       .data(customLandmarks.features)
       .enter()
       .append('path')
@@ -9936,7 +9946,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
         const cx = center[0], cy = center[1];
 
         // 波紋1（即時開始）
-        const ripple1 = svg.append('circle')
+        const ripple1 = g.append('circle')
           .attr('cx', cx).attr('cy', cy).attr('r', 4)
           .attr('fill', 'none')
           .attr('stroke', 'rgba(0,243,255,0.9)')
@@ -9948,7 +9958,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
         `;
 
         // 波紋2（1秒遅延）
-        const ripple2 = svg.append('circle')
+        const ripple2 = g.append('circle')
           .attr('cx', cx).attr('cy', cy).attr('r', 4)
           .attr('fill', 'none')
           .attr('stroke', 'rgba(0,243,255,0.7)')
@@ -9960,7 +9970,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
         `;
 
         // 中心の光点
-        svg.append('circle')
+        g.append('circle')
           .attr('cx', cx).attr('cy', cy).attr('r', 5)
           .attr('fill', 'rgba(0,243,255,1)')
           .attr('filter', 'url(#neon-glow)')
@@ -11166,12 +11176,22 @@ function renderBossMap() {
     .attr('viewBox', `0 0 ${width} ${height}`)
     .attr('class', 'w-full h-full overflow-visible');
 
+  // Zoom Behavior Implementation
+  const g = svg.append("g");
+  const zoom = d3.zoom()
+    .scaleExtent([1, 15])
+    .on("zoom", (event) => {
+      g.attr("transform", event.transform);
+    });
+
+  svg.call(zoom);
+
   // Higher scale for more detailed view
   const projection = d3.geoMercator().center([136.5, 35.5]).scale(1750).translate([width / 2, height / 2]);
   const path = d3.geoPath().projection(projection);
   const topoData = topojson.feature(JAPAN_TOPOJSON, JAPAN_TOPOJSON.objects.japan);
 
-  svg.selectAll('path').data(topoData.features).enter().append('path')
+  g.selectAll('path').data(topoData.features).enter().append('path')
     .attr('d', path)
     .attr('fill', '#0f172a')
     .attr('stroke', '#ff2855')
@@ -11201,15 +11221,15 @@ function renderBossMap() {
   }
 
   if (center && !isNaN(center[0])) {
-    const r1 = svg.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 4)
+    const r1 = g.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 4)
       .attr('fill', 'none').attr('stroke', 'rgba(0,255,255,0.9)').attr('stroke-width', 2).attr('pointer-events', 'none');
     r1.node().innerHTML = `<animate attributeName="r" from="4" to="50" dur="1.5s" repeatCount="indefinite"/>
       <animate attributeName="stroke-opacity" from="0.9" to="0" dur="1.5s" repeatCount="indefinite"/>`;
-    const r2 = svg.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 4)
+    const r2 = g.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 4)
       .attr('fill', 'none').attr('stroke', 'rgba(0,200,255,0.7)').attr('stroke-width', 1.5).attr('pointer-events', 'none');
     r2.node().innerHTML = `<animate attributeName="r" from="4" to="50" dur="1.5s" begin="0.75s" repeatCount="indefinite"/>
       <animate attributeName="stroke-opacity" from="0.7" to="0" dur="1.5s" begin="0.75s" repeatCount="indefinite"/>`;
-    svg.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 6)
+    g.append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', 6)
       .attr('fill', 'rgba(0,255,255,1)').attr('pointer-events', 'none');
   }
 }
