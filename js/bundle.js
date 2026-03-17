@@ -1231,7 +1231,7 @@ const geographyMaster = [
     "kana": "かんもんかいきょう",
     "type": "strait",
     "charName": "カンモン-シティー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kanmonstrait_sr.png",
     "region": "chugoku",
     "rarity": "SR",
     "flavorText": "本州と九州を隔てる狭い海域、壇ノ浦の舞台",
