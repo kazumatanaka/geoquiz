@@ -9872,7 +9872,10 @@ function navigateTo(screenId) {
   }
 
   // Screen-specific BGM transitions
-  if (screenId === 'home' || screenId === 'login') {
+  if (screenId === 'login') {
+    stopAllBGM();
+    bgm.current = null;
+  } else if (screenId === 'home') {
     playBGM('menu');
   } else if (screenId === 'category') {
     playBGM('category');
