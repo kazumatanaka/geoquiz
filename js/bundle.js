@@ -1812,7 +1812,7 @@ const geographyMaster = [
     "kana": "やつがたけ",
     "type": "mountain",
     "charName": "ヤツガ・レジオン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_yatsugatake_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "南北に広がる大規模な火山群、苔むした森の楽園",
