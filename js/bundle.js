@@ -1357,7 +1357,7 @@ const geographyMaster = [
     "kana": "むろとみさき",
     "type": "cape",
     "charName": "ムロト-ウェーブ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_muroto_n.png",
     "region": "shikoku",
     "rarity": "N",
     "flavorText": "太平洋に突き出した『台風銀座』、荒波が削る豪快な海岸",
