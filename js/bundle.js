@@ -1147,7 +1147,7 @@ const geographyMaster = [
     "kana": "かすみがうら",
     "type": "lake",
     "charName": "カスミ-フリーズ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kasumigaura_sr.png",
     "region": "kanto",
     "rarity": "SR",
     "flavorText": "日本第2位の面積、利根川の下流域に広がる巨大な湖",
