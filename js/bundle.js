@@ -9208,6 +9208,81 @@ const customLandmarks = {
     },
     {
       type: "Feature",
+      properties: { id: "park_nikko", type: "point" },
+      geometry: { type: "Point", coordinates: [139.5, 36.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_fuji_hakone", type: "point" },
+      geometry: { type: "Point", coordinates: [138.8, 35.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_setonaikai", type: "point" },
+      geometry: { type: "Point", coordinates: [133.5, 34.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_aso_kuju", type: "point" },
+      geometry: { type: "Point", coordinates: [131.2, 33.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_ais_shima", type: "point" },
+      geometry: { type: "Point", coordinates: [136.8, 34.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_akan_mashu", type: "point" },
+      geometry: { type: "Point", coordinates: [144.2, 43.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_shikotsu_toya", type: "point" },
+      geometry: { type: "Point", coordinates: [141.1, 42.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_amami", type: "point" },
+      geometry: { type: "Point", coordinates: [129.3, 28.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_towada_hachimantai", type: "point" },
+      geometry: { type: "Point", coordinates: [140.9, 40.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_bandai_asahi", type: "point" },
+      geometry: { type: "Point", coordinates: [139.9, 37.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_chubu_sangaku", type: "point" },
+      geometry: { type: "Point", coordinates: [137.6, 36.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_yoshino_kumano", type: "point" },
+      geometry: { type: "Point", coordinates: [135.9, 34.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_daisen_oki", type: "point" },
+      geometry: { type: "Point", coordinates: [133.4, 35.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_kirishima_kinkowan", type: "point" },
+      geometry: { type: "Point", coordinates: [130.8, 31.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_yakushima", type: "point" },
+      geometry: { type: "Point", coordinates: [130.5, 30.3] }
+    },
+    {
+      type: "Feature",
       properties: { id: "peak_fuji", type: "point" },
       geometry: { type: "Point", coordinates: [138.73, 35.36] }
     },
@@ -9383,18 +9458,53 @@ const customLandmarks = {
     },
     {
       type: "Feature",
-      properties: { id: "plain_kanto", type: "point" },
-      geometry: { type: "Point", coordinates: [139.7, 36.0] }
+      properties: { id: "plain_kanto", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[139.3, 35.5], [140.5, 35.5], [140.5, 36.5], [139.3, 36.5], [139.3, 35.5]]] }
     },
     {
       type: "Feature",
-      properties: { id: "plain_nobi", type: "point" },
-      geometry: { type: "Point", coordinates: [136.7, 35.3] }
+      properties: { id: "plain_ishikari", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[141.2, 42.9], [142.1, 42.9], [142.1, 43.5], [141.2, 43.5], [141.2, 42.9]]] }
     },
     {
       type: "Feature",
-      properties: { id: "plain_ishikari", type: "point" },
-      geometry: { type: "Point", coordinates: [141.6, 43.1] }
+      properties: { id: "plain_noubi", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[136.5, 35.0], [137.0, 35.0], [137.0, 35.5], [136.5, 35.5], [136.5, 35.0]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_chikushi", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[130.3, 33.1], [130.7, 33.1], [130.7, 33.4], [130.3, 33.4], [130.3, 33.1]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_osaka", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[135.3, 34.5], [135.7, 34.5], [135.7, 34.8], [135.3, 34.8], [135.3, 34.5]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_echigo", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[138.8, 37.4], [139.3, 37.4], [139.3, 38.0], [138.8, 38.0], [138.8, 37.4]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_sendai", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[140.8, 38.0], [141.2, 38.0], [141.2, 38.5], [140.8, 38.5], [140.8, 38.0]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_miyazaki", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[131.3, 31.8], [131.6, 31.8], [131.6, 32.3], [131.3, 32.3], [131.3, 31.8]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_akita", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[140.0, 39.5], [140.3, 39.5], [140.3, 39.9], [140.0, 39.9], [140.0, 39.5]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_shonai", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[139.7, 38.7], [140.0, 38.7], [140.0, 39.1], [139.7, 39.1], [139.7, 38.7]]] }
     },
     {
       type: "Feature",
@@ -9443,23 +9553,48 @@ const customLandmarks = {
     },
     {
       type: "Feature",
-      properties: { id: "plain_tsukushi", type: "point" },
-      geometry: { type: "Point", coordinates: [130.5, 33.3] }
+      properties: { id: "plain_toyama", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[137.0, 36.6], [137.4, 36.6], [137.4, 36.9], [137.0, 36.9], [137.0, 36.6]]] }
     },
     {
       type: "Feature",
-      properties: { id: "plain_osaka", type: "point" },
-      geometry: { type: "Point", coordinates: [135.5, 34.6] }
+      properties: { id: "plain_okayama", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[133.7, 34.5], [134.1, 34.5], [134.1, 34.8], [133.7, 34.8], [133.7, 34.5]]] }
     },
     {
       type: "Feature",
-      properties: { id: "plain_echigo", type: "point" },
-      geometry: { type: "Point", coordinates: [139.0, 37.8] }
+      properties: { id: "plain_sanuki", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[133.8, 34.2], [134.4, 34.2], [134.4, 34.5], [133.8, 34.5], [133.8, 34.2]]] }
     },
     {
       type: "Feature",
-      properties: { id: "plain_sendai", type: "point" },
-      geometry: { type: "Point", coordinates: [140.9, 38.2] }
+      properties: { id: "plain_kochi", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[133.4, 33.5], [133.8, 33.5], [133.8, 33.7], [133.4, 33.7], [133.4, 33.5]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_tokushima", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[134.4, 34.0], [134.8, 34.0], [134.8, 34.2], [134.4, 34.2], [134.4, 34.0]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_kumamoto", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[130.6, 32.7], [130.9, 32.7], [130.9, 33.0], [130.6, 33.0], [130.6, 32.7]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_yatsushiro", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[130.5, 32.4], [130.7, 32.4], [130.7, 32.6], [130.5, 32.6], [130.5, 32.4]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_tokachi", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[143.0, 42.6], [143.8, 42.6], [143.8, 43.2], [143.0, 43.2], [143.0, 42.6]]] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plain_tsugaru", type: "area" },
+      geometry: { type: "Polygon", coordinates: [[[140.3, 40.6], [140.6, 40.6], [140.6, 41.0], [140.3, 41.0], [140.3, 40.6]]] }
     },
     {
       type: "Feature",
@@ -9867,10 +10002,12 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
   const getStyleForLandmark = (feature) => {
     const featureId = feature.properties.id;
     const isPoint = feature.properties.type === 'point';
+    const isArea = feature.properties.type === 'area';
     let isTarget = (currentGeoId === featureId);
 
     if (isTarget && !isHistoryMode) {
-      return (isPoint ? 'fill-cyan-400' : 'fill-none') + ' stroke-cyan-400 stroke-[6px] drop-shadow-[0_0_10px_rgba(0,243,255,0.8)] outline-none animate-quest-pulse';
+      const fillClass = isPoint ? 'fill-cyan-400 ' : (isArea ? 'fill-cyan-400/40 ' : 'fill-none ');
+      return fillClass + 'stroke-cyan-400 stroke-[5px] drop-shadow-[0_0_10px_rgba(0,243,255,0.8)] outline-none animate-quest-pulse';
     }
 
     let achievedLevel = 0;
@@ -9882,7 +10019,8 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     }
 
     // デフォルトは見えないか、うっすら表示
-    let baseClass = (isPoint ? 'fill-slate-500' : 'fill-none') + ' stroke-slate-500 stroke-[2px] opacity-0 outline-none transition-all duration-500 pointer-events-auto';
+    const defaultFill = isPoint ? 'fill-slate-500 ' : (isArea ? 'fill-slate-500/20 ' : 'fill-none ');
+    let baseClass = defaultFill + 'stroke-slate-500 stroke-[2px] opacity-0 outline-none transition-all duration-500 pointer-events-auto';
 
     if (achievedLevel > 0) {
       let isActive = true;
@@ -9890,13 +10028,16 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
       if (achievedLevel === 2 && daysPassed > 7) isActive = false;
       if (achievedLevel === 3 && daysPassed > 30) isActive = false;
 
-      if (!isActive) return (isPoint ? 'fill-slate-500' : 'fill-none') + ` stroke-slate-500 stroke-[3px] grayscale outline-none transition-opacity opacity-50`;
+      if (!isActive) {
+        const inactiveFill = isPoint ? 'fill-slate-500 ' : (isArea ? 'fill-slate-500/10 ' : 'fill-none ');
+        return inactiveFill + `stroke-slate-500 stroke-[3px] grayscale outline-none transition-opacity opacity-50`;
+      }
 
       switch (achievedLevel) {
-        case 1: baseClass = (isPoint ? 'fill-cyan-400' : 'fill-none') + ` stroke-cyan-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 2: baseClass = (isPoint ? 'fill-green-400' : 'fill-none') + ` stroke-green-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 3: baseClass = (isPoint ? 'fill-purple-400' : 'fill-none') + ` stroke-purple-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(192,132,252,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 4: baseClass = (isPoint ? 'fill-yellow-400' : 'fill-none') + ` stroke-yellow-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 1: baseClass = (isPoint ? 'fill-cyan-400 ' : (isArea ? 'fill-cyan-400/30 ' : 'fill-none ')) + `stroke-cyan-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 2: baseClass = (isPoint ? 'fill-green-400 ' : (isArea ? 'fill-green-400/30 ' : 'fill-none ')) + `stroke-green-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 3: baseClass = (isPoint ? 'fill-purple-400 ' : (isArea ? 'fill-purple-400/30 ' : 'fill-none ')) + `stroke-purple-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(192,132,252,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 4: baseClass = (isPoint ? 'fill-yellow-400 ' : (isArea ? 'fill-yellow-400/30 ' : 'fill-none ')) + `stroke-yellow-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] outline-none pointer-events-auto transition-opacity`; break;
       }
     }
     return baseClass;
