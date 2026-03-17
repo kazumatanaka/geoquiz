@@ -2139,7 +2139,7 @@ const geographyMaster = [
     "kana": "いぬぼうさき",
     "type": "cape",
     "charName": "イヌボウ-フラッシュ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_inuwasaki_n_v1.png",
     "region": "kanto",
     "rarity": "N",
     "flavorText": "関東最東端、山頂を除けば日本で最も早く日の出が見られる岬",
