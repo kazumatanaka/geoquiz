@@ -809,7 +809,7 @@ const geographyMaster = [
     "kana": "きいすいどう",
     "type": "channel",
     "charName": "キイ-ゲート",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kiichannel_r.png",
     "region": "kinki",
     "rarity": "R",
     "flavorText": "紀伊半島と四国の間の海域、鳴門の渦潮の近く",
