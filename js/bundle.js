@@ -1853,7 +1853,7 @@ const geographyMaster = [
     "kana": "おんたけさん",
     "type": "mountain",
     "charName": "オンタケ・ロード",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_ontake_sr.png",
     "region": "chubu",
     "rarity": "SR",
     "flavorText": "山岳信仰の聖地、木曽の谷にそびえ立つ霊峰",
