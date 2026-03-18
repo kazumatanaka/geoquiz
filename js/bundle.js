@@ -5357,7 +5357,7 @@ const geographyMaster = [
     "kana": "だいせんおきこくりつこうえん",
     "type": "national_park",
     "charName": "ダイセン-ピーク",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_daisen_oki_ssr_v1.png",
     "region": "chugoku",
     "rarity": "SSR",
     "flavorText": "山陰のシンボル・大山と、神話の島・隠岐を繋ぐ公園",
