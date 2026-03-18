@@ -5272,7 +5272,7 @@ const geographyMaster = [
     "kana": "ちゅうぶさんがくこくりつこうえん",
     "type": "national_park",
     "charName": "チュウブ-アルプス",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_chubu_sangaku_ssr_v1.png",
     "region": "chubu",
     "rarity": "SSR",
     "flavorText": "『北アルプス』。日本屈指の3,000m級が連なる山岳公園",
