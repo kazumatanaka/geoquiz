@@ -8983,29 +8983,29 @@ function showLevelUpNotification(level) {
 
 // --- ui.js ---
 const geoToPrefecture = {
-  "hokkaido_region": ["Hokkaido"],
+  "hokkaido_region": ["Hokkai Do"],
   "west_japan": ["Osaka Fu", "Hyogo Ken", "Kyoto Fu", "Nara Ken", "Wakayama Ken"],
   "kyushu": ["Fukuoka Ken", "Saga Ken", "Nagasaki Ken", "Kumamoto Ken", "Oita Ken", "Miyazaki Ken", "Kagoshima Ken"],
   "lake_biwa": ["Shiga Ken"],
   "lake_suwa": ["Nagano Ken"],
   "lake_shinji": ["Shimane Ken"],
-  "lake_akan": ["Hokkaido"],
+  "lake_akan": ["Hokkai Do"],
   "lake_inawashiro": ["Fukushima Ken"],
   "lake_nakaumi": ["Shimane Ken", "Tottori Ken"],
-  "lake_saroma": ["Hokkaido"],
-  "lake_shikotsu": ["Hokkaido"],
+  "lake_saroma": ["Hokkai Do"],
+  "lake_shikotsu": ["Hokkai Do"],
   "lake_ikeda": ["Kagoshima Ken"],
-  "lake_kussharo": ["Hokkaido"],
-  "lake_mashu": ["Hokkaido"],
+  "lake_kussharo": ["Hokkai Do"],
+  "lake_mashu": ["Hokkai Do"],
   "lake_chuzenji": ["Tochigi Ken"],
   "lake_hamana": ["Shizuoka Ken"],
   "lake_kasumigaura": ["Ibaraki Ken"],
-  "lake_toyako": ["Hokkaido"],
+  "lake_toyako": ["Hokkai Do"],
   "lake_towadako": ["Aomori Ken", "Akita Ken"],
   "lake_tazawako": ["Akita Ken"],
   "plain_kanto": ["Tokyo To", "Kanagawa Ken", "Saitama Ken", "Chiba Ken", "Ibaraki Ken", "Tochigi Ken", "Gunma Ken"],
-  "plain_ishikari": ["Hokkaido"],
-  "plain_tokachi": ["Hokkaido"],
+  "plain_ishikari": ["Hokkai Do"],
+  "plain_tokachi": ["Hokkai Do"],
   "plain_tsugaru": ["Aomori Ken"],
   "plain_akita": ["Akita Ken"],
   "plain_sendai": ["Miyagi Ken"],
@@ -9027,7 +9027,7 @@ const geoToPrefecture = {
   "basin_kyoto": ["Kyoto Fu"],
   "basin_nara": ["Nara Ken"],
   "basin_nagano": ["Nagano Ken"],
-  "basin_kamikawa": ["Hokkaido"],
+  "basin_kamikawa": ["Hokkai Do"],
   "basin_yonezawa": ["Yamagata Ken"],
   "basin_yamagata": ["Yamagata Ken"],
   "basin_aizu": ["Fukushima Ken"],
@@ -9039,8 +9039,8 @@ const geoToPrefecture = {
   "peninsula_shima": ["Mie Ken"],
   "peninsula_kii": ["Wakayama Ken", "Mie Ken", "Nara Ken"],
   "peninsula_shimabara": ["Nagasaki Ken"],
-  "peninsula_shiretoko": ["Hokkaido"],
-  "peninsula_shakotan": ["Hokkaido"],
+  "peninsula_shiretoko": ["Hokkai Do"],
+  "peninsula_shakotan": ["Hokkai Do"],
   "peninsula_oshika": ["Miyagi Ken"],
   "peninsula_tsugaru": ["Aomori Ken"],
   "peninsula_shimokita": ["Aomori Ken"],
@@ -9067,22 +9067,22 @@ const geoToPrefecture = {
   "bay_kagoshima": ["Kagoshima Ken"],
   "bay_ariake": ["Fukuoka Ken", "Saga Ken", "Nagasaki Ken", "Kumamoto Ken"],
   "plateau_shirasu": ["Kagoshima Ken", "Miyazaki Ken"],
-  "plateau_konsen": ["Hokkaido"],
+  "plateau_konsen": ["Hokkai Do"],
   "plateau_maki-no-hara": ["Shizuoka Ken"],
   "plateau_musashino": ["Tokyo To", "Saitama Ken"],
   "range_abukuma": ["Fukushima Ken", "Ibaraki Ken"],
-  "range_kitami": ["Hokkaido"],
-  "range_teshio": ["Hokkaido"],
-  "range_yubari": ["Hokkaido"],
-  "range_hidaka": ["Hokkaido"],
+  "range_kitami": ["Hokkai Do"],
+  "range_teshio": ["Hokkai Do"],
+  "range_yubari": ["Hokkai Do"],
+  "range_hidaka": ["Hokkai Do"],
   "range_shirakami": ["Aomori Ken", "Akita Ken"],
   "range_kanto": ["Gunma Ken", "Saitama Ken", "Tokyo To", "Kanagawa Ken", "Yamanashi Ken", "Nagano Ken"],
   "range_kii": ["Wakayama Ken", "Nara Ken", "Mie Ken"],
   "range_tsukushi": ["Fukuoka Ken"],
   "range_suzuka": ["Shiga Ken", "Mie Ken", "Gifu Ken"],
   "range_tanba": ["Kyoto Fu", "Hyogo Ken"],
-  "park_shiretoko": ["Hokkaido"],
-  "park_daisetsuzan": ["Hokkaido"],
+  "park_shiretoko": ["Hokkai Do"],
+  "park_daisetsuzan": ["Hokkai Do"],
   "park_sanrikufukko": ["Aomori Ken", "Iwate Ken", "Miyagi Ken"],
   "park_nikko": ["Tochigi Ken", "Gunma Ken", "Fukushima Ken"],
   "park_setonaikai": ["Hyogo Ken", "Okayama Ken", "Hiroshima Ken", "Yamaguchi Ken", "Tokushima Ken", "Kagawa Ken", "Ehime Ken", "Fukuoka Ken", "Oita Ken"],
@@ -9093,13 +9093,13 @@ const geoToPrefecture = {
   "island_tsushima": ["Nagasaki Ken"],
   "island_iki": ["Nagasaki Ken"],
   "island_goto": ["Nagasaki Ken"],
-  "strait_soya": ["Hokkaido"],
-  "strait_tsugaru": ["Hokkaido", "Aomori Ken"],
+  "strait_soya": ["Hokkai Do"],
+  "strait_tsugaru": ["Hokkai Do", "Aomori Ken"],
   "strait_naruto": ["Hyogo Ken", "Tokushima Ken"],
   "strait_kanmon": ["Yamaguchi Ken", "Fukuoka Ken"],
-  "cape_soya": ["Hokkaido"],
-  "cape_erimo": ["Hokkaido"],
-  "cape_shirakami": ["Hokkaido"],
+  "cape_soya": ["Hokkai Do"],
+  "cape_erimo": ["Hokkai Do"],
+  "cape_shirakami": ["Hokkai Do"],
   "cape_tappi": ["Aomori Ken"],
   "cape_shio-no-misaki": ["Wakayama Ken"],
   "cape_ashizuri": ["Kochi Ken"],
@@ -9653,16 +9653,6 @@ const customLandmarks = {
     },
     {
       type: "Feature",
-      properties: { id: "lake_tazawako", type: "point" },
-      geometry: { type: "Point", coordinates: [140.66, 39.72] }
-    },
-    {
-      type: "Feature",
-      properties: { id: "lake_towadako", type: "point" },
-      geometry: { type: "Point", coordinates: [140.9, 40.46] }
-    },
-    {
-      type: "Feature",
       properties: { id: "lake_hamana", type: "point" },
       geometry: { type: "Point", coordinates: [137.6, 34.7] }
     },
@@ -9815,7 +9805,403 @@ const customLandmarks = {
       type: "Feature",
       properties: { id: "river_oyodogawa", type: "point" },
       geometry: { type: "Point", coordinates: [131.4, 31.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "basin_omi", type: "point" },
+      geometry: { type: "Point", coordinates: [136.2, 35.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "basin_shinjo", type: "point" },
+      geometry: { type: "Point", coordinates: [140.2, 38.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "basin_yokote", type: "point" },
+      geometry: { type: "Point", coordinates: [140.5, 39.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "basin_yonezawa", type: "point" },
+      geometry: { type: "Point", coordinates: [140.1, 37.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_funka", type: "point" },
+      geometry: { type: "Point", coordinates: [140.6, 42.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_hiroshima", type: "point" },
+      geometry: { type: "Point", coordinates: [132.4, 34.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_ise", type: "point" },
+      geometry: { type: "Point", coordinates: [136.7, 34.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_kagoshima", type: "point" },
+      geometry: { type: "Point", coordinates: [130.6, 31.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_mikawa", type: "point" },
+      geometry: { type: "Point", coordinates: [137.1, 34.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_mutsu", type: "point" },
+      geometry: { type: "Point", coordinates: [140.9, 41.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_omura", type: "point" },
+      geometry: { type: "Point", coordinates: [129.9, 32.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_sagami", type: "point" },
+      geometry: { type: "Point", coordinates: [139.3, 35.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_sendai", type: "point" },
+      geometry: { type: "Point", coordinates: [141.0, 38.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_suruga", type: "point" },
+      geometry: { type: "Point", coordinates: [138.6, 34.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_tosa", type: "point" },
+      geometry: { type: "Point", coordinates: [133.5, 33.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_toyama", type: "point" },
+      geometry: { type: "Point", coordinates: [137.2, 36.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "bay_wakasa", type: "point" },
+      geometry: { type: "Point", coordinates: [135.6, 35.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "channel_bungosuido", type: "point" },
+      geometry: { type: "Point", coordinates: [132.3, 33.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "channel_kiisuido", type: "point" },
+      geometry: { type: "Point", coordinates: [134.9, 34.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "coast_sanriku", type: "point" },
+      geometry: { type: "Point", coordinates: [141.6, 39.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "highland_kitakami", type: "point" },
+      geometry: { type: "Point", coordinates: [141.3, 39.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_amami", type: "point" },
+      geometry: { type: "Point", coordinates: [129.5, 28.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_etorofu", type: "point" },
+      geometry: { type: "Point", coordinates: [148.0, 45.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_habomai", type: "point" },
+      geometry: { type: "Point", coordinates: [145.8, 43.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_iki", type: "point" },
+      geometry: { type: "Point", coordinates: [129.7, 33.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_ishigaki", type: "point" },
+      geometry: { type: "Point", coordinates: [124.2, 24.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_kunashiri", type: "point" },
+      geometry: { type: "Point", coordinates: [145.9, 44.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_miyako", type: "point" },
+      geometry: { type: "Point", coordinates: [125.3, 24.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_okinawa", type: "point" },
+      geometry: { type: "Point", coordinates: [127.9, 26.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_okushiri", type: "point" },
+      geometry: { type: "Point", coordinates: [139.5, 42.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_rebun", type: "point" },
+      geometry: { type: "Point", coordinates: [141.0, 45.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_rishiri", type: "point" },
+      geometry: { type: "Point", coordinates: [141.2, 45.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_sado", type: "point" },
+      geometry: { type: "Point", coordinates: [138.4, 38.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_shikotan", type: "point" },
+      geometry: { type: "Point", coordinates: [146.8, 43.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_shodoshima", type: "point" },
+      geometry: { type: "Point", coordinates: [134.3, 34.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_tanegashima", type: "point" },
+      geometry: { type: "Point", coordinates: [130.9, 30.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_tsushima", type: "point" },
+      geometry: { type: "Point", coordinates: [129.3, 34.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "island_yakushima", type: "point" },
+      geometry: { type: "Point", coordinates: [130.5, 30.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "islands_goto", type: "point" },
+      geometry: { type: "Point", coordinates: [128.8, 32.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "islands_oki", type: "point" },
+      geometry: { type: "Point", coordinates: [133.2, 36.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_chuzenji", type: "point" },
+      geometry: { type: "Point", coordinates: [139.4, 36.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "lake_ikeda", type: "point" },
+      geometry: { type: "Point", coordinates: [130.5, 31.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_atsumi", type: "point" },
+      geometry: { type: "Point", coordinates: [137.1, 34.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_boso", type: "point" },
+      geometry: { type: "Point", coordinates: [140.1, 35.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_chita", type: "point" },
+      geometry: { type: "Point", coordinates: [136.9, 34.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_izu", type: "point" },
+      geometry: { type: "Point", coordinates: [138.9, 34.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_kii", type: "point" },
+      geometry: { type: "Point", coordinates: [135.5, 34.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_kunisaki", type: "point" },
+      geometry: { type: "Point", coordinates: [131.6, 33.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_miura", type: "point" },
+      geometry: { type: "Point", coordinates: [139.6, 35.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_nemuro", type: "point" },
+      geometry: { type: "Point", coordinates: [145.8, 43.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_noto", type: "point" },
+      geometry: { type: "Point", coordinates: [137.0, 37.2] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_oga", type: "point" },
+      geometry: { type: "Point", coordinates: [139.8, 39.9] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_oshima", type: "point" },
+      geometry: { type: "Point", coordinates: [140.5, 42.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_osumi", type: "point" },
+      geometry: { type: "Point", coordinates: [130.8, 31.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_sadamisaki", type: "point" },
+      geometry: { type: "Point", coordinates: [132.2, 33.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_satsuma", type: "point" },
+      geometry: { type: "Point", coordinates: [130.4, 31.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_shimabara", type: "point" },
+      geometry: { type: "Point", coordinates: [130.3, 32.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_shimokita", type: "point" },
+      geometry: { type: "Point", coordinates: [141.2, 41.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_shiretoko", type: "point" },
+      geometry: { type: "Point", coordinates: [145.1, 44.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_tango", type: "point" },
+      geometry: { type: "Point", coordinates: [135.2, 35.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "peninsula_tsugaru", type: "point" },
+      geometry: { type: "Point", coordinates: [140.4, 41.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plateau_kasanohara", type: "point" },
+      geometry: { type: "Point", coordinates: [130.9, 31.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plateau_konsen", type: "point" },
+      geometry: { type: "Point", coordinates: [144.8, 43.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plateau_makinohara", type: "point" },
+      geometry: { type: "Point", coordinates: [138.2, 34.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plateau_musashino", type: "point" },
+      geometry: { type: "Point", coordinates: [139.5, 35.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plateau_shimosu", type: "point" },
+      geometry: { type: "Point", coordinates: [130.3, 32.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "plateau_shirasu", type: "point" },
+      geometry: { type: "Point", coordinates: [130.7, 31.7] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_abukuma", type: "point" },
+      geometry: { type: "Point", coordinates: [140.8, 37.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_kanto", type: "point" },
+      geometry: { type: "Point", coordinates: [138.8, 35.8] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_kii", type: "point" },
+      geometry: { type: "Point", coordinates: [135.8, 34.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_shirakami", type: "point" },
+      geometry: { type: "Point", coordinates: [140.2, 40.4] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_suzuka", type: "point" },
+      geometry: { type: "Point", coordinates: [136.4, 35.1] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_tanba", type: "point" },
+      geometry: { type: "Point", coordinates: [135.4, 35.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "range_tsukushi", type: "point" },
+      geometry: { type: "Point", coordinates: [130.7, 33.5] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_abukuma", type: "point" },
+      geometry: { type: "Point", coordinates: [140.7, 37.6] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "river_kiso", type: "point" },
+      geometry: { type: "Point", coordinates: [136.8, 35.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "sea_ariake", type: "point" },
+      geometry: { type: "Point", coordinates: [130.3, 33.0] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "sea_yatsushiro", type: "point" },
+      geometry: { type: "Point", coordinates: [130.4, 32.3] }
+    },
+    {
+      type: "Feature",
+      properties: { id: "park_sanrikufukko", type: "point" },
+      geometry: { type: "Point", coordinates: [141.6, 39.5] }
     }
+
   ]
 };
 
