@@ -10328,7 +10328,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
 
   const svg = container.append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("class", `w-full h-full ${isHistoryMode ? 'drop-shadow-neon-blue' : 'drop-shadow-[0_0_15px_rgba(0,255,255,0.1)]'} overflow-visible`);
+    .attr("class", `w-full h-full ${isHistoryMode ? 'drop-shadow-[0_0_10px_rgba(0,243,255,0.15)]' : 'drop-shadow-[0_0_15px_rgba(0,255,255,0.1)]'} overflow-visible`);
 
   // Zoom Behavior Implementation
   const g = svg.append("g");
@@ -10387,7 +10387,7 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
     }
 
     let baseClass = isHistoryMode
-      ? 'fill-[#0f172a] stroke-slate-700 stroke-[0.5px] outline-none transition-all duration-500 hover:fill-slate-800 pointer-events-auto'
+      ? 'fill-[#1e293b] stroke-slate-500 stroke-[0.3px] outline-none transition-all duration-500 hover:fill-slate-700/50 pointer-events-auto'
       : 'fill-slate-700/60 stroke-slate-400 stroke-[1px] outline-none transition-all duration-300 hover:fill-slate-600/80 pointer-events-auto';
 
     if (achievedLevel > 0) {
@@ -10554,6 +10554,7 @@ function renderKanjiPanel(options, onSelect) {
   panel.innerHTML = '';
 
   const difficulty = currentSession?.difficulty || 'advanced';
+  panel.classList.toggle('beginner-mode', difficulty === 'beginner');
   if (difficulty === 'beginner') {
     panel.classList.remove('grid-cols-3');
     panel.classList.add('grid-cols-2', 'grid-rows-2');
@@ -10569,7 +10570,7 @@ function renderKanjiPanel(options, onSelect) {
     btn.className = `
       w-full h-full
       bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[8px]
-      ${difficulty === 'beginner' ? 'text-xl md:text-2xl lg:text-4xl py-6' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
+      ${difficulty === 'beginner' ? 'text-3xl md:text-4xl lg:text-4xl py-6' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
       flex items-center justify-center shadow-inner relative overflow-hidden group
       hover:border-cyber-neonBlue hover:text-white hover:shadow-neon-blue focus:border-cyan-400 focus:text-white focus:shadow-neon-blue
       transition-all duration-200 transform hover:scale-105 active:scale-95

@@ -84,15 +84,33 @@ body {
     }
 
     /* Kanji Panel — ultra-compact */
-    #kanji-panel {
+    #kanji-panel:not(.beginner-mode) {
         grid-template-columns: repeat(6, 1fr) !important;
         gap: 0.1rem !important;
     }
 
-    #kanji-panel button {
+    /* Beginner mode: 2x2 larger grid on mobile */
+    #kanji-panel.beginner-mode {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        flex: 1 !important;
+        min-height: 12rem !important;
+        margin-top: 0.5rem !important;
+    }
+
+    #kanji-panel:not(.beginner-mode) button {
         min-height: 2.35rem !important;
         height: 2.35rem !important;
         font-size: 1.1rem !important;
+    }
+
+    #kanji-panel.beginner-mode button {
+        height: 100% !important;
+        min-height: 5.5rem !important;
+        font-size: 1.8rem !important;
+        padding: 1.5rem 0.5rem !important;
     }
 
     .kanji-action-row {
@@ -116,11 +134,14 @@ body {
         margin-top: 0 !important;
     }
 
+    #screen-quest div.w-full.lg\:w-\[280px\],
     #screen-quest div.w-full.lg\:w-\[400px\] {
         flex: 1 1 0% !important;
         min-height: 0 !important;
         max-height: none !important;
         overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
 
     /* Map containers need touch-action: none for D3 zoom to work correctly on touch devices */
@@ -528,9 +549,15 @@ body {
         flex: 1 !important;
     }
 
-    #kanji-panel button {
+    #kanji-panel:not(.beginner-mode) button {
         height: 2.5rem !important;
         font-size: 1.15rem !important;
+    }
+
+    #kanji-panel.beginner-mode button {
+        height: 100% !important;
+        min-height: 3rem !important;
+        font-size: 1.25rem !important;
     }
 
     .kanji-action-row {
