@@ -3081,7 +3081,7 @@ const geographyMaster = [
     "kana": "しこつこ",
     "type": "lake",
     "charName": "シコツ-クリスタル",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_shikotsu_lake_sr_v1.png",
     "region": "hokkaido",
     "rarity": "SR",
     "flavorText": "日本屈指の透明度を誇る、不凍のカルデラ湖",
