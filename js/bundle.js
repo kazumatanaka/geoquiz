@@ -11358,7 +11358,8 @@ function handleSubmitAnswer() {
     triggerHaptic(30);
     flashMap('rgba(0, 243, 255, 1)', 500); // 青く光る
     combo++;
-    addExp(100); // RPG EXP gain
+    const expGain = (currentSession?.difficulty === 'beginner') ? 20 : 100;
+    addExp(expGain); // RPG EXP gain
     const comboEl = document.getElementById('quest-combo');
     if (comboEl) comboEl.innerText = combo;
 
@@ -11378,7 +11379,7 @@ function handleSubmitAnswer() {
     }
 
     setTimeout(() => {
-      handleClear();
+      handleClear(true);
       if (currentSession) {
         currentSession.currentIndex++;
         if (currentSession.currentIndex < 10) {
@@ -11415,7 +11416,7 @@ function handleSubmitAnswer() {
       currentSession.results.push(false);
       setKanjiPanelDisabled(true);
       setTimeout(() => {
-        handleClear();
+        handleClear(false);
         currentSession.currentIndex++;
         if (currentSession.currentIndex < 10) {
           nextQuest();
@@ -11427,11 +11428,17 @@ function handleSubmitAnswer() {
   }
 }
 
-function handleClear() {
+function handleClear(isCorrect = false) {
   setKanjiPanelDisabled(true);
-  const currentState = getState();
-  const currentMastery = currentState.progress[currentQuestion.geoId]?.masteryLevel || 0;
-  saveProgress(currentQuestion.geoId, Math.min(currentMastery + 1, 4));
+  
+  // Only record to Map (Survey Dept) if it's a correct answer in Advanced mode
+  const difficulty = currentSession?.difficulty || 'advanced';
+  if (isCorrect && difficulty === 'advanced') {
+    const currentState = getState();
+    const currentMastery = currentState.progress[currentQuestion.geoId]?.masteryLevel || 0;
+    saveProgress(currentQuestion.geoId, Math.min(currentMastery + 1, 4));
+  }
+  
   renderMap('quest-map-container', null, false);
   updateProgressUI();
 }
