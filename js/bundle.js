@@ -10588,6 +10588,8 @@ function renderKanjiPanel(options, onSelect) {
     }, i * 30);
   });
 
+  if (difficulty === 'beginner') return;
+
   // アクションボタン行 (DELETE + SUBMIT)
   const actionRow = document.createElement('div');
   actionRow.className = 'kanji-action-row flex gap-2 mt-1';
@@ -11438,7 +11440,7 @@ let pendingCategory = null;
 function showDifficultySelection(category) {
   if (sounds.tap && state.sfxEnabled) sounds.tap.play();
   pendingCategory = category;
-  navigate('difficulty');
+  navigateTo('difficulty');
 }
 
 function startSessionWithDifficulty(difficulty) {
