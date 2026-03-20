@@ -3040,7 +3040,7 @@ const geographyMaster = [
     "kana": "さろまこ",
     "type": "lake",
     "charName": "サロマ-アクア",
-    "charImage": "assets/avatars/avatar_water_1773059849617.png",
+    "charImage": "assets/avatars/avatar_saroma_lake_sr_v1.png",
     "region": "hokkaido",
     "rarity": "SR",
     "flavorText": "北海道最大、海と繋がる汽水湖の夕陽",
