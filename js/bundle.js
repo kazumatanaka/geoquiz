@@ -10568,7 +10568,7 @@ function renderKanjiPanel(options, onSelect) {
     btn.className = `
       w-full h-full
       bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[8px]
-      ${difficulty === 'beginner' ? 'text-3xl md:text-4xl lg:text-4xl py-6' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
+      ${difficulty === 'beginner' ? 'text-3xl md:text-4xl lg:text-4xl' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
       flex items-center justify-center shadow-inner relative overflow-hidden group
       hover:border-cyber-neonBlue hover:text-white hover:shadow-neon-blue focus:border-cyan-400 focus:text-white focus:shadow-neon-blue
       transition-all duration-200 transform hover:scale-105 active:scale-95
