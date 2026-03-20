@@ -3122,7 +3122,7 @@ const geographyMaster = [
     "kana": "あかんこ",
     "type": "lake",
     "charName": "アカン-ミステリー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_akan_lake_r_v1.png",
     "region": "hokkaido",
     "rarity": "R",
     "flavorText": "マリモが眠る深い緑の湖、アイヌの伝説が息づく",
