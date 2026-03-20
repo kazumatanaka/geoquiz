@@ -2467,7 +2467,7 @@ const geographyMaster = [
     "kana": "あしずりみさき",
     "type": "cape",
     "charName": "アシズリ-オーシャン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_ashizuri_cape_n_v1.png",
     "region": "shikoku",
     "rarity": "N",
     "flavorText": "四国最南端、太平洋の荒波が打ち寄せる断崖の岬",
