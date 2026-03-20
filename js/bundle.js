@@ -2836,7 +2836,7 @@ const geographyMaster = [
     "kana": "おおさかわん",
     "type": "bay",
     "charName": "オオサカ-ゲート",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_osaka_bay_ssr_v1.png",
     "region": "kinki",
     "rarity": "SSR",
     "flavorText": "瀬戸内海の東の玄関口、関西経済を支える巨大湾",
