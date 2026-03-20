@@ -2712,7 +2712,7 @@ const geographyMaster = [
     "kana": "さがみわん",
     "type": "bay",
     "charName": "サガミ-ウェーブ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_sagami_bay_sr_v1.png",
     "region": "kanto",
     "rarity": "SR",
     "flavorText": "深い水深が育む豊かな深海生物、湘南の風薫る湾",
