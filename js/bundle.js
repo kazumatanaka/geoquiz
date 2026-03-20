@@ -2958,7 +2958,7 @@ const geographyMaster = [
     "kana": "おおむらわん",
     "type": "bay",
     "charName": "オオムラ-ラグーン",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_omura_bay_r_v1.png",
     "region": "kyushu",
     "rarity": "R",
     "flavorText": "長崎の『琴の海』、出口が極めて狭い湖のような内海",
