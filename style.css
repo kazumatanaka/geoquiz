@@ -93,11 +93,10 @@ body {
     #kanji-panel.beginner-mode {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        grid-template-rows: repeat(2, 1fr) !important;
-        gap: 0.75rem !important;
-        flex: 1 !important;
-        min-height: 12rem !important;
-        margin-top: 0.5rem !important;
+        grid-template-rows: repeat(2, 60px) !important;
+        gap: 0.5rem !important;
+        height: auto !important;
+        margin-top: 0.25rem !important;
     }
 
     #kanji-panel:not(.beginner-mode) button {
@@ -107,10 +106,10 @@ body {
     }
 
     #kanji-panel.beginner-mode button {
-        height: 100% !important;
-        min-height: 5.5rem !important;
-        font-size: 1.8rem !important;
-        padding: 1.5rem 0.5rem !important;
+        height: 60px !important;
+        min-height: 60px !important;
+        font-size: 1.1rem !important;
+        padding: 0.4rem 0.25rem !important;
     }
 
     .kanji-action-row {

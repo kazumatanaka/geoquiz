@@ -2794,8 +2794,8 @@ const geographyMaster = [
     "name": "三河湾",
     "kana": "みかわわん",
     "type": "bay",
-    "charName": "ミカワ-アクア",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charName": "ミカワ-マリーナ",
+    "charImage": "assets/avatars/avatar_mikawa_bay_sr_v1.png",
     "region": "chubu",
     "rarity": "R",
     "flavorText": "知多と渥美の両半島に抱かれた、浅くて豊かな内湾",
@@ -10558,11 +10558,9 @@ function renderKanjiPanel(options, onSelect) {
   if (difficulty === 'beginner') {
     panel.classList.remove('grid-cols-3');
     panel.classList.add('grid-cols-2', 'grid-rows-2');
-    panel.classList.add('h-full');
   } else {
     panel.classList.remove('grid-cols-2', 'grid-rows-2');
     panel.classList.add('grid-cols-3');
-    panel.classList.remove('h-full');
   }
 
   options.forEach((char, i) => {
