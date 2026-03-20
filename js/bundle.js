@@ -2753,8 +2753,8 @@ const geographyMaster = [
     "name": "駿河湾",
     "kana": "するがわん",
     "type": "bay",
-    "charName": "スルガ-アビス",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charName": "スルガ-サーフ",
+    "charImage": "assets/avatars/avatar_suruga_bay_sr_v1.png",
     "region": "chubu",
     "rarity": "SSR",
     "flavorText": "日本一深い湾、サクラエビが躍る神秘の深海",
@@ -10556,18 +10556,20 @@ function renderKanjiPanel(options, onSelect) {
   const difficulty = currentSession?.difficulty || 'advanced';
   if (difficulty === 'beginner') {
     panel.classList.remove('grid-cols-3');
-    panel.classList.add('grid-cols-2');
+    panel.classList.add('grid-cols-2', 'grid-rows-2');
+    panel.classList.add('h-full');
   } else {
-    panel.classList.remove('grid-cols-2');
+    panel.classList.remove('grid-cols-2', 'grid-rows-2');
     panel.classList.add('grid-cols-3');
+    panel.classList.remove('h-full');
   }
 
   options.forEach((char, i) => {
     const btn = document.createElement('button');
     btn.className = `
       w-full h-full
-      bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[6px]
-      ${difficulty === 'beginner' ? 'text-sm md:text-base lg:text-xl py-3 px-1' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
+      bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[8px]
+      ${difficulty === 'beginner' ? 'text-xl md:text-2xl lg:text-4xl py-6' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
       flex items-center justify-center shadow-inner relative overflow-hidden group
       hover:border-cyber-neonBlue hover:text-white hover:shadow-neon-blue focus:border-cyan-400 focus:text-white focus:shadow-neon-blue
       transition-all duration-200 transform hover:scale-105 active:scale-95
@@ -11600,6 +11602,13 @@ function showSessionResult() {
     let rate = 3;
     if (correctCount === 10) rate = 15;
     else if (correctCount === 9) rate = 8;
+
+    // 難易度による調整
+    if (currentSession.difficulty === 'beginner') {
+      rate = Math.max(1, Math.floor(rate * 0.5)); // 初級は確率半分
+    } else if (currentSession.difficulty === 'advanced') {
+      rate = Math.round(rate * 1.5); // 上級は確率1.5倍
+    }
 
     currentDynamicRate = rate;
     const result = drawGacha();
