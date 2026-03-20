@@ -2876,7 +2876,7 @@ const geographyMaster = [
     "kana": "ひろしまわん",
     "type": "bay",
     "charName": "ヒロシマ-シェル",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_hiroshima_bay_sr_v1.png",
     "region": "chugoku",
     "rarity": "SR",
     "flavorText": "カキ養殖日本一、厳島神社の鳥居が映える風光明媚な湾",
