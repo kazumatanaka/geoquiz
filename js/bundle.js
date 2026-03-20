@@ -2631,7 +2631,7 @@ const geographyMaster = [
     "kana": "せんだいわん",
     "type": "bay",
     "charName": "センダイ-ブルー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_sendai_bay_r_v1.png",
     "region": "tohoku",
     "rarity": "R",
     "flavorText": "東北有数の重要港湾が集まる、三陸と常磐を結ぶ湾",
