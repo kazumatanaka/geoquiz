@@ -2385,7 +2385,7 @@ const geographyMaster = [
     "kana": "ちたはんとう",
     "type": "peninsula",
     "charName": "チタ-ハブ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_chita_peninsula_r_v1.png",
     "region": "chubu",
     "rarity": "R",
     "flavorText": "名古屋の海の玄関口、中部国際空港を擁する進化の半島",
