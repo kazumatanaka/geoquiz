@@ -10208,7 +10208,8 @@ const customLandmarks = {
 // Fix D3 geo path spherical winding polygon fill rendering bug
 customLandmarks.features.forEach(f => {
   if (f.geometry && f.geometry.type === 'Polygon' && f.geometry.coordinates[0]) {
-    f.geometry.coordinates[0].reverse();
+    f.geometry.type = 'LineString';
+    f.geometry.coordinates = f.geometry.coordinates[0];
   }
 });
 
