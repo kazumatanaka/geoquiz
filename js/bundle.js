@@ -10399,10 +10399,10 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
       if (!isActive) return `fill-slate-800 stroke-slate-600 stroke-[0.5px] grayscale outline-none`;
 
       switch (achievedLevel) {
-        case 1: baseClass = `fill-cyan-900/30 stroke-cyber-neonBlue stroke-1 drop-shadow-neon-blue outline-none pointer-events-auto hover:fill-cyber-neonBlue/20 transition-opacity`; break;
-        case 2: baseClass = `fill-green-900/30 stroke-cyber-neonGreen stroke-1 drop-shadow-neon-green outline-none pointer-events-auto hover:fill-cyber-neonGreen/20 transition-opacity`; break;
-        case 3: baseClass = `fill-purple-900/30 stroke-cyber-neonPurple stroke-1 drop-shadow-neon-purple outline-none pointer-events-auto hover:fill-cyber-neonPurple/20 transition-opacity`; break;
-        case 4: baseClass = `fill-yellow-900/30 stroke-cyber-neonGold stroke-1 drop-shadow-neon-gold outline-none pointer-events-auto hover:fill-yellow-600/30 transition-opacity`; break;
+        case 1: baseClass = `fill-cyan-900/30 stroke-cyber-neonBlue stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyber-neonBlue/20 transition-opacity`; break;
+        case 2: baseClass = `fill-green-900/30 stroke-cyber-neonGreen stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyber-neonGreen/20 transition-opacity`; break;
+        case 3: baseClass = `fill-purple-900/30 stroke-cyber-neonPurple stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyber-neonPurple/20 transition-opacity`; break;
+        case 4: baseClass = `fill-yellow-900/30 stroke-cyber-neonGold stroke-[0.8px] outline-none pointer-events-auto hover:fill-yellow-600/30 transition-opacity`; break;
       }
     }
     return baseClass;
