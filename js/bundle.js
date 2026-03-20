@@ -2426,7 +2426,7 @@ const geographyMaster = [
     "kana": "たんごはんとう",
     "type": "peninsula",
     "charName": "タンゴ-ブルー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_tango_peninsula_r_v1.png",
     "region": "kinki",
     "rarity": "R",
     "flavorText": "京都の北、天橋立を望む神秘の半島",
