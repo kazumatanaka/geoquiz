@@ -2592,7 +2592,7 @@ const geographyMaster = [
     "kana": "むつわん",
     "type": "bay",
     "charName": "ムツ-ブルー",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_mutsu_bay_r_v1.png",
     "region": "tohoku",
     "rarity": "R",
     "flavorText": "下北・津軽の両半島に抱かれた、ホタテ養殖の宝庫",
