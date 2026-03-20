@@ -312,42 +312,42 @@
                 class="text-3xl md:text-4xl font-orbitron font-bold text-cyber-neonBlue mb-8 tracking-widest drop-shadow-neon-blue">
                 SELECT CATEGORY</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-2xl px-4">
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('mountain')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('mountain')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">⛰️</span>
                     <span class="text-cyber-neonBlue font-bold">山・山脈</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('river')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('river')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">🌊</span>
                     <span class="text-cyber-neonBlue font-bold">川 (River)</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('plain')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('plain')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">🌾</span>
                     <span class="text-cyber-neonBlue font-bold">平野・盆地</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('peninsula')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('peninsula')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">📍</span>
                     <span class="text-cyber-neonBlue font-bold">半島・島</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('strait')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('strait')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">⚓</span>
                     <span class="text-cyber-neonBlue font-bold">湾・海・海峡</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('lake')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('lake')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">💧</span>
                     <span class="text-cyber-neonBlue font-bold">湖 (Lake)</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('national_park')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('national_park')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonBlue hover:bg-cyber-neonBlue/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">🌲</span>
                     <span class="text-cyber-neonBlue font-bold">国立公園</span>
                 </button>
-                <button onclick="window.app.triggerHaptic(15); window.app.startSession('all')"
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('all')"
                     class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonGold hover:bg-cyber-neonGold/10 transition-all flex flex-col items-center gap-2">
                     <span class="text-2xl">🌏</span>
                     <span class="text-cyber-neonGold font-bold">ランダム (All)</span>
@@ -356,6 +356,37 @@
             <button onclick="window.app.navigate('home')"
                 class="mt-8 text-slate-400 hover:text-white transition-colors">BACK
                 TO HOME</button>
+        </div>
+
+        <!-- Difficulty Selection Screen -->
+        <div id="screen-difficulty"
+            class="screen-view hidden flex flex-col items-center justify-center w-full h-full p-4">
+            <h3
+                class="text-3xl md:text-4xl font-orbitron font-bold text-cyber-neonBlue mb-12 tracking-widest drop-shadow-neon-blue text-center">
+                SELECT DIFFICULTY</h3>
+            
+            <div class="flex flex-col gap-8 w-full max-w-sm">
+                <button onclick="window.app.startSessionWithDifficulty('beginner')"
+                    class="group relative px-8 py-8 bg-cyber-panel/80 border-2 border-cyber-neonGreen text-cyber-neonGreen rounded-2xl overflow-hidden hover:shadow-neon-green transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <span class="text-3xl">🐥</span>
+                        <span class="text-2xl font-bold tracking-widest">初級 (BEGINNER)</span>
+                        <span class="text-sm text-slate-400 font-noto">4択問題で遊びやすく</span>
+                    </div>
+                </button>
+
+                <button onclick="window.app.startSessionWithDifficulty('advanced')"
+                    class="group relative px-8 py-8 bg-cyber-panel/80 border-2 border-cyber-neonPurple text-cyber-neonPurple rounded-2xl overflow-hidden hover:shadow-neon-purple transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <span class="text-3xl">⚔️</span>
+                        <span class="text-2xl font-bold tracking-widest">上級 (ADVANCED)</span>
+                        <span class="text-sm text-slate-400 font-noto">漢字を組み合わせて回答</span>
+                    </div>
+                </button>
+            </div>
+
+            <button onclick="window.app.navigate('category')"
+                class="mt-12 text-slate-400 hover:text-white transition-colors tracking-widest">BACK TO CATEGORY</button>
         </div>
 
         <!-- Quest Screen -->

@@ -10553,12 +10553,21 @@ function renderKanjiPanel(options, onSelect) {
   const panel = document.getElementById('kanji-panel');
   panel.innerHTML = '';
 
+  const difficulty = currentSession?.difficulty || 'advanced';
+  if (difficulty === 'beginner') {
+    panel.classList.remove('grid-cols-3');
+    panel.classList.add('grid-cols-2');
+  } else {
+    panel.classList.remove('grid-cols-2');
+    panel.classList.add('grid-cols-3');
+  }
+
   options.forEach((char, i) => {
     const btn = document.createElement('button');
     btn.className = `
       w-full h-full
       bg-[#0a0f1d]/80 border-2 border-slate-600 rounded-[6px]
-      text-xl md:text-3xl lg:text-5xl font-bold font-noto outline-none text-slate-300 leading-none
+      ${difficulty === 'beginner' ? 'text-sm md:text-base lg:text-xl py-3 px-1' : 'text-xl md:text-3xl lg:text-5xl'} font-bold font-noto outline-none text-slate-300 leading-none
       flex items-center justify-center shadow-inner relative overflow-hidden group
       hover:border-cyber-neonBlue hover:text-white hover:shadow-neon-blue focus:border-cyan-400 focus:text-white focus:shadow-neon-blue
       transition-all duration-200 transform hover:scale-105 active:scale-95
@@ -11030,6 +11039,8 @@ function initApp() {
   window.app = {
     triggerHaptic: triggerHaptic,
     startSession: startSession,
+    showDifficultySelection: showDifficultySelection,
+    startSessionWithDifficulty: startSessionWithDifficulty,
     navigate: (screen) => {
       if (sounds.tap && state.sfxEnabled) sounds.tap.play();
       if (screen === 'home') {
@@ -11282,6 +11293,14 @@ let currentSession = null; // { category: string, questions: [], currentIndex: 0
 function handleSelectChar(char) {
   if (!currentQuestion) return;
 
+  if (currentSession.difficulty === 'beginner') {
+    // 初級モード: 直接回答
+    answeredStr = char;
+    document.getElementById('quest-answer-box').innerText = answeredStr;
+    handleSubmitAnswer();
+    return;
+  }
+
   if (answeredStr.length >= currentQuestion.name.length) return;
 
   triggerHaptic(10);
@@ -11414,7 +11433,20 @@ function handleClear() {
   updateProgressUI();
 }
 
-function startSession(category) {
+let pendingCategory = null;
+
+function showDifficultySelection(category) {
+  if (sounds.tap && state.sfxEnabled) sounds.tap.play();
+  pendingCategory = category;
+  navigate('difficulty');
+}
+
+function startSessionWithDifficulty(difficulty) {
+  if (sounds.tap && state.sfxEnabled) sounds.tap.play();
+  startSession(pendingCategory, difficulty);
+}
+
+function startSession(category, difficulty = 'advanced') {
   if (sounds.tap && state.sfxEnabled) sounds.tap.play();
   console.log('[GeoQuiz] startSession called with:', category);
 
@@ -11442,6 +11474,7 @@ function startSession(category) {
 
   currentSession = {
     category,
+    difficulty,
     questions: sessionQuestions,
     currentIndex: 0,
     results: []
@@ -11494,32 +11527,57 @@ function startQuest() {
   document.getElementById('quest-flavor').innerText = currentQuestion.flavorText;
   renderMap('quest-map-container', currentQuestion.geoId, false);
 
-  const targetChars = currentQuestion.name.split('');
-  const allMistakes = getState().mistakes;
-  const mistakeCharsForThis = allMistakes
-    .filter(m => m.geoId === currentQuestion.geoId)
-    .flatMap(m => (m.tappedDummy || '').split(''))
-    .filter(c => !targetChars.includes(c) && c.trim() !== '');
+  let allChars = [];
+  let shuffled = [];
 
-  const mistakeCount = {};
-  mistakeCharsForThis.forEach(c => { mistakeCount[c] = (mistakeCount[c] || 0) + 1; });
-  const sortedMistakeChars = [...new Set(mistakeCharsForThis)]
-    .sort((a, b) => mistakeCount[b] - mistakeCount[a])
-    .slice(0, 4);
+  if (currentSession.difficulty === 'beginner') {
+    // 初級モード: 4択。正解とランダムな3つの誤答を選択。
+    const others = geographyMaster
+      .filter(g => g.geoId !== currentQuestion.geoId && g.type === currentQuestion.type)
+      .map(g => g.name);
+    
+    // 足りない場合は他のタイプからも持ってくる
+    if (others.length < 3) {
+      const extra = geographyMaster
+        .filter(g => g.geoId !== currentQuestion.geoId && !others.includes(g.name))
+        .map(g => g.name);
+      others.push(...extra.slice(0, 3 - others.length));
+    }
+    
+    const choices = [currentQuestion.name, ...others.sort(() => 0.5 - Math.random()).slice(0, 3)];
+    shuffled = choices.sort(() => 0.5 - Math.random());
+    
+    // パネルラベル固定
+    const panelLabel = document.querySelector('#combo-container')?.previousElementSibling;
+    if (panelLabel) panelLabel.innerHTML = `4択問題 (初級)`;
+  } else {
+    const targetChars = currentQuestion.name.split('');
+    const allMistakes = getState().mistakes;
+    const mistakeCharsForThis = allMistakes
+      .filter(m => m.geoId === currentQuestion.geoId)
+      .flatMap(m => (m.tappedDummy || '').split(''))
+      .filter(c => !targetChars.includes(c) && c.trim() !== '');
 
-  const usedChars = new Set([...targetChars, ...sortedMistakeChars]);
-  const remainingDummies = currentQuestion.dummyKanji.filter(c => !usedChars.has(c));
-  const fillerDummies = remainingDummies.slice(0, Math.max(0, 12 - usedChars.size));
+    const mistakeCount = {};
+    mistakeCharsForThis.forEach(c => { mistakeCount[c] = (mistakeCount[c] || 0) + 1; });
+    const sortedMistakeChars = [...new Set(mistakeCharsForThis)]
+      .sort((a, b) => mistakeCount[b] - mistakeCount[a])
+      .slice(0, 4);
 
-  const allChars = [...targetChars, ...sortedMistakeChars, ...fillerDummies];
-  const shuffled = [...new Set(allChars)].slice(0, 12).sort(() => Math.random() - 0.5);
+    const usedChars = new Set([...targetChars, ...sortedMistakeChars]);
+    const remainingDummies = currentQuestion.dummyKanji.filter(c => !usedChars.has(c));
+    const fillerDummies = remainingDummies.slice(0, Math.max(0, 12 - usedChars.size));
 
-  const panelLabel = document.querySelector('#combo-container')?.previousElementSibling;
-  if (panelLabel) {
-    if (sortedMistakeChars.length > 0) {
-      panelLabel.innerHTML = `解答パネル <span class="text-red-400 font-orbitron text-[10px] tracking-wider animate-pulse">⚠ 弱点特訓</span>`;
-    } else {
-      panelLabel.innerHTML = `解答パネル`;
+    allChars = [...targetChars, ...sortedMistakeChars, ...fillerDummies];
+    shuffled = [...new Set(allChars)].slice(0, 12).sort(() => Math.random() - 0.5);
+
+    const panelLabel = document.querySelector('#combo-container')?.previousElementSibling;
+    if (panelLabel) {
+      if (sortedMistakeChars.length > 0) {
+        panelLabel.innerHTML = `解答パネル <span class="text-red-400 font-orbitron text-[10px] tracking-wider animate-pulse">⚠ 弱点特訓</span>`;
+      } else {
+        panelLabel.innerHTML = `解答パネル`;
+      }
     }
   }
 
