@@ -2999,7 +2999,7 @@ const geographyMaster = [
     "kana": "かごしまわん",
     "type": "bay",
     "charName": "カゴシマ-ボルケーノ",
-    "charImage": "assets/avatars/silhouette_placeholder.png",
+    "charImage": "assets/avatars/avatar_kagoshima_bay_sr_v1.png",
     "region": "kyushu",
     "rarity": "SR",
     "flavorText": "別名『錦江湾』、桜島を中心に抱く火山の恵みの海",
