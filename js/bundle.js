@@ -10399,10 +10399,10 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
       if (!isActive) return `fill-slate-800 stroke-slate-600 stroke-[0.5px] grayscale outline-none`;
 
       switch (achievedLevel) {
-        case 1: baseClass = `fill-cyan-900/30 stroke-cyber-neonBlue stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyber-neonBlue/20 transition-opacity`; break;
-        case 2: baseClass = `fill-green-900/30 stroke-cyber-neonGreen stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyber-neonGreen/20 transition-opacity`; break;
-        case 3: baseClass = `fill-purple-900/30 stroke-cyber-neonPurple stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyber-neonPurple/20 transition-opacity`; break;
-        case 4: baseClass = `fill-yellow-900/30 stroke-cyber-neonGold stroke-[0.8px] outline-none pointer-events-auto hover:fill-yellow-600/30 transition-opacity`; break;
+        case 1: baseClass = `fill-cyan-900/20 stroke-cyan-800 stroke-[0.8px] outline-none pointer-events-auto hover:fill-cyan-900/40 transition-opacity`; break;
+        case 2: baseClass = `fill-green-900/20 stroke-green-800 stroke-[0.8px] outline-none pointer-events-auto hover:fill-green-900/40 transition-opacity`; break;
+        case 3: baseClass = `fill-purple-900/20 stroke-purple-700 stroke-[0.8px] outline-none pointer-events-auto hover:fill-purple-900/40 transition-opacity`; break;
+        case 4: baseClass = `fill-yellow-900/20 stroke-yellow-700 stroke-[0.8px] outline-none pointer-events-auto hover:fill-yellow-900/40 transition-opacity`; break;
       }
     }
     return baseClass;
@@ -10443,10 +10443,10 @@ function renderMap(containerId, currentGeoId, isHistoryMode = false) {
       }
 
       switch (achievedLevel) {
-        case 1: baseClass = (isPoint ? 'fill-cyan-400 ' : (isArea ? 'fill-cyan-400/30 ' : 'fill-none ')) + `stroke-cyan-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 2: baseClass = (isPoint ? 'fill-green-400 ' : (isArea ? 'fill-green-400/30 ' : 'fill-none ')) + `stroke-green-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(74,222,128,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 3: baseClass = (isPoint ? 'fill-purple-400 ' : (isArea ? 'fill-purple-400/30 ' : 'fill-none ')) + `stroke-purple-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(192,132,252,0.6)] outline-none pointer-events-auto transition-opacity`; break;
-        case 4: baseClass = (isPoint ? 'fill-yellow-400 ' : (isArea ? 'fill-yellow-400/30 ' : 'fill-none ')) + `stroke-yellow-400 stroke-[4px] drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] outline-none pointer-events-auto transition-opacity`; break;
+        case 1: baseClass = (isPoint ? 'fill-cyan-400 ' : (isArea ? 'fill-cyan-400/30 ' : 'fill-none ')) + `stroke-cyan-500 stroke-[2px] outline-none pointer-events-auto transition-opacity`; break;
+        case 2: baseClass = (isPoint ? 'fill-green-400 ' : (isArea ? 'fill-green-400/30 ' : 'fill-none ')) + `stroke-green-500 stroke-[2px] outline-none pointer-events-auto transition-opacity`; break;
+        case 3: baseClass = (isPoint ? 'fill-purple-400 ' : (isArea ? 'fill-purple-400/30 ' : 'fill-none ')) + `stroke-purple-500 stroke-[2px] outline-none pointer-events-auto transition-opacity`; break;
+        case 4: baseClass = (isPoint ? 'fill-yellow-400 ' : (isArea ? 'fill-yellow-400/30 ' : 'fill-none ')) + `stroke-yellow-500 stroke-[2px] outline-none pointer-events-auto transition-opacity`; break;
       }
     }
     return baseClass;
