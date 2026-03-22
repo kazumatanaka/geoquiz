@@ -4,6 +4,7 @@
   "description": "中学受験（SAPIX等）に特化した日本地理クイズゲーム",
   "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#0a0a1a",
   "theme_color": "#00f3ff",
   "icons": [
