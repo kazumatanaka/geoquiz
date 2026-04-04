@@ -1,4 +1,17 @@
+const state = {
+  progress: {}, // { geoId: { masteryLevel, lastClearedAt } }
+  cards: {},    // { cardId: { level, quantity } }
+  mistakes: [], // [ { geoId, tappedDummy, timestamp } ]
+  playerExp: 0,
+  playerLevel: 1,
+  bgmEnabled: true,
+  sfxEnabled: true,
+  ssrTickets: 0,
+  isDirty: false // Tracks if local changes need sync
+};
+
 // --- data.js ---
+
 const geographyMaster = [
   {
     "geoId": "river_shinano",
@@ -8707,134 +8720,9 @@ const STORAGE_KEYS = {
   SFX_ENABLED: 'hq_sfx_enabled'
 };
 
-const state = {
-  progress: {},
-  cards: {},
-  mistakes: [],
-  gachaPoints: 0,
-  silverTickets: 0,
-  ssrTickets: 0,
-  playerExp: 0,
-  playerLevel: 1,
-  bgmEnabled: true,
-  sfxEnabled: true
-};
+// --- store.js ---
+// Redundant state/store logic removed (superseded by Unified State at the end of file)
 
-function getProfileKey(baseKey) {
-  const profile = (window.geoFirebase && typeof window.geoFirebase.getSelectedProfile === 'function') 
-    ? window.geoFirebase.getSelectedProfile() 
-    : (localStorage.getItem('geoquiz_profile') || null);
-  return profile ? `${baseKey}_${profile}` : baseKey;
-}
-
-function loadState() {
-  try {
-    const pKey = getProfileKey(STORAGE_KEYS.PROGRESS);
-    const savedProg = localStorage.getItem(pKey);
-    if (savedProg) state.progress = JSON.parse(savedProg);
-    else state.progress = {};
-
-    const cKey = getProfileKey(STORAGE_KEYS.CARDS);
-    const savedCards = localStorage.getItem(cKey);
-    if (savedCards) state.cards = JSON.parse(savedCards);
-    else state.cards = {};
-
-    const mKey = getProfileKey(STORAGE_KEYS.MISTAKES);
-    const savedMistakes = localStorage.getItem(mKey);
-    if (savedMistakes) state.mistakes = JSON.parse(savedMistakes);
-    else state.mistakes = [];
-
-    state.gachaPoints = parseInt(localStorage.getItem(getProfileKey(STORAGE_KEYS.GACHA_POINTS)) || '0');
-    state.silverTickets = parseInt(localStorage.getItem(getProfileKey(STORAGE_KEYS.SILVER_TICKETS)) || '0');
-    state.ssrTickets = parseInt(localStorage.getItem(getProfileKey(STORAGE_KEYS.SSR_TICKETS)) || '0');
-    state.playerExp = parseInt(localStorage.getItem(getProfileKey(STORAGE_KEYS.PLAYER_EXP)) || '0');
-    state.playerLevel = parseInt(localStorage.getItem(getProfileKey(STORAGE_KEYS.PLAYER_LEVEL)) || '1');
-    state.bgmEnabled = localStorage.getItem(STORAGE_KEYS.BGM_ENABLED) !== 'false'; // BGM/SFX can stay global
-    state.sfxEnabled = localStorage.getItem(STORAGE_KEYS.SFX_ENABLED) !== 'false';
-  } catch (e) {
-    console.error('Failed to load state', e);
-  }
-}
-
-function saveGachaState() {
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.GACHA_POINTS), String(state.gachaPoints));
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.SILVER_TICKETS), String(state.silverTickets));
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.SSR_TICKETS), String(state.ssrTickets));
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.PLAYER_EXP), String(state.playerExp));
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.PLAYER_LEVEL), String(state.playerLevel));
-  localStorage.setItem(STORAGE_KEYS.BGM_ENABLED, String(state.bgmEnabled));
-  localStorage.setItem(STORAGE_KEYS.SFX_ENABLED, String(state.sfxEnabled));
-}
-
-function getState() {
-  return state;
-}
-
-function saveProgress(geoId, masteryLevel) {
-  state.progress[geoId] = {
-    geoId,
-    masteryLevel,
-    lastClearedAt: Date.now()
-  };
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.PROGRESS), JSON.stringify(state.progress));
-  // クラウド同期
-  if (window.geoFirebase) window.geoFirebase.syncProgressToCloud(geoId, masteryLevel);
-}
-
-function logMistake(geoId, tappedDummy) {
-  state.mistakes.push({
-    geoId,
-    tappedDummy,
-    timestamp: Date.now()
-  });
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.MISTAKES), JSON.stringify(state.mistakes));
-  // クラウド同期
-  if (window.geoFirebase) window.geoFirebase.syncMistakeToCloud(geoId, tappedDummy);
-}
-
-function addCard(cardId) {
-  const current = state.cards[cardId];
-  if (current) {
-    // 限界突破: レベルを上げる（最大5）
-    if (!current.level) current.level = 1;
-    if (current.level < 5) {
-      current.level += 1;
-      console.log(`Limit Break! ${cardId} is now Level ${current.level}`);
-    }
-    current.quantity += 1;
-  } else {
-    state.cards[cardId] = { cardId, quantity: 1, level: 1 };
-  }
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.CARDS), JSON.stringify(state.cards));
-  // クラウド同期
-  if (window.geoFirebase) window.geoFirebase.syncCardToCloud(cardId, state.cards[cardId].level, state.cards[cardId].quantity);
-}
-
-function persistAllState() {
-  saveGachaState();
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.PROGRESS), JSON.stringify(state.progress));
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.CARDS), JSON.stringify(state.cards));
-  localStorage.setItem(getProfileKey(STORAGE_KEYS.MISTAKES), JSON.stringify(state.mistakes));
-}
-
-// --- progression.js ---
-function addExp(amount) {
-  state.playerExp += amount;
-  const nextLevelExp = state.playerLevel * 1000;
-
-  if (state.playerExp >= nextLevelExp) {
-    state.playerLevel++;
-    state.playerExp -= nextLevelExp;
-    showLevelUpNotification(state.playerLevel);
-  }
-  saveGachaState();
-  updateProgressionUI();
-
-  // クラウド同期
-  if (window.geoFirebase) {
-    window.geoFirebase.syncStatsToCloud(state.playerLevel, state.playerExp);
-  }
-}
 
 function stopAllBGM() {
   if (bgm.menu) bgm.menu.stop();
@@ -11018,15 +10906,39 @@ function initApp() {
       window.geoFirebase.initFirebase((user) => {
         const statusEl = document.getElementById('firebase-status-text');
         if (statusEl) {
-          statusEl.innerText = user ? 'CONNECTED' : 'OFFLINE';
-          if (user) {
+          statusEl.innerText = user ? (navigator.onLine ? 'CONNECTED' : 'OFFLINE') : 'OFFLINE';
+          if (user && navigator.onLine) {
             const wrap = document.getElementById('firebase-status');
             if (wrap) wrap.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-cyan-700 text-cyan-400 tracking-widest flex items-center gap-1.5';
           }
         }
       });
     }
-  } catch (e) { console.log('Audio init failed', e); }
+
+    // --- Service Worker Registration ---
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('[GeoQuiz] SW Registered:', reg.scope))
+        .catch(err => console.log('[GeoQuiz] SW Registration Failed:', err));
+    }
+
+    // --- Offline/Online Handling ---
+    window.addEventListener('online', () => {
+      console.log('[GeoQuiz] Network Restored. Attempting Sync...');
+      if (window.app && window.app.syncManually) window.app.syncManually();
+    });
+    window.addEventListener('offline', () => {
+      console.log('[GeoQuiz] Network Lost. Switched to LOCAL MODE.');
+      const statusEl = document.getElementById('firebase-status-text');
+      if (statusEl) statusEl.innerText = 'OFFLINE';
+      const wrap = document.getElementById('firebase-status');
+      if (wrap) wrap.className = 'text-[9px] font-orbitron px-2 py-1 rounded border border-slate-700 text-slate-400 tracking-widest flex items-center gap-1.5';
+    });
+
+  } catch (e) {
+    console.log('Init phase failed', e);
+  }
+
 
   updateAudioToggles();
 
@@ -11945,6 +11857,97 @@ function endBossBattle() {
   document.getElementById('boss-result').classList.remove('hidden');
 }
 
+
+// Unified Data Persistence & Sync Logic
+
+function getState() {
+  return state;
+}
+
+function persistAllState() {
+  const profile = window.geoFirebase ? window.geoFirebase.getSelectedProfile() : null;
+  if (!profile) return;
+  localStorage.setItem(`geoquiz_state_${profile}`, JSON.stringify(state));
+}
+
+function loadState() {
+  const profile = window.geoFirebase ? window.geoFirebase.getSelectedProfile() : null;
+  if (!profile) return;
+  const saved = localStorage.getItem(`geoquiz_state_${profile}`);
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      // Merge with default state structure to prevent breakage
+      state.progress = parsed.progress || {};
+      state.cards = parsed.cards || {};
+      state.mistakes = parsed.mistakes || [];
+      state.playerExp = parsed.playerExp || 0;
+      state.playerLevel = parsed.playerLevel || 1;
+      state.bgmEnabled = parsed.bgmEnabled !== undefined ? parsed.bgmEnabled : true;
+      state.sfxEnabled = parsed.sfxEnabled !== undefined ? parsed.sfxEnabled : true;
+    } catch (e) {
+      console.error('[GeoQuiz] Failed to parse local state', e);
+    }
+  }
+}
+
+async function saveProgress(geoId, masteryLevel) {
+  state.progress[geoId] = {
+    geoId,
+    masteryLevel,
+    lastClearedAt: Date.now()
+  };
+  persistAllState();
+  if (window.geoFirebase) {
+    await window.geoFirebase.syncProgressToCloud(geoId, masteryLevel);
+  }
+}
+
+async function logMistake(geoId, tappedDummy) {
+  const m = { geoId, tappedDummy, timestamp: Date.now() };
+  state.mistakes.push(m);
+  if (state.mistakes.length > 200) state.mistakes.shift();
+  persistAllState();
+  if (window.geoFirebase) {
+    await window.geoFirebase.syncMistakeToCloud(geoId, tappedDummy);
+  }
+}
+
+async function addCard(cardId) {
+  if (!state.cards[cardId]) {
+    state.cards[cardId] = { cardId, level: 1, quantity: 1 };
+  } else {
+    state.cards[cardId].quantity++;
+    // Level up logic (every 3 cards = 1 level up, max 5)
+    if (state.cards[cardId].quantity % 3 === 0 && state.cards[cardId].level < 5) {
+      state.cards[cardId].level++;
+    }
+  }
+  persistAllState();
+  if (window.geoFirebase) {
+    await window.geoFirebase.syncCardToCloud(cardId, state.cards[cardId].level, state.cards[cardId].quantity);
+  }
+}
+
+async function addExp(amount) {
+  state.playerExp += amount;
+  const nextXp = state.playerLevel * 1000;
+  if (state.playerExp >= nextXp) {
+    state.playerLevel++;
+    state.playerExp -= nextXp;
+    if (sounds.unlock && state.sfxEnabled) sounds.unlock.play();
+  }
+  persistAllState();
+  updateProgressionUI();
+  if (window.geoFirebase) {
+    await window.geoFirebase.syncStatsToCloud(state.playerLevel, state.playerExp);
+  }
+}
+
+function saveGachaState() {
+  persistAllState();
+}
+
 // ============================================================
 // RANKING
 // ============================================================
@@ -11976,3 +11979,5 @@ async function fetchAndShowRanking() {
   `).join('');
 }
 
+// --- Entry Point ---
+initApp();
