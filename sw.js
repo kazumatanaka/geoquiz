@@ -1,4 +1,4 @@
-const CACHE_NAME = 'geoquiz-cache-v3';
+const CACHE_NAME = 'geoquiz-cache-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -35,7 +35,7 @@ const ASSETS_TO_CACHE = [
   './assets/avatars/silhouette_placeholder.png'
 ];
 
-const DYNAMIC_CACHE_NAME = 'geoquiz-dynamic-v3';
+const DYNAMIC_CACHE_NAME = 'geoquiz-dynamic-v4';
 
 
 self.addEventListener('install', (event) => {
