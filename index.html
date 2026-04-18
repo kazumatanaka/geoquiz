@@ -352,10 +352,60 @@
                     <span class="text-2xl">🌏</span>
                     <span class="text-cyber-neonGold font-bold">ランダム (All)</span>
                 </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.navigate('region')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2 col-span-2 md:col-span-3 mt-2">
+                    <span class="text-2xl">🗾</span>
+                    <span class="text-cyber-neonPurple font-bold tracking-widest">地域別特訓 (Regional)</span>
+                </button>
             </div>
             <button onclick="window.app.navigate('home')"
                 class="mt-8 text-slate-400 hover:text-white transition-colors">BACK
                 TO HOME</button>
+        </div>
+
+        <!-- Region Selection Screen -->
+        <div id="screen-region"
+            class="screen-view hidden flex flex-col items-center justify-center w-full h-full p-4 overflow-y-auto">
+            <h3
+                class="text-3xl md:text-4xl font-orbitron font-bold text-cyber-neonPurple mb-8 tracking-widest drop-shadow-neon-purple text-center">
+                SELECT REGION</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl px-4">
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_hokkaido')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">北海道</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_tohoku')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">東北</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_kanto')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">関東</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_chubu')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">中部</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_kinki')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">近畿</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_chugoku')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">中国</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_shikoku')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">四国</span>
+                </button>
+                <button onclick="window.app.triggerHaptic(15); window.app.showDifficultySelection('region_kyushu')"
+                    class="category-btn p-4 bg-cyber-panel/60 border border-slate-700 rounded-xl hover:border-cyber-neonPurple hover:bg-cyber-neonPurple/10 transition-all flex flex-col items-center gap-2">
+                    <span class="text-xl text-cyber-neonPurple font-bold">九州</span>
+                </button>
+            </div>
+            <button onclick="window.app.navigate('category')"
+                class="mt-8 text-slate-400 hover:text-white transition-colors tracking-widest">BACK
+                TO CATEGORY</button>
         </div>
 
         <!-- Difficulty Selection Screen -->

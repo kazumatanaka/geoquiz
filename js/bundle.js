@@ -10159,7 +10159,7 @@ function navigateTo(screenId) {
     bgm.current = null;
   } else if (screenId === 'home') {
     playBGM('menu');
-  } else if (screenId === 'category') {
+  } else if (screenId === 'category' || screenId === 'region') {
     playBGM('category');
   } else if (['survey', 'collection', 'ranking'].includes(screenId)) {
     playBGM('others');
@@ -11383,13 +11383,18 @@ function startSession(category, difficulty = 'advanced') {
   // --- Build question list ---
   let filtered = geographyMaster;
   if (category !== 'all') {
-    filtered = geographyMaster.filter(g => {
-      if (category === 'strait') return ['strait', 'bay', 'cape', 'channel', 'sea'].includes(g.type);
-      if (category === 'mountain') return ['mountain', 'mountain_range', 'highland'].includes(g.type);
-      if (category === 'plain') return ['plain', 'basin', 'plateau'].includes(g.type);
-      if (category === 'peninsula') return ['peninsula', 'island'].includes(g.type);
-      return g.type === category;
-    });
+    if (category.startsWith('region_')) {
+      const targetRegion = category.split('_')[1];
+      filtered = geographyMaster.filter(g => g.region === targetRegion);
+    } else {
+      filtered = geographyMaster.filter(g => {
+        if (category === 'strait') return ['strait', 'bay', 'cape', 'channel', 'sea'].includes(g.type);
+        if (category === 'mountain') return ['mountain', 'mountain_range', 'highland'].includes(g.type);
+        if (category === 'plain') return ['plain', 'basin', 'plateau'].includes(g.type);
+        if (category === 'peninsula') return ['peninsula', 'island'].includes(g.type);
+        return g.type === category;
+      });
+    }
   }
 
   let sessionQuestions = [...filtered].sort(() => 0.5 - Math.random());
